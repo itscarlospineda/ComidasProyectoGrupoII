@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\Controller;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SettingsController;
+use App\Http\Controllers\PostsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +17,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+/*Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');*/
+Route::get('/', [Controller::class, 'index'])->name('index');
+Route::get('/blog', [Controller::class, 'blog'])->name('blog');
+
+Route::get('/settings', [SettingsController::class, 'index'])->name('settings');
+Route::get('/userprofile/{id}', [ProfileController::class, 'edit'])->name('editusers.show');
+
+Route::get('/profile/upload', [ProfileController::class, 'showUploadForm'])->name('profile.upload.form');
+Route::post('/profile/{id}/upload', [ProfileController::class, 'uploadProfilePicture'])->name('profile.upload');
+
+Route::get('/posts/{id}', [PostsController::class, 'read'])->name('posts.read');
+
+
+Auth::routes();
+
+

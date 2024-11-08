@@ -35,12 +35,13 @@ class DatabaseSeeder extends Seeder
         ]);*/
 
         Post::create([
-            'title' => 'Apertura de Nueva Sucursal Comercial',
-            'content' => 'La empresa **Favorita Click Shop** se enorgullece en anunciar la apertura de su nueva sucursal, diseñada para ofrecer una experiencia de compra moderna y cómoda a todos sus clientes. Con un espacio amplio y organizado, esta nueva tienda permitirá acceder a una variedad aún mayor de productos de alta calidad, garantizando el mismo excelente servicio que caracteriza a Favorita Click Shop. Esta apertura representa un paso más en el compromiso de la empresa por estar cerca de sus clientes y brindarles la mejor atención en cada visita. ¡Te invitamos a conocer la nueva sucursal y disfrutar de una experiencia de compra única!
-               La nueva sucursal de **Favorita Click Shop** ha sido diseñada pensando en la comodidad y satisfacción de nuestros clientes, ofreciendo un ambiente moderno y acogedor donde podrán encontrar una amplia selección de productos de primera calidad. Este nuevo espacio refuerza nuestro compromiso de estar más cerca de ti, brindándote una experiencia de compra ágil y personalizada con la misma atención que nos caracteriza. Además, la sucursal cuenta con áreas de autoservicio y un equipo dedicado para asesorarte en todo lo que necesites. ¡Ven y descubre todo lo que Favorita Click Shop tiene para ofrecer en este nuevo punto de encuentro!',
+            'title' => 'Implementación de Nuevo Sistema de Reserva',
+            'content' => 'La implementación de un nuevo sistema de reserva en la plataforma de comidas representa un avance significativo en la optimización de los procesos de gestión de pedidos y atención al cliente. Este sistema permite a los usuarios realizar reservas anticipadas en restaurantes y locales de comida directamente desde la plataforma, seleccionando el horario y número de comensales de manera rápida y sencilla. Gracias a una interfaz intuitiva, el sistema facilita la visualización de la disponibilidad en tiempo real y envía recordatorios automáticos a los usuarios, lo que reduce las tasas de no asistencia y mejora la organización para el personal del restaurante.
+
+Por otro lado, este sistema ofrece ventajas adicionales tanto para el cliente como para el establecimiento. Los restaurantes pueden ajustar su inventario de alimentos y su personal de manera más precisa, al tener un conocimiento anticipado de la demanda esperada. A su vez, la plataforma proporciona a los clientes una experiencia más personalizada al ofrecer recomendaciones basadas en sus reservas previas y preferencias. La integración de este sistema de reservas dentro de la plataforma de comidas no solo mejora la eficiencia operativa, sino que también fortalece la lealtad del cliente y permite a los negocios de alimentos planificar de manera más estratégica.',
             'author' => 'Gerencia Sabor Catracho',
             'category' => 'Informativo',
-            'upload_date' => '2024-11-1',
+            'upload_date' => '2024-11-6',
         ]);
 
     }

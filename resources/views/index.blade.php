@@ -160,7 +160,7 @@
         </div><!--./productos__grid-->
     </main>
 
-    <section class="cursos">
+    <section class="cursos" id="blog">
         <div class="cursos__contenedor cursos__grid">
             <div class="cursos__contenido">
                 <h2 class="cursos__heading">{{$posts->title}}</h2>
@@ -183,24 +183,10 @@
                     <p class="entrada__fecha">{{$morePosts->upload_date}}</p>
                     <p class="entrada__texto">{{ \Illuminate\Support\Str::limit($posts->content, 80, $end = '...') }}</p>
 
-                    <a class="entrada__enlace" href="entrada.html">Leer Entrada</a>
+                    <a class="entrada__enlace" href="{{ route('posts.read', ['id' => $morePosts]) }}">Leer Entrada</a>
                 </div>
             </article>
             @endforeach
         </div>
     </section>
-
-    <footer class="footer">
-        <div class="footer__contenedor footer__contenido">
-            <nav class="footer__nav">
-                <a class="footer__enlace" href="index.html">Inicio</a>
-                <a class="footer__enlace" href="nosotros.html">Nosotros</a>
-                <a class="footer__enlace" href="blog.html">Blog</a>
-                <a class="footer__enlace" href="tienda.html">Tienda</a>
-            </nav>
-
-            <p class="footer__copyright">Todos los derechos reservados</p>
-        </div>
-    </footer>
-
 @endsection

@@ -11,5 +11,10 @@ class PostsController extends Controller
     {
         $posts = Post::findOrFail($id);
         return view('post')->with('posts',$posts);
+
+        if($firstPostId) {
+            $firstPostId = Post::findOrFail($id);
+            return view('post')->with('posts',$firstPostId);
+        }
     }
 }

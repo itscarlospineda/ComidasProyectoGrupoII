@@ -45,7 +45,7 @@
                     <span class="fw-bold text-white"> POSTS ANTERIORES</span>
                 </div>
         </div>   
-        <div class="col-md-8" style="border: 3px solid black; padding:40px; border-radius:10px;">
+        <div class="col-md-8" style="border: 3px solid black; padding:40px; border-radius:10px; justify-items:center; text-align: justify;">
             
             <p class="producto__precio" style="color: black;">{{ $posts->title}}</p> <br>
             <h1>{{ $posts->author}}</h1> <br>

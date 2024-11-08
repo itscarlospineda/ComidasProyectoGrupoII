@@ -16,8 +16,9 @@ class Controller extends BaseController
         $posts = Post::orderBy('created_at', 'desc')->first();
 
         $morePosts = Post::orderBy('created_at', 'desc')->take(4)->get();
+        $firstPostId = $morePosts->first()->id;
 
-        return view('index', compact('posts', 'morePosts'));
+        return view('index', compact('posts', 'morePosts','firstPostId'));
     }
 
     public function blog(){

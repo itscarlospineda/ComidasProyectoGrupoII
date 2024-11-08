@@ -38,8 +38,10 @@
         }*/
 
         .minimenu{
-            width: 35vh;
-            height: 65vh;
+            /*width: 35vh;*/
+            width: 270px;
+            height: 450px;
+            /*height: 65vh;*/
             font-size: 20px;
             text-align: center;
         }
@@ -82,7 +84,7 @@
                         <nav class="navegacion">
                             <a class="navegacion__enlace" href="/">Inicio</a>
                             <a class="navegacion__enlace" href="nosotros.html">Nosotros</a>
-                            <a class="navegacion__enlace" href="/blog">Blog</a>
+                            <a class="navegacion__enlace" href="/#blog">Blog</a>
                             <a class="navegacion__enlace" href="tienda.html">Comidas</a>
                             @guest
                             @if (Route::has('login'))
@@ -140,5 +142,17 @@
                         </nav>
                     </div>
             @yield('content')
+            <footer class="footer">
+                <div class="footer__contenedor footer__contenido">
+                    <nav class="footer__nav">
+                        <a class="footer__enlace" href="index.html">Inicio</a>
+                        <a class="footer__enlace" href="nosotros.html">Nosotros</a>
+                        <a class="footer__enlace" href="blog.html">Blog</a>
+                        <a class="footer__enlace" href="tienda.html">Tienda</a>
+                    </nav>
+        
+                    <p class="footer__copyright">Todos los derechos reservados</p>
+                </div>
+            </footer>
 </body>
 </html>

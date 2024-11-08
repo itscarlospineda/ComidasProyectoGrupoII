@@ -7,15 +7,46 @@
         background-image: linear-gradient(to right, rgb(0 0 0 / .7), rgb(0 0 0 / .7)), url({{ Vite::asset('resources/images/gringas.jpg')}});
     }
 
-    .drop-div {
-        height: 500px;
+    .drop-parent {
         width: 500px;
-        margin: 20px;
-        padding-top: 100px;
-        border-radius: 20px;
+        height: 500px;
+        padding-top: 30px;
+        padding-bottom: 30px;
+        text-align: center;
+        border: 3px solid black; 
+        border-radius:20px;
+        transition: none;
+        overflow: hidden; 
+    }
+
+    
+    .label {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+    #drop-area {
+        height: 100%;
+        width: 100%;
+        border-radius: 10px;
+        align-items: center;
         border: 2.5px dashed rgb(248, 185, 12);
         background-color: rgb(248, 235, 200);
+        background-position: center;
+        background-size: cover;
+
     }
+
+
+
+    #drop-area span {
+        display: block;
+        color: #777;
+        margin-top: 15px;
+        transition: none; 
+    }
+
 </style>
 @section('content')
 
@@ -33,93 +64,95 @@
     </div>
 </div>
 
-<!--<div class="container col-md-12">
-    <div class="p-4 m-2">
-        <a class="producto__enlace" href="/settings" style="height:10vh;">Cambiar información de Cuenta</a>
-        <a class="producto__enlace" href="/settings">Cambiar Foto de Perfil</a>
-    </div>
-</div>-->
-
 <div class="container">
     <h1 class="productos__heading">Ajustes de Información de Perfil</h1>
     <p class="cursos__texto text-black">Aquí puedes cambiar algunos de los datos que adjuntaste al
         registrarte con nosotros en tu primera visita. 
     </p>
 </div>
-<div class="container pt-4" style="border: 3px solid black; padding:20px; border-radius:10px; margin-top:5vh;">
+<div class="container p-4" style="border: 3px solid black; border-radius:20px; margin-top:5vh;">
     <form action="{{ route('editusers.show',[$user->id])}}" method="post">
         @csrf
-        <div class="row">
-            <div class="col-md-6">
+        <div class="row p-4">
+            <div class="col-md-6 p-2">
                 <div class="col-md-10 mb-3">
-                    <label for="title" class="form-label producto__nombre">Nombre de Usuario</label>
-                    <input type="text" class="form-control producto__descripcion" name="title" value="{{$user->username}}">
+                    <label for="username" class="form-label producto__nombre">Nombre de Usuario</label>
+                    <input type="text" class="form-control producto__descripcion" name="username" value="{{$user->username}}">
                 </div>
                 <div class="col-md-10 mb-3">
-                    <label for="title" class="form-label producto__nombre">Primer Nombre</label>
+                    <label for="fname" class="form-label producto__nombre">Primer Nombre</label>
                     <input type="text" class="form-control producto__descripcion" name="fname" value="{{$user->fname}}">
                 </div>
                 <div class="col-md-10 mb-3">
-                    <label for="content" class="form-label producto__nombre">Primer Apellido</label>
+                    <label for="lname" class="form-label producto__nombre">Primer Apellido</label>
                     <input type="text" class="form-control producto__descripcion" name="lname" value="{{$user->lname}}">
                 </div>
                 
             </div>
 
-            <div class="col-md-6">
+            <div class="col-md-6 p-2">
                 <div class="col-md-10 mb-3">
-                    <label for="content" class="form-label producto__nombre">Correo Electrónico</label>
+                    <label for="email" class="form-label producto__nombre">Correo Electrónico</label>
                     <input type="text" class="form-control producto__descripcion" name="email" value="{{$user->email}}">
                 </div>
                 <div class="col-md-10 mb-3">
-                    <label for="content" class="form-label producto__nombre">Número de Celular (####-####)</label>
-                    <input type="text" class="form-control producto__descripcion" name="email" value="{{$user->phone_num}}">
+                    <label for="phone_num" class="form-label producto__nombre">Número de Celular (####-####)</label>
+                    <input type="text" class="form-control producto__descripcion" name="phone_num" value="{{$user->phone_num}}">
                 </div>
                 <div class="col-md-10 mb-3">
-                    <label for="content" class="form-label producto__nombre">Dirección</label>
-                    <input type="text" class="form-control producto__descripcion" name="email" value="{{$user->address}}">
+                    <label for="address" class="form-label producto__nombre">Dirección</label>
+                    <input type="text" class="form-control producto__descripcion" name="address" value="{{$user->address}}">
                 </div>
             </div>
         </div>
-        <a class="producto__enlace">Modificar Datos</a>
+        <center>
+            <div class="col-md-4">
+                <a class="producto__enlace">
+                    <span class="producto__descripcion">Modificar Datos</span>
+                </a>
+            </div>
+        </center>
     </form>
       
 </div>
 
-
-<div class="container">
-    <div class="row">
-        <div class="col-md-6"> <br><br><br><br><br>
-            <h1 class="productos__heading">Actualizar Foto de Perfil</h1>
-            <p class="cursos__texto text-black">Aquí puedes cambiar tu foto de perfil subiendo una nueva
-            desde tu galería u ordenador.
+<div class="container d-flex justify-content-center align-items-center vh-100" style="transition: none; ">
+    <div class="row d-flex justify-content-center align-items-center">
+        <div class="col-md-6"> 
+            <h1 class="productos__heading text-center">Actualizar Foto de Perfil</h1>
+            <p class="cursos__texto text-center text-black">
+                Aquí puedes cambiar tu foto de perfil subiendo una nueva desde tu galería u ordenador.
             </p>
+            <input type="hidden" id="uploaded-image" name="uploaded_image" value="">
         </div>
 
         <div class="col-md-6">
-            <div class="container pt-4" style="border: 3px solid black; border-radius:10px; margin-top:10vh; margin-bottom: 5vh;">
-                <center>
-                    <form id="uploadForm" enctype="multipart/form-data">
+            <div class="container drop-parent">
+                <form id="uploadForm" enctype="multipart/form-data">
+                    <label for="fileElem" class="label">
+                        <input type="file" id="fileElem" accept="image/*" hidden>
                         @csrf
-                            <div id="drop-area" class="drop-div">
-                                <h2>Drag & Drop to Upload Profile Picture</h2>
-                                <input type="file" id="fileElem" accept="image/*" style="display:none;">
-                                <label class="btn btn-primary" for="fileElem">Select a file</label>
-                                <div id="gallery" class="gallery mt-3"></div> <br>
-                                <button id="upload-btn" type="submit" class="btn btn-success">Upload</button>
-                            </div> 
-                            <br>
-                            <div id="feedback-message" class="mt-3"></div> <!-- Feedback message area -->
-                            <input type="hidden" id="uploaded-image" name="uploaded_image" value="">
-                    </form>
+                        <div id="drop-area" class="d-flex flex-column justify-content-center">
+                            <p>Arrastra y suelta para cargar <br> una Foto de Perfil.</p>
+                            <img src="{{ Vite::asset('resources/images/upload-icon.png') }}" alt="" style="width: 200px;">
+                            <!--<label class="btn btn-primary" for="fileElem">Select a file</label>-->
+                            <!--<div id="gallery" class="gallery mt-3"></div>-->
+                            <span>Sube cualquier imagen <br> de tu dispositivo.</span>
+                        </div> 
+                    </label>
+                </form>
+                <center>
+                    <a class="producto__enlace col-md-6" id="upload-btn" type="submit" hidden>
+                        <span class="producto__descripcion">Guardar Imagen</span>
+                    </a>
+                    <div id="feedback-message" class="mt-3"></div> 
                 </center>
             </div>
         </div>
-
     </div>
-
 </div>
-                    
+
+          
                
 <script>
     const dropArea = document.getElementById('drop-area');
@@ -151,11 +184,28 @@
     function showFile(file) {
         const reader = new FileReader();
         reader.onload = (e) => {
-            gallery.innerHTML = `<img src="${e.target.result}" alt="Preview" style="max-width: 200px; max-height: 200px;">`;
+            dropArea.innerHTML = '';
+            dropArea.innerHTML = `<img src="${e.target.result}" alt="Preview" style="max-width: 100%; max-height: 100%;">`;
             document.getElementById('uploaded-image').value = file.name;
+            document.getElementById('upload-btn'). hidden = false;
         };
         reader.readAsDataURL(file);
     }
+
+    /*function showFile(file) {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+        // Clear out previous gallery and add preview image
+        gallery.innerHTML = '';  // Clear existing content in the gallery
+        gallery.innerHTML = `<img src="${e.target.result}" alt="Preview" style="max-width: 80%; max-height: 80%; border-radius: 10px;">`;
+
+        // Set hidden input for file name and show upload button
+        document.getElementById('uploaded-image').value = file.name;
+        document.getElementById('upload-btn').hidden = false;
+    };
+    reader.readAsDataURL(file);
+}*/
+
 
     document.getElementById('upload-btn').addEventListener('click', async (event) => {
         event.preventDefault(); 

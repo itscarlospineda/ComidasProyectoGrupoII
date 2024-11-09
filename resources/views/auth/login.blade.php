@@ -15,7 +15,7 @@
                 </a>
 
                 <div class="row w-100 mb-4 px-3">
-                    <label for="email" class="form-label text-white">{{ __('Correo Electrónico') }}</label>
+                    <label for="email" class="form-label">{{ __('Correo Electrónico') }}</label>
                     <input id="email" type="text" class="form-control mb-4 producto__descripcion @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
                     @error('email')
                         <span class="invalid-feedback" role="alert">
@@ -23,7 +23,7 @@
                         </span>
                     @enderror
 
-                    <label for="password" class="form-label text-white">{{ __('Contraseña') }}</label>
+                    <label for="password" class="form-label">{{ __('Contraseña') }}</label>
                     <input id="password" type="password" class="form-control mb-4 producto__descripcion @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
                     @error('password')
                         <span class="invalid-feedback" role="alert">
@@ -34,14 +34,19 @@
 
                 <div class="form-check mb-3">
                     <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-                    <label class="form-check-label text-white" for="remember">
+                    <label class="form-check-label" for="remember">
                         {{ __('Recuérdame') }}
                     </label>
                 </div>
 
-                <div class="w-25 mb-3">
+                <!--<div class="w-25 mb-3">
                     <button type="submit" class="producto__enlace w-100">
                         {{ __('Login') }}
+                    </button>
+                </div>-->
+                <div class="w-25 mb-3">
+                    <button type="submit" class="producto__enlace3 w-100">
+                        {{ __('Iniciar') }}
                     </button>
                 </div>
             </div>

@@ -32,15 +32,18 @@
             z-index: 1;
             font-size:2rem;
 
-            background-image: url({{ Vite::asset('resources/images/carne-fondo2.jpg')}});
+            background-image: url({{ Vite::asset('resources/images/fondo-login.jpg')}});
         }
 
         .overlay-container {
         background: rgba(255, 255, 255, 0.05); 
         padding: 20px;
-        border-radius: 8px;
-        box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
-        backdrop-filter: blur(5px);
+        margin-top: 30px; 
+        margin-bottom: 30px; 
+        border-radius: 15px;
+        border: 2px solid white;
+        box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(10px);
     }
 
     .full-height {

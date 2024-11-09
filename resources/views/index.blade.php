@@ -31,7 +31,7 @@
                     <h3 class="producto__nombre">Lukather</h3>
                     <p class="producto__descripcion">Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique vel consequuntur fugit commodi</p>
                     <p class="producto__precio">$299</p>
-                    <a class="producto__enlace" href="producto.html">Ver Producto</a>
+                    <a class="producto__enlace" href="/product">Ver Producto</a>
                 </div>
             </div><!--./producto-->
 
@@ -42,7 +42,7 @@
                     <h3 class="producto__nombre">SRV</h3>
                     <p class="producto__descripcion">Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique vel consequuntur fugit commodi</p>
                     <p class="producto__precio">$299</p>
-                    <a class="producto__enlace" href="producto.html">Ver Producto</a>
+                    <a class="producto__enlace" href="/product">Ver Producto</a>
                 </div>
             </div><!--./producto-->
 
@@ -53,7 +53,7 @@
                     <h3 class="producto__nombre">Borland</h3>
                     <p class="producto__descripcion">Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique vel consequuntur fugit commodi</p>
                     <p class="producto__precio">$299</p>
-                    <a class="producto__enlace" href="producto.html">Ver Producto</a>
+                    <a class="producto__enlace" href="/product">Ver Producto</a>
                 </div>
             </div><!--./producto-->
 
@@ -64,7 +64,7 @@
                     <h3 class="producto__nombre">VAI</h3>
                     <p class="producto__descripcion">Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique vel consequuntur fugit commodi</p>
                     <p class="producto__precio">$299</p>
-                    <a class="producto__enlace" href="producto.html">Ver Producto</a>
+                    <a class="producto__enlace" href="/product">Ver Producto</a>
                 </div>
             </div><!--./producto-->
 
@@ -75,7 +75,7 @@
                     <h3 class="producto__nombre">Thompson</h3>
                     <p class="producto__descripcion">Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique vel consequuntur fugit commodi</p>
                     <p class="producto__precio">$299</p>
-                    <a class="producto__enlace" href="producto.html">Ver Producto</a>
+                    <a class="producto__enlace" href="/product">Ver Producto</a>
                 </div>
             </div><!--./producto-->
 
@@ -86,7 +86,7 @@
                     <h3 class="producto__nombre">White</h3>
                     <p class="producto__descripcion">Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique vel consequuntur fugit commodi</p>
                     <p class="producto__precio">$299</p>
-                    <a class="producto__enlace" href="producto.html">Ver Producto</a>
+                    <a class="producto__enlace" href="/product">Ver Producto</a>
                 </div>
             </div><!--./producto-->
 
@@ -97,7 +97,7 @@
                     <h3 class="producto__nombre">Cobain</h3>
                     <p class="producto__descripcion">Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique vel consequuntur fugit commodi</p>
                     <p class="producto__precio">$299</p>
-                    <a class="producto__enlace" href="producto.html">Ver Producto</a>
+                    <a class="producto__enlace" href="/product">Ver Producto</a>
                 </div>
             </div><!--./producto-->
 
@@ -108,7 +108,7 @@
                     <h3 class="producto__nombre">Dale</h3>
                     <p class="producto__descripcion">Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique vel consequuntur fugit commodi</p>
                     <p class="producto__precio">$299</p>
-                    <a class="producto__enlace" href="producto.html">Ver Producto</a>
+                    <a class="producto__enlace" href="/product">Ver Producto</a>
                 </div>
             </div><!--./producto-->
 
@@ -119,7 +119,7 @@
                     <h3 class="producto__nombre">Krieger</h3>
                     <p class="producto__descripcion">Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique vel consequuntur fugit commodi</p>
                     <p class="producto__precio">$299</p>
-                    <a class="producto__enlace" href="producto.html">Ver Producto</a>
+                    <a class="producto__enlace" href="/product">Ver Producto</a>
                 </div>
             </div><!--./producto-->
 
@@ -130,7 +130,7 @@
                     <h3 class="producto__nombre">Campbell</h3>
                     <p class="producto__descripcion">Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique vel consequuntur fugit commodi</p>
                     <p class="producto__precio">$299</p>
-                    <a class="producto__enlace" href="producto.html">Ver Producto</a>
+                    <a class="producto__enlace" href="/product">Ver Producto</a>
                 </div>
             </div><!--./producto-->
 
@@ -141,7 +141,7 @@
                     <h3 class="producto__nombre">Reed</h3>
                     <p class="producto__descripcion">Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique vel consequuntur fugit commodi</p>
                     <p class="producto__precio">$299</p>
-                    <a class="producto__enlace" href="producto.html">Ver Producto</a>
+                    <a class="producto__enlace" href="/product">Ver Producto</a>
                 </div>
             </div><!--./producto-->
 
@@ -152,7 +152,7 @@
                     <h3 class="producto__nombre">Hazel</h3>
                     <p class="producto__descripcion">Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique vel consequuntur fugit commodi</p>
                     <p class="producto__precio">$299</p>
-                    <a class="producto__enlace" href="producto.html">Ver Producto</a>
+                    <a class="producto__enlace" href="/product">Ver Producto</a>
                 </div>
             </div><!--./producto-->
 

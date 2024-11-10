@@ -20,141 +20,23 @@
     </header>
 
     <main class="productos productos__contenedor">
-        <h2 class="productos__heading">Nuestra Colección</h2>
+        <h2 class="productos__heading">Nuestras Comidas</h2>
 
         <div class="productos__grid">
 
+            @foreach ($dishes as $dish)
             <div class="producto">
-                <img class="producto__imagen" src="{{ Vite::asset('resources/images/guitarra_01.jpg') }}" alt="imagen guitarra">
+                <img class="producto__imagen" src="{{ Vite::asset('resources/images/carne-fondo2.png') }}" alt="imagen guitarra">
 
                 <div class="producto__contenido">
-                    <h3 class="producto__nombre">Lukather</h3>
-                    <p class="producto__descripcion">Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique vel consequuntur fugit commodi</p>
-                    <p class="producto__precio">$299</p>
+                    <h3 class="producto__nombre">{{$dish->name}}</h3>
+                    <p class="producto__descripcion">{{$dish->desc}}</p>
+                    <p class="producto__precio">${{$dish->price}}</p>
                     <a class="producto__enlace" href="/product">Ver Producto</a>
                 </div>
-            </div><!--./producto-->
-
-            <div class="producto">
-                <img class="producto__imagen" src="img/guitarra_02.jpg" alt="imagen guitarra">
-
-                <div class="producto__contenido">
-                    <h3 class="producto__nombre">SRV</h3>
-                    <p class="producto__descripcion">Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique vel consequuntur fugit commodi</p>
-                    <p class="producto__precio">$299</p>
-                    <a class="producto__enlace" href="/product">Ver Producto</a>
-                </div>
-            </div><!--./producto-->
-
-            <div class="producto">
-                <img class="producto__imagen" src="img/guitarra_03.jpg" alt="imagen guitarra">
-
-                <div class="producto__contenido">
-                    <h3 class="producto__nombre">Borland</h3>
-                    <p class="producto__descripcion">Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique vel consequuntur fugit commodi</p>
-                    <p class="producto__precio">$299</p>
-                    <a class="producto__enlace" href="/product">Ver Producto</a>
-                </div>
-            </div><!--./producto-->
-
-            <div class="producto">
-                <img class="producto__imagen" src="img/guitarra_04.jpg" alt="imagen guitarra">
-
-                <div class="producto__contenido">
-                    <h3 class="producto__nombre">VAI</h3>
-                    <p class="producto__descripcion">Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique vel consequuntur fugit commodi</p>
-                    <p class="producto__precio">$299</p>
-                    <a class="producto__enlace" href="/product">Ver Producto</a>
-                </div>
-            </div><!--./producto-->
-
-            <div class="producto">
-                <img class="producto__imagen" src="img/guitarra_05.jpg" alt="imagen guitarra">
-
-                <div class="producto__contenido">
-                    <h3 class="producto__nombre">Thompson</h3>
-                    <p class="producto__descripcion">Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique vel consequuntur fugit commodi</p>
-                    <p class="producto__precio">$299</p>
-                    <a class="producto__enlace" href="/product">Ver Producto</a>
-                </div>
-            </div><!--./producto-->
-
-            <div class="producto">
-                <img class="producto__imagen" src="img/guitarra_06.jpg" alt="imagen guitarra">
-
-                <div class="producto__contenido">
-                    <h3 class="producto__nombre">White</h3>
-                    <p class="producto__descripcion">Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique vel consequuntur fugit commodi</p>
-                    <p class="producto__precio">$299</p>
-                    <a class="producto__enlace" href="/product">Ver Producto</a>
-                </div>
-            </div><!--./producto-->
-
-            <div class="producto">
-                <img class="producto__imagen" src="img/guitarra_07.jpg" alt="imagen guitarra">
-
-                <div class="producto__contenido">
-                    <h3 class="producto__nombre">Cobain</h3>
-                    <p class="producto__descripcion">Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique vel consequuntur fugit commodi</p>
-                    <p class="producto__precio">$299</p>
-                    <a class="producto__enlace" href="/product">Ver Producto</a>
-                </div>
-            </div><!--./producto-->
-
-            <div class="producto">
-                <img class="producto__imagen" src="img/guitarra_08.jpg" alt="imagen guitarra">
-
-                <div class="producto__contenido">
-                    <h3 class="producto__nombre">Dale</h3>
-                    <p class="producto__descripcion">Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique vel consequuntur fugit commodi</p>
-                    <p class="producto__precio">$299</p>
-                    <a class="producto__enlace" href="/product">Ver Producto</a>
-                </div>
-            </div><!--./producto-->
-
-            <div class="producto">
-                <img class="producto__imagen" src="img/guitarra_09.jpg" alt="imagen guitarra">
-
-                <div class="producto__contenido">
-                    <h3 class="producto__nombre">Krieger</h3>
-                    <p class="producto__descripcion">Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique vel consequuntur fugit commodi</p>
-                    <p class="producto__precio">$299</p>
-                    <a class="producto__enlace" href="/product">Ver Producto</a>
-                </div>
-            </div><!--./producto-->
-
-            <div class="producto">
-                <img class="producto__imagen" src="img/guitarra_10.jpg" alt="imagen guitarra">
-
-                <div class="producto__contenido">
-                    <h3 class="producto__nombre">Campbell</h3>
-                    <p class="producto__descripcion">Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique vel consequuntur fugit commodi</p>
-                    <p class="producto__precio">$299</p>
-                    <a class="producto__enlace" href="/product">Ver Producto</a>
-                </div>
-            </div><!--./producto-->
-
-            <div class="producto">
-                <img class="producto__imagen" src="img/guitarra_11.jpg" alt="imagen guitarra">
-
-                <div class="producto__contenido">
-                    <h3 class="producto__nombre">Reed</h3>
-                    <p class="producto__descripcion">Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique vel consequuntur fugit commodi</p>
-                    <p class="producto__precio">$299</p>
-                    <a class="producto__enlace" href="/product">Ver Producto</a>
-                </div>
-            </div><!--./producto-->
-
-            <div class="producto">
-                <img class="producto__imagen" src="img/guitarra_12.jpg" alt="imagen guitarra">
-
-                <div class="producto__contenido">
-                    <h3 class="producto__nombre">Hazel</h3>
-                    <p class="producto__descripcion">Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique vel consequuntur fugit commodi</p>
-                    <p class="producto__precio">$299</p>
-                    <a class="producto__enlace" href="/product">Ver Producto</a>
-                </div>
-            </div><!--./producto-->
+            </div>
+            @endforeach
+           
 
 
         </div><!--./productos__grid-->

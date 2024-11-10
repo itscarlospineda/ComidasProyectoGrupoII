@@ -70,6 +70,7 @@
             <option value="combo1">Combo 1: Hamburguesa + Papas + Refresco</option>
             <option value="combo2">Combo 2: Pizza + Ensalada + Jugos</option>
             <option value="combo3">Combo 3: Sushi + Sopa + Té Verde</option>
+            <option value="combo4">Combo 4: Baleadas con Mondongo (2)</option>
         </select>
 
         <!-- Cantidad -->

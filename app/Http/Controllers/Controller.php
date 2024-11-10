@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Dish;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
@@ -16,9 +17,11 @@ class Controller extends BaseController
         $posts = Post::orderBy('created_at', 'desc')->first();
 
         $morePosts = Post::orderBy('created_at', 'desc')->take(4)->get();
-        $firstPostId = $morePosts->first()->id;
+        /*$firstPostId = $morePosts->first()->id;*/
 
-        return view('index', compact('posts', 'morePosts','firstPostId'));
+        $dishes = Dish::orderBy('created_at', 'desc')->take(4)->get();
+        
+        return view('index', compact('posts', 'morePosts','dishes'));
     }
 
     public function blog(){

@@ -117,7 +117,7 @@
             
                                             <br>
                                             <span href="" style="color:black;">{{ Auth::user()->fname }} {{ Auth::user()->lname }}</span> <br>
-                                            <span href="" style="color:#e99401;">{{ Auth::user()->email }}</span> <br>
+                                            <span href="" style="color:#e99401;">{{ Auth::user()->username }}</span> <br>
                                             <span href="" style="color: black;">
                                                 <img src="{{ Vite::asset('resources/images/star2.png') }}" height="15%" alt="*">
                                                 <span href="" class="fw-bold" style="color:#e99401;">{{ Auth::user()->points }}</span> Puntos

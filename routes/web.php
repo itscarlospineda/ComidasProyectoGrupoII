@@ -31,7 +31,8 @@ Route::post('/profile/{id}/upload', [ProfileController::class, 'uploadProfilePic
 
 Route::get('/posts/{id}', [PostsController::class, 'read'])->name('posts.read');
 
-Route::get("/product",[ProductController::class, 'viewProduct']);
+Route::get("/product/{dishId}",[ProductController::class, 'viewProduct'])->name("viewproduct");
+
 Auth::routes();
 
 

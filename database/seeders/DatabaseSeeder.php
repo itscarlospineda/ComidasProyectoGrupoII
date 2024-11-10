@@ -35,15 +35,15 @@ class DatabaseSeeder extends Seeder
             'profile_picture' => 'profile_pictures/default-profile.png', // Default profile picture if any
         ]);*/
 
-        /*Post::create([
+        Post::create([
             'title' => 'Sorteo de Guitarra por Compras',
             'content' => 'Por la compra de 500 lempiras en nuestras sucursales, participas en un sorteo de guitarra, cortesía de nuestros proveedores. Sorteo a realizarse el 28 de noviembre del presente año.',
             'author' => 'Gerencia Sabor Catracho',
             'category' => 'Informativo',
             'upload_date' => '2024-11-9',
-        ]);*/
+        ]);
 
-        /*Dish::create([
+        Dish::create([
             'name' => 'Baleadas Sencilla',
             'desc' => 'Exquisita tortilla de harina con frijoles, queso y mantequilla. Vendida por unidad.',
             'price' => 20,
@@ -60,6 +60,6 @@ class DatabaseSeeder extends Seeder
             'desc' => 'Dos tortillas de harina acompañadas con pollo asada, quesillo y acompañantes.',
             'price' => 95,
         ]);
-*/
+
     }
 }

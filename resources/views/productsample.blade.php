@@ -1,10 +1,9 @@
-@extends('layouts.main')
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulario de Compra de Combo de Comida</title>
+    <title>Formulario de Plato</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -27,64 +26,61 @@
             display: block;
             margin-bottom: 8px;
         }
-        input[type="text"], input[type="email"], select, textarea, input[type="number"] {
+        input[type="text"], input[type="number"], textarea {
             width: 100%;
             padding: 10px;
             margin-bottom: 12px;
             border: 1px solid #ccc;
             border-radius: 4px;
         }
-        input[type="submit"] {
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            padding: 12px 20px;
-            font-size: 16px;
-            border-radius: 4px;
-            cursor: pointer;
-            width: 100%;
+        .button-container 
+        { 
+        text-align: center;
+        } 
+        button[type="submit"] 
+        { 
+        background-color: #4CAF50; color: white; border: none; padding: 12px 20px; 
+        font-size: 16px; border-radius: 4px; cursor: pointer; 
+        } 
+
+        button[type="submit"]:hover 
+        { 
+        background-color: #45a049;
         }
-        input[type="submit"]:hover {
-            background-color: #45a049;
-        }
+        input[type="number"] { width: 100%; padding: 10px; margin-bottom: 12px; border: 1px solid #ccc; border-radius: 4px; }
+        label, input, span { display: block; margin-bottom: 12px};
+        
     </style>
 </head>
-@section('content')
 <body>
+    <h1>Detalles del Plato</h1>
+    <form action="#" method="post">
+        <label for="name">Nombre del Plato:</label>
+        <input type="text" id="name" name="name" value="{{ $dish->name }}" readonly>
 
-    <h1>Compra tu Combo de Comida</h1>
-    
-    <form action="/procesar-compra" method="POST">
-        <!-- Nombre del cliente -->
-        <label for="nombre">Nombre Completo:</label>
-        <input type="text" id="nombre" name="nombre" required placeholder="Escribe tu nombre">
+        <label for="description">Descripción:</label>
+        <textarea id="description" name="description" readonly>{{ $dish->desc }}</textarea>
 
-        <!-- Correo electrónico -->
-        <label for="email">Correo Electrónico:</label>
-        <input type="email" id="email" name="email" required placeholder="tucorreo@example.com">
+        <label for="price">Precio:</label>
+        <input type="number" id="price" name="price" value="{{ $dish->price }}"readonly>
 
-        <!-- Selección del combo -->
-        <label for="combo">Selecciona tu Combo:</label>
-        <select id="combo" name="combo" required>
-            <option value="">-- Elige un combo --</option>
-            <option value="combo1">Combo 1: Hamburguesa + Papas + Refresco</option>
-            <option value="combo2">Combo 2: Pizza + Ensalada + Jugos</option>
-            <option value="combo3">Combo 3: Sushi + Sopa + Té Verde</option>
-            <option value="combo4">Combo 4: Baleadas con Mondongo (2)</option>
-        </select>
-
-        <!-- Cantidad -->
-        <label for="cantidad">Cantidad:</label>
-        <input type="number" id="cantidad" name="cantidad" min="1" value="1" required>
-
-        <!-- Comentarios (opcional) -->
-        <label for="comentarios">Comentarios (opcional):</label>
-        <textarea id="comentarios" name="comentarios" rows="4" placeholder="¿Algún detalle o solicitud especial?"></textarea>
-
-        <!-- Botón de enviar -->
-        <input type="submit" value="Comprar Combo">
+        <label for="numero">Cantidad:</label> 
+        <input type="number" id="quantity" MIN=1 name="quantity" oninput="UpdateTotalPrice()">
+        <label for="comments">Comentarios opcionales:</label> 
+        <textarea id="comments" name="comments" rows="4" placeholder="Ingrese sus comentarios aquí"></textarea>
+        <label>Pago Total: $<span id="totalprice"></span></label>
+        <script>
+            function UpdateTotalPrice() {
+                const price = document.getElementById("price").value;
+                let quantity = document.getElementById("quantity").value;
+                let totalprice = (price*quantity).toFixed(2);
+                document.getElementById("totalprice").textContent = totalprice;
+            }
+            UpdateTotalPrice();
+        </script>
+        <div class="button-container"> 
+            <button type="submit">Ordena ya!!</button> 
+        </div>
     </form>
-
 </body>
 </html>
-@endsection

@@ -1,11 +1,14 @@
 <?php
 namespace App\Http\Controllers;
 Use Illuminate\Http\Request;
+Use App\Models\Dish;
 
 class ProductController extends Controller
 {
-    public function viewProduct()
+    public function viewProduct($dishId)
     {
-        return view("productsample");
+        $dish= Dish::find($dishId);
+        return view("productsample",compact("dish"));
     }
 } 
+

@@ -32,14 +32,14 @@
                         </a>
                     </div>
                     @endif
-
+                    @if($user)
                     <div class="col-md-3">
-                        <a class="producto__enlace" href="#">
+                        <a class="producto__enlace" href="{{ route('purchases',['UserId' => $user->id])  }}">
                             <img src="{{ Vite::asset('resources/images/bag.png') }}" alt="" width="200px;"> <br>
                             <span class="producto__descripcion">Historial de Compras</span>
                         </a> 
                     </div>
-
+                    @endif
                     <div class="col-md-3">
                         <a class="producto__enlace" href="#">
                             <img src="{{ Vite::asset('resources/images/calendar.png') }}" alt="" width="200px;"> <br>

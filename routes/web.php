@@ -29,7 +29,7 @@ Route::get('/userprofile/{id}', [ProfileController::class, 'edit'])->name('editu
 
 Route::get('/profile/upload', [ProfileController::class, 'showUploadForm'])->name('profile.upload.form');
 Route::post('/profile/{id}/upload', [ProfileController::class, 'uploadProfilePicture'])->name('profile.upload');
-
+Route::get('/profile/{UserId}/purchases',[ProfileController::class, 'purchases'])->name('purchases');
 Route::get('/posts/{id}', [PostsController::class, 'read'])->name('posts.read');
 
 Route::get("/product/{dishId}",[ProductController::class, 'viewProduct'])->name("viewproduct");

@@ -6,8 +6,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Orders;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 
 class ProfileController extends Controller
 {
@@ -77,5 +79,13 @@ class ProfileController extends Controller
 
         return response()->json(['message' => 'Foto de perfil actualizado correctamente. Será redirigido a la página principal.', 'path' => $hashedName]);
         /*return redirect()->route('index');*/
+    }
+
+    public function purchases($UserId)
+    {
+        $users = Orders::join('users', 'orders.username', '=', 'users.username')
+    ->select('users.id','orders.id as order_id', 'users.username', 'orders.dish_name', 'orders.dish_price', 'orders.quantity', 'orders.dish_total', 'orders.comments', 'orders.Fecha_pedido', 'orders.status')
+    ->get();
+    return view('purchases', compact('users'));
     }
 }

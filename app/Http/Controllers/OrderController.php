@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
-    public function newOrder(Request $request)
+    public function newOrder(Request $request, Orders $orders)
 {
     $username= Auth::user()->username;
     $request->validate([
@@ -27,6 +27,14 @@ class OrderController extends Controller
     $order->comments = $request->comments;
     $order->fecha_pedido = now(); 
     $order->save();
-    return redirect('/index');
+    $orderId = $order->id;
+    return redirect()->route('thanks',['orderId'=>$orderId]);
 }
+public function thanks($orderId)
+{
+    $order = Orders::find($orderId);
+    return view("thanks",compact("order"));
+    
+}
+
 }

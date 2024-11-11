@@ -35,6 +35,7 @@ Route::get('/posts/{id}', [PostsController::class, 'read'])->name('posts.read');
 Route::get("/product/{dishId}",[ProductController::class, 'viewProduct'])->name("viewproduct");
 Route::post("/product/{dishId}",[OrderController::class, "newOrder"])->name("newOrder");
 
+Route::get("/thanks/{orderId}",[OrderController::class, "thanks"])->name("thanks");
 Auth::routes();
 
 

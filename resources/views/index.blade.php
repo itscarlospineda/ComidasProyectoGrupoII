@@ -32,7 +32,7 @@
                 <div class="producto__contenido">
                     <h3 class="producto__nombre">{{$dish->name}}</h3>
                     <p class="producto__descripcion">{{$dish->desc}}</p>
-                    <p class="producto__precio">${{$dish->price}}</p>
+                    <p class="producto__precio">L{{$dish->price}}</p>
                     <a class="producto__enlace" href="{{route('viewproduct', ['dishId' => $dish->id] ) }}">Ver Producto</a>
                 </div>
             </div>

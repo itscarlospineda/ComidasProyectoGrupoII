@@ -53,30 +53,36 @@
     </style>
 </head>
 <body>
+
+
     <h1>Detalles del Plato</h1>
-    <form action="#" method="post">
+    <form action="{{  route('newOrder', 'dishId => $dish->id')   }}" method="post">
+    @csrf
         <label for="name">Nombre del Plato:</label>
-        <input type="text" id="name" name="name" value="{{ $dish->name }}" readonly>
+        <input type="hidden" id=dish_id name=dish_id value ="{{ $dish->id }}"> </input>
+        <input type="text" id="name" name="dish_name" value="{{ $dish->name }}" readonly>
 
         <label for="description">Descripción:</label>
         <textarea id="description" name="description" readonly>{{ $dish->desc }}</textarea>
 
         <label for="price">Precio:</label>
-        <input type="number" id="price" name="price" value="{{ $dish->price }}"readonly>
+        <input type="number" id="price" name="dish_price" value="{{ $dish->price }}"readonly>
 
         <label for="numero">Cantidad:</label> 
-        <input type="number" id="quantity" MIN=1 name="quantity" oninput="UpdateTotalPrice()">
+        <input type="number" id="quantity" MIN=1  name="quantity" oninput="UpdateTotalPrice()">
         <label for="comments">Comentarios opcionales:</label> 
         <textarea id="comments" name="comments" rows="4" placeholder="Ingrese sus comentarios aquí"></textarea>
-        <label>Pago Total: $<span id="totalprice"></span></label>
+        <label>Pago Total: $<span id="totalprice_label"></span></label>
+        <input type="hidden" id="totalprice" name="dish_total">  </input>
         <script>
             function UpdateTotalPrice() {
                 const price = document.getElementById("price").value;
                 let quantity = document.getElementById("quantity").value;
-                let totalprice = (price*quantity).toFixed(2);
-                document.getElementById("totalprice").textContent = totalprice;
+                let dish_total = (price*quantity).toFixed(2);
+                document.getElementById("totalprice_label").textContent = dish_total;
             }
             UpdateTotalPrice();
+            
         </script>
         <div class="button-container"> 
             <button type="submit">Ordena ya!!</button> 

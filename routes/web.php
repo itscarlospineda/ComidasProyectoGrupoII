@@ -5,6 +5,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\OrderController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -32,6 +33,7 @@ Route::post('/profile/{id}/upload', [ProfileController::class, 'uploadProfilePic
 Route::get('/posts/{id}', [PostsController::class, 'read'])->name('posts.read');
 
 Route::get("/product/{dishId}",[ProductController::class, 'viewProduct'])->name("viewproduct");
+Route::post("/product/{dishId}",[OrderController::class, "newOrder"])->name("newOrder");
 
 Auth::routes();
 

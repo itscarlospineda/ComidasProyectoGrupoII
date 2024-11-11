@@ -30,7 +30,7 @@ class ProfileController extends Controller
 
      protected function create(array $data)
      {
-         return User::create([
+         $user = User::create([
              'username' => $data['username'],
              'fname' => $data['fname'],
              'lname' => $data['lname'],
@@ -42,6 +42,9 @@ class ProfileController extends Controller
              'profile_picture' => 'profile_pictures/default-profile.png', 
              'role' => $data['role'],
          ]);
+         Auth::login($user);
+
+         Session::put("username",Auth::user()->username); 
      }
 
      public function edit()

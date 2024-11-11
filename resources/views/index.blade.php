@@ -25,9 +25,7 @@
         <div class="productos__grid">
 
             @foreach ($dishes as $dish)
-            @php
-                $dishId= $dish->id;
-            @endphp    
+           
             <div class="producto">
                 <img class="producto__imagen" src="{{ Vite::asset('resources/images/carne-fondo2.png') }}" alt="imagen guitarra">
 
@@ -35,7 +33,7 @@
                     <h3 class="producto__nombre">{{$dish->name}}</h3>
                     <p class="producto__descripcion">{{$dish->desc}}</p>
                     <p class="producto__precio">${{$dish->price}}</p>
-                    <a class="producto__enlace" href="{{route('viewproduct', ['dishId' => $dishId] ) }}">Ver Producto</a>
+                    <a class="producto__enlace" href="{{route('viewproduct', ['dishId' => $dish->id] ) }}">Ver Producto</a>
                 </div>
             </div>
             @endforeach

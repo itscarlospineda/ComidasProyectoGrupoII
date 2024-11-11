@@ -74,7 +74,7 @@
 
 <body>
 
-    <h1>Artículos</h1>
+    <h1>Historial de pagos</h1>
 
     <div class="container">
     @foreach ($users as $user)

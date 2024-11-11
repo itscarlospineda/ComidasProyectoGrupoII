@@ -120,14 +120,14 @@
                                             <br>
                                             <span href="" style="color:black;">{{ Auth::user()->fname }} {{ Auth::user()->lname }}</span> <br>
                                             <span href="" style="color:#e99401;">{{ Auth::user()->username }}</span> <br>
-                                            <!--<span href="" style="color: black;">
+                                            <span href="" style="color: black;">
                                                 <img src="{{ Vite::asset('resources/images/star2.png') }}" height="15%" alt="*">
                                                 <span href="" class="fw-bold" style="color:#e99401;">{{ Auth::user()->points }}</span> Puntos
-                                            </span>--> <br> <br>
+                                            </span> <br> <br>
                                         </div>
                                         <a href="/">Inicio</a> <br>
                                         <a href="/settings">Opciones</a> <br>
-                                        <!--<a href="/">Recompensas</a>--> <br>
+                                        <<a href="/">Recompensas</a> <br>
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                           document.getElementById('logout-form').submit();">

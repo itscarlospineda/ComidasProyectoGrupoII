@@ -85,6 +85,7 @@ class ProfileController extends Controller
     {
         $users = Orders::join('users', 'orders.username', '=', 'users.username')
     ->select('users.id','orders.id as order_id', 'users.username', 'orders.dish_name', 'orders.dish_price', 'orders.quantity', 'orders.dish_total', 'orders.comments', 'orders.Fecha_pedido', 'orders.status')
+    ->where('users.id',$UserId)
     ->get();
     return view('purchases', compact('users'));
     }

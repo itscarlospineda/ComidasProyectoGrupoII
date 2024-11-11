@@ -1,10 +1,7 @@
 @extends('layouts.main')
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agradecimiento</title>
+
+<title>@yield('title', 'Página de Confirmación')</title>
+
     <style>
         body {
             background-color: #f4f4f9;
@@ -55,17 +52,22 @@
             background-color: #45a049;
         }
     </style>
-    @section('content')
-</head>
-<body>
-    <div class="thank-you-container">
-        <h1>¡Gracias por tu pedido, <span id="username">{{ $order->username }}</span>!</h1>
-        <p>Tu número de orden es: <span id="order-number">{{ $order->id }}</span></p>
-        <p>Apreciamos tu confianza y esperamos que disfrutes tu compra.</p>
-        <a href="/orders" class="btn">Ver Mis Órdenes</a>
-        <a href="/orders" class="btn">Ir al iniccio</a>
-    </div>
-</body>
+    
+@section('content')
 
-</html>
-@endsection('content')
+
+<div class="modelo">
+    <p class="modelo__nombre text-black">Página de Confirmación</p>
+</div>
+</div>
+</header>
+    <center>
+        <div class="thank-you-container">
+            <h1>¡Gracias por tu pedido, <span id="username">{{ $order->username }}</span>!</h1>
+            <p>Tu número de orden es: <span id="order-number">{{ $order->id }}</span></p>
+            <p>Apreciamos tu confianza y esperamos que disfrutes tu compra.</p>
+            <a href="/orders" class="btn">Ver Mis Órdenes</a>
+            <a href="/" class="btn">Ir a Inicio</a>
+        </div>
+    </center>
+@endsection

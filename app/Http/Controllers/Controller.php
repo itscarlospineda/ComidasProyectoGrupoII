@@ -21,7 +21,9 @@ class Controller extends BaseController
 
         $dishes = Dish::orderBy('created_at', 'desc')->take(4)->get();
         
-        return view('index', compact('posts', 'morePosts','dishes'));
+        $randomDish = Dish::inRandomOrder()->first();
+
+        return view('index', compact('posts', 'morePosts','dishes', 'randomDish'));
     }
 
     public function blog(){

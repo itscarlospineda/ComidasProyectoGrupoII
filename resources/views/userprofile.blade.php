@@ -141,13 +141,14 @@
                         </div> 
                     </label>
                 </form>
-                <center>
-                    <a class="producto__enlace col-md-6" id="upload-btn" type="submit" hidden>
-                        <span class="producto__descripcion">Guardar Imagen</span>
-                    </a>
-                    <div id="feedback-message" class="mt-3"></div> 
-                </center>
+                
             </div>
+            <center>
+                <a class="producto__enlace col-md-6" id="upload-btn" type="submit" hidden>
+                    <span class="producto__descripcion">Guardar Imagen</span>
+                </a>
+                <div id="feedback-message" class="mt-3"></div> 
+            </center>
         </div>
     </div>
 </div>

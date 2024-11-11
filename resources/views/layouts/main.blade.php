@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
     <!-- Scripts -->
-    @vite(['resources/js/app.js','resources/css/normalize.css', 'resources/css/app.css','resources/css/fonts.css'])
+    @vite(['resources/js/app.js','resources/css/normalize.css', 'resources/css/app.css'])
 
     <style>
         body {
@@ -54,7 +54,9 @@
             color: black;
         }
 
-    
+        /*.header {
+        background-image: linear-gradient(to right, rgb(0 0 0 / .7), rgb(0 0 0 / .7)), url({{ Vite::asset('resources/images/carne-fondo2.png')}});
+        }*/
 
         /* Responsive Navbar */
         @media (max-width: 768px) {
@@ -118,14 +120,14 @@
                                             <br>
                                             <span href="" style="color:black;">{{ Auth::user()->fname }} {{ Auth::user()->lname }}</span> <br>
                                             <span href="" style="color:#e99401;">{{ Auth::user()->username }}</span> <br>
-                                            <span href="" style="color: black;">
+                                            <!--<span href="" style="color: black;">
                                                 <img src="{{ Vite::asset('resources/images/star2.png') }}" height="15%" alt="*">
                                                 <span href="" class="fw-bold" style="color:#e99401;">{{ Auth::user()->points }}</span> Puntos
-                                            </span> <br> <br>
+                                            </span>--> <br> <br>
                                         </div>
                                         <a href="/">Inicio</a> <br>
                                         <a href="/settings">Opciones</a> <br>
-                                        <a href="/">Recompensas</a> <br>
+                                        <!--<a href="/">Recompensas</a>--> <br>
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                           document.getElementById('logout-form').submit();">
@@ -154,5 +156,6 @@
                     <p class="footer__copyright">Todos los derechos reservados</p>
                 </div>
             </footer>
+        </main>
 </body>
 </html>

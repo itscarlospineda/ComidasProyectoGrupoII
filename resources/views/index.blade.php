@@ -10,10 +10,10 @@
 @section('content')
 
             <div class="modelo">
-                <h1 class="modelo__nombre">Tacos Fritos</h1>
-                <p class="modelo__descripcion">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repudiandae, dolorum voluptatem fuga illum nisi saepe, repellat laudantium accusantium doloremque harum.</p>
-                <p class="modelo__precio">$3.99 c/u</p>
-                <a class="modelo__enlace" href="producto.html">Ver Producto</a>
+                <h1 class="modelo__nombre">{{$randomDish->name}}</h1>
+                <p class="modelo__descripcion">{{$randomDish->desc}}</p>
+                <p class="modelo__precio">${{$randomDish->price}}</p>
+                <a class="modelo__enlace" href="{{route('viewproduct', ['dishId' => $randomDish->id] ) }}">Ver Producto</a>
             </div>
         </div>
 

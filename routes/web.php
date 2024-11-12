@@ -6,6 +6,7 @@ use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -36,6 +37,11 @@ Route::get("/product/{dishId}",[ProductController::class, 'viewProduct'])->name(
 Route::post("/product/{dishId}",[OrderController::class, "newOrder"])->name("newOrder");
 
 Route::get("/thanks/{orderId}",[OrderController::class, "thanks"])->name("thanks");
+
+Route::get("/admin/orders",[AdminController::class,"orders"])->name("adminOrders");
+Route::post("/admin/orders/{orderId}/ok",[AdminController::class,"okorder"])->name("okorder");
+Route::post("/admin/orders/{orderId}/cancel",[AdminController::class,"cancelorder"])->name("cancelorder");
+
 Auth::routes();
 
 

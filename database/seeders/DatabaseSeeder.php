@@ -53,8 +53,8 @@ class DatabaseSeeder extends Seeder
             'name' => 'Pollo Chuco',
             'desc' => 'Bandeja con nuestro excelente pollo frito, acompañado con tajadas y salsa al gusto.',
             'price' => 100,
-        ]);*/
-
+        ]); */
+        
         Dish::create([
             'name' => 'Tacos Dorados',
             'desc' => 'Orden de tres tacos dorados acompañado con vegetales abundantes y salsa de mantequilla de la casa.',

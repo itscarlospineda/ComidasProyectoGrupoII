@@ -41,7 +41,7 @@ Route::get("/thanks/{orderId}",[OrderController::class, "thanks"])->name("thanks
 Route::get("/admin/orders",[AdminController::class,"orders"])->name("adminOrders");
 Route::post("/admin/orders/{orderId}/ok",[AdminController::class,"okorder"])->name("okorder");
 Route::post("/admin/orders/{orderId}/cancel",[AdminController::class,"cancelorder"])->name("cancelorder");
-
+Route::get("/admin/record",[AdminController::class,"adminrecord"])->name("adminrecord");
 Auth::routes();
 
 

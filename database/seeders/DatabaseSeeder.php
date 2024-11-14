@@ -35,7 +35,7 @@ class DatabaseSeeder extends Seeder
             'profile_picture' => 'profile_pictures/default-profile.png', // Default profile picture if any
         ]);*/
 
-        /*Post::create([
+        Post::create([
             'title' => 'Sorteo de Guitarra por Compras',
             'content' => 'Por la compra de 500 lempiras en nuestras sucursales, participas en un sorteo de guitarra, cortesía de nuestros proveedores. Sorteo a realizarse el 28 de noviembre del presente año.',
             'author' => 'Gerencia Sabor Catracho',
@@ -53,7 +53,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Pollo Chuco',
             'desc' => 'Bandeja con nuestro excelente pollo frito, acompañado con tajadas y salsa al gusto.',
             'price' => 100,
-        ]);*/
+        ]);
 
         Dish::create([
             'name' => 'Tacos Dorados',

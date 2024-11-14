@@ -7,6 +7,7 @@ use App\Http\Controllers\PostsController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\OrderController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AboutusController;
 
 
 /*
@@ -36,6 +37,9 @@ Route::get("/product/{dishId}",[ProductController::class, 'viewProduct'])->name(
 Route::post("/product/{dishId}",[OrderController::class, "newOrder"])->name("newOrder");
 
 Route::get("/thanks/{orderId}",[OrderController::class, "thanks"])->name("thanks");
+
+Route::get('/aboutus', [AboutusController::class, "aboutus"])->name("aboutus");
+
 Auth::routes();
 
 

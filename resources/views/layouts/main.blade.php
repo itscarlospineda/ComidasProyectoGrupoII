@@ -85,7 +85,7 @@
             
                         <nav class="navegacion">
                             <a class="navegacion__enlace" href="/">Inicio</a>
-                            <a class="navegacion__enlace" href="nosotros.html">Nosotros</a>
+                            <a class="navegacion__enlace" href="/aboutus">Nosotros</a>
                             <a class="navegacion__enlace" href="/#blog">Blog</a>
                             <a class="navegacion__enlace" href="tienda.html">Comidas</a>
                             @guest

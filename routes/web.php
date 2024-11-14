@@ -8,6 +8,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AboutusController;
 
 
 /*
@@ -38,6 +39,7 @@ Route::post("/product/{dishId}",[OrderController::class, "newOrder"])->name("new
 
 Route::get("/thanks/{orderId}",[OrderController::class, "thanks"])->name("thanks");
 
+Route::get('/aboutus', [AboutusController::class, "aboutus"])->name("aboutus");
 Route::get("/admin/orders",[AdminController::class,"orders"])->name("adminOrders");
 Route::post("/admin/orders/{orderId}/ok",[AdminController::class,"okorder"])->name("okorder");
 Route::post("/admin/orders/{orderId}/cancel",[AdminController::class,"cancelorder"])->name("cancelorder");

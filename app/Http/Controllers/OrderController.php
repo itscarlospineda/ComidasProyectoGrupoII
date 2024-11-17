@@ -35,7 +35,11 @@ class OrderController extends Controller
     if ($order->dish_total >= 300 &&  $order->dish_total<500)
     {
             $points = 5;
+    }else 
+    {
+        $points=0;
     }
+    
     if ($order->dish_total >= 500 &&  $order->dish_total<800)
     {
             $points = 10;

@@ -23,13 +23,17 @@ return new class extends Migration
             $table->string('address')->nullable();
             $table->integer('points')->default(0);
             $table->string('profile_picture')->nullable()->default('profile_pictures/default-profile.png');
-            $table->enum('role', ['owner','admin', 'user'])->default('user');
+            $table->enum('role', ['owner', 'admin', 'user'])->default('user');
             $table->rememberToken();
             $table->timestamps();
         });
+    
+        Schema::table('users', function (Blueprint $table) {
+            $table->index('username');
+        });
     }
-
     /**
+ 
      * Reverse the migrations.
      */
     public function down(): void

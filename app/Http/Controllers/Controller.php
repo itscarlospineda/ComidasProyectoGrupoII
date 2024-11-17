@@ -7,6 +7,7 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 use App\Models\Post;
+use App\Models\Reward;
 
 class Controller extends BaseController
 {
@@ -23,6 +24,8 @@ class Controller extends BaseController
         
         $randomDish = Dish::inRandomOrder()->first();
 
+        $reward=Reward::all();
+        session(["reward"=>$reward]);
         return view('index', compact('posts', 'morePosts','dishes', 'randomDish'));
     }
 

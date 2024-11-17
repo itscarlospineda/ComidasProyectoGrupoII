@@ -7,6 +7,7 @@ use Illuminate\Database\Seeder;
 use App\Models\User;
 use App\Models\Post;
 use App\Models\Dish;
+use App\Models\Reward;
 use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
@@ -53,13 +54,35 @@ class DatabaseSeeder extends Seeder
             'name' => 'Pollo Chuco',
             'desc' => 'Bandeja con nuestro excelente pollo frito, acompañado con tajadas y salsa al gusto.',
             'price' => 100,
-        ]); */
+        ]); 
         
         Dish::create([
             'name' => 'Tacos Dorados',
             'desc' => 'Orden de tres tacos dorados acompañado con vegetales abundantes y salsa de mantequilla de la casa.',
             'price' => 115,
         ]);
+        Reward::create( [
+        "Name"  => "Orden tajadas",
+        "Description" => "Complementa tus platos con una porcion extra de tajadas. ",
+        "Points_needed" => 50,
+        ]);
+        
+        Reward::create( [
+        "Name"  => "Tres leches pequeño",
+        "Description" => "Saborea el sabor de nuestros postres para nuestros clientes fieles. ",
+        "Points_needed" => 80,
+        ]);
 
+        Reward::create( [
+        "Name"  => "Pierna/Cadera pollo frito",
+        "Description" => "Agrega mas carne y mas sabor a tu plato.",
+        "Points_needed" => 110,
+        ]);
+
+        Reward::create( [
+            "Name"  => "Pollo chuco",
+            "Description" => "El mayor premio para nuestros clientes leales de corazon, un plato entero de pollo chuco solo para ti.",
+            "Points_needed" => 170,
+            ]);
     }
 }

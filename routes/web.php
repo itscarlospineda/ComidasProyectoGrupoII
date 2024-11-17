@@ -34,6 +34,10 @@ Route::post('/profile/{id}/upload', [ProfileController::class, 'uploadProfilePic
 Route::get('/profile/{UserId}/purchases',[ProfileController::class, 'purchases'])->name('purchases');
 Route::get('/posts/{id}', [PostsController::class, 'read'])->name('posts.read');
 
+Route::get("/rewards",[ProfileController::class, 'rewards'])->name('rewards');
+Route::get("/rewards/claim/{rewardId}",[ProfileController::class, 'claimreward'])->name('claimreward');
+Route::post("/rewards/claim/{rewardId}",[ProfileController::class, 'savereward'])->name('savereward');
+
 Route::get("/product/{dishId}",[ProductController::class, 'viewProduct'])->name("viewproduct");
 Route::post("/product/{dishId}",[OrderController::class, "newOrder"])->name("newOrder");
 
@@ -44,6 +48,8 @@ Route::get("/admin/orders",[AdminController::class,"orders"])->name("adminOrders
 Route::post("/admin/orders/{orderId}/ok",[AdminController::class,"okorder"])->name("okorder");
 Route::post("/admin/orders/{orderId}/cancel",[AdminController::class,"cancelorder"])->name("cancelorder");
 Route::get("/admin/record",[AdminController::class,"adminrecord"])->name("adminrecord");
+
+
 Auth::routes();
 
 

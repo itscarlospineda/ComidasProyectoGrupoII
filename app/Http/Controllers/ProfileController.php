@@ -9,7 +9,10 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Orders;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use App\Models\Reward;
+use App\Models\Rewards_claimed;
 use Illuminate\Support\Facades\DB;
+
 
 class ProfileController extends Controller
 {
@@ -89,4 +92,70 @@ class ProfileController extends Controller
     ->get();
     return view('purchases', compact('users'));
     }
+
+    public function rewards()
+    {
+        $username = Auth::user()->username;
+        $rewards=session("reward");
+        $points = DB::table("users") 
+            ->where("username",$username)
+            ->value("points");
+        
+        return view("rewards",compact("points","rewards"));
+       
+        }
+
+    public function claimreward($rewardId)
+    {
+    $rewards = Reward::find($rewardId);
+    $username = Auth::user()->username;
+    $points = DB::table("users") 
+    ->where("username",$username)
+    ->value("points");
+    return view("claimrewards",compact("points","rewards"));   
+    }
+    
+    public function savereward(Request $request, Rewards_claimed $claimreward, $rewardId)
+    {
+        $username = Auth::user()->username;
+        $points = (int) DB::table("users") 
+        ->where("username",$username)
+        ->value("points");
+        $points_needed =(int) DB::table("rewards")
+        ->where("id",$rewardId)
+        ->value("Points_needed");
+    
+        if ($points >= $points_needed)
+        
+        {
+            try {
+            DB::beginTransaction();
+            $claimreward = new Rewards_claimed();
+            $claimreward ->RewardId = $request->input("RewardId");
+            $claimreward ->Name = $request->Name;
+            $claimreward ->username = $username;
+            $claimreward ->Points_needed = $request->Points_needed;
+            $claimreward ->save();
+            $claimId = $claimreward->id;
+
+            $updated = User::where("username", $username)
+            ->decrement("points", $points_needed);
+             if (!$updated) {
+            DB::rollback();
+            return response()->json(['message' => 'Error al actualizar los puntos.'], 500);
+        }
+            DB::commit();
+            return response()->json(['message' => 'Reward claimed successfully!'], 200);
+        }
+        catch(Exception)
+        {
+        DB::rollback();
+
+        }
+    }
+        
+    }
+
+        
+
 }

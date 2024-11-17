@@ -67,13 +67,15 @@
 
 @section('content')
             <div class="modelo">
-                <p class="modelo__nombre">Pedido de {{ $dish->name }}</p>
+                <p class="modelo__nombre">Recompensa {{ $rewards->Name }}</p>
             </div>
         </div>
     </header>
 
-    <h1>Detalles del Plato</h1>
+    <h1>Detalles de Recompensa          Tus puntos: </h1>
+    
     <div class="container">
+    <span >Tus puntos: {{$points}}</span>
         <div class="row">
             <!--<div class="col-md-4">
                 <div class="d-flex justify-content-center align-items-center">
@@ -86,41 +88,16 @@
             
             <div class="col-md-8" style="padding: 20px;">
 
-                <form action="{{  route('newOrder', 'dishId => $dish->id')   }}" method="post">
+                <form action="{{  route('savereward', 'rewardId => $rewards->id')   }}" method="post">
                     @csrf
                         <label class="form-content" for="name">Nombre del Plato:</label>
-                        <input class="form-content" type="hidden" id=dish_id name=dish_id value ="{{ $dish->id }}"> </input>
-                        <!--<span class="form-content producto__nombre" type="text" id="name" name="dish_name" value ="{{ $dish->name }}"> style="font-size:40px;">
-                            {{ $dish->name }}
-                        </span>-->
-                        <input type="text" id="name" name="dish_name" value="{{ $dish->name }}" readonly>
-
+                        <input class="form-content" type="hidden" id=dish_id name=RewardId value ="{{ $rewards->id }}"> </input>
+                        <input type="text" id="name" name="Name" value="{{ $rewards->Name }}" readonly>
                         <label class="form-content" for="description">Descripción:</label>
-                        <!--<p class="form-content"  id="description" name="description" readonly>{{ $dish->desc }}</p>-->
-                        <textarea id="description" name="description" readonly>{{ $dish->desc }}</textarea>
-                        
-                        <label class="form-content" for="price">Precio:</label>
-                        <input class="form-content producto__precio" type="number" id="price" name="dish_price" value="{{ $dish->price }}" readonly>   
-                        <label class="form-content" for="numero">Cantidad:</label> 
-                        <input class="form-content" type="number" id="quantity" MIN=1  name="quantity" oninput="UpdateTotalPrice()">
-                        <label class="form-content" for="comments">Comentarios opcionales:</label> 
-                        <textarea  class="form-content" id="comments" name="comments" rows="4" placeholder="Ingrese sus comentarios aquí"></textarea>
-                        <label class="form-content">Pago Total: $
-                            <span class="form-content" id="totalprice_label"></span>
-                        </label>
-                        <input class="form-content" type="hidden" id="totalprice" name="dish_total">  </input>
-                        <script>
-                            function UpdateTotalPrice() {
-                                const price = document.getElementById("price").value;
-                                let quantity = document.getElementById("quantity").value;
-                                let dish_total = (price*quantity).toFixed(2);
-                                document.getElementById("totalprice_label").textContent = dish_total;
-                            }
-                            UpdateTotalPrice();
-                            
-                        </script>
-                        <div class="button-container"> 
-                            <button type="submit">Ordena ya!!</button> 
+                        <textarea id="description" name="description" readonly>{{ $rewards->Description }}</textarea>
+                        <label class="form-content" for="numero">Puntos Necesarios:</label> 
+                        <input class="form-content" type="number" id="quantity"  value="{{$rewards->Points_needed}}" name="Points_needed"> 
+                        <button type="submit">Ordena ya!!</button> 
                         </div>
                     </form>
             </div>

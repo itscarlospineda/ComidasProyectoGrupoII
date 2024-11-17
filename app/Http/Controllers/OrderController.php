@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use App\Models\Orders;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
+
 {
     public function newOrder(Request $request, Orders $orders)
 {
@@ -16,7 +18,8 @@ class OrderController extends Controller
         'quantity' => 'numeric|min:1', 
         
     ]);
-    $order = new orders();
+
+    $order = new orders();  
     $order->username = $username;
     $order->dish_id = $request->input('dish_id');
     $order->dish_name = $request->dish_name;
@@ -28,6 +31,22 @@ class OrderController extends Controller
     $order->fecha_pedido = now(); 
     $order->save();
     $orderId = $order->id;
+
+    if ($order->dish_total >= 300 &&  $order->dish_total<500)
+    {
+            $points = 5;
+    }
+    if ($order->dish_total >= 500 &&  $order->dish_total<800)
+    {
+            $points = 10;
+    }  
+
+    if ($order->dish_total >= 800 )
+    {
+            $points = 20;
+    }
+    User::where("username", $username)->increment("points",$points);
+
     return redirect()->route('thanks',['orderId'=>$orderId]);
 }
 public function thanks($orderId)

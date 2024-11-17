@@ -57,6 +57,31 @@
         /*.header {
         background-image: linear-gradient(to right, rgb(0 0 0 / .7), rgb(0 0 0 / .7)), url({{ Vite::asset('resources/images/carne-fondo2.png')}});
         }*/
+        
+
+        footer {
+            /*background-color: #333;*/
+            background-color: black;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            margin-top: 80px;
+            box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        footer p {
+            margin: 5px 0;
+        }
+
+        footer a {
+            color: #e67e22;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
 
         /* Responsive Navbar */
         @media (max-width: 768px) {
@@ -78,16 +103,16 @@
                 <div class="header__contenedor">
                     <div class="header__barra">
                         <a>
-                            <!--<img class="header__logo" src="{{ Vite::asset('resources/images/logo.svg') }}" alt="imagen logo">-->
-                            <span class="fw-bold" style="color: white; font-size:65px;"> Sabor</span>
-                            <span class="fw-bold" style="color: rgb(43, 43, 175); font-size:65px;">Catracho </span>
+                            <img src="{{ Vite::asset('resources/images/logo5.PNG') }}" alt="Logo Sabor Catracho" width="250px">
+                            <!--<span class="fw-bold" style="color: white; font-size:65px;"> Sabor</span>
+                            <span class="fw-bold" style="color: rgb(43, 43, 175); font-size:65px;">Catracho </span>-->
                         </a>
             
                         <nav class="navegacion">
                             <a class="navegacion__enlace" href="/">Inicio</a>
                             <a class="navegacion__enlace" href="/aboutus">Nosotros</a>
                             <a class="navegacion__enlace" href="/#blog">Blog</a>
-                            <a class="navegacion__enlace" href="tienda.html">Comidas</a>
+                            <a class="navegacion__enlace" href="#">Comidas</a>
                             @guest
                             @if (Route::has('login'))
                                 <a class="nav-item">
@@ -144,17 +169,9 @@
                         </nav>
                     </div>
             @yield('content')
-            <footer class="footer">
-                <div class="footer__contenedor footer__contenido">
-                    <nav class="footer__nav">
-                        <a class="footer__enlace" href="index.html">Inicio</a>
-                        <a class="footer__enlace" href="nosotros.html">Nosotros</a>
-                        <a class="footer__enlace" href="blog.html">Blog</a>
-                        <a class="footer__enlace" href="tienda.html">Tienda</a>
-                    </nav>
-        
-                    <p class="footer__copyright">Todos los derechos reservados</p>
-                </div>
+            <footer>
+                <p>&copy; 2024 SaborCatracho | Todos los derechos reservados</p>
+                <p>Dirección: Avenida Circunvalación, San Pedro Sula, Honduras | Teléfono: +504 0000-0000</p>
             </footer>
         </main>
 </body>

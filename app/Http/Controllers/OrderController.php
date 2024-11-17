@@ -19,6 +19,13 @@ class OrderController extends Controller
         
     ]);
 
+    if (($request->quantity * $request->dish_price) >= 500 && ($request->quantity * $request->dish_price) <700 ) 
+    {
+        $point=1;
+    }
+
+
+
     $order = new orders();  
     $order->username = $username;
     $order->dish_id = $request->input('dish_id');

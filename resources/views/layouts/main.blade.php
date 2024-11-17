@@ -57,6 +57,31 @@
         /*.header {
         background-image: linear-gradient(to right, rgb(0 0 0 / .7), rgb(0 0 0 / .7)), url({{ Vite::asset('resources/images/carne-fondo2.png')}});
         }*/
+        
+
+        footer {
+            /*background-color: #333;*/
+            background-color: black;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            margin-top: 80px;
+            box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        footer p {
+            margin: 5px 0;
+        }
+
+        footer a {
+            color: #e67e22;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
 
         /* Responsive Navbar */
         @media (max-width: 768px) {
@@ -144,17 +169,9 @@
                         </nav>
                     </div>
             @yield('content')
-            <footer class="footer">
-                <div class="footer__contenedor footer__contenido">
-                    <nav class="footer__nav">
-                        <a class="footer__enlace" href="index.html">Inicio</a>
-                        <a class="footer__enlace" href="nosotros.html">Nosotros</a>
-                        <a class="footer__enlace" href="blog.html">Blog</a>
-                        <a class="footer__enlace" href="tienda.html">Tienda</a>
-                    </nav>
-        
-                    <p class="footer__copyright">Todos los derechos reservados</p>
-                </div>
+            <footer>
+                <p>&copy; 2024 SaborCatracho | Todos los derechos reservados</p>
+                <p>Dirección: Avenida Circunvalación, San Pedro Sula, Honduras | Teléfono: +504 0000-0000</p>
             </footer>
         </main>
 </body>

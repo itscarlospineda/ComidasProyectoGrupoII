@@ -9,7 +9,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AboutusController;
-
+use App\Http\Controllers\FoodController;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,6 +49,7 @@ Route::post("/admin/orders/{orderId}/ok",[AdminController::class,"okorder"])->na
 Route::post("/admin/orders/{orderId}/cancel",[AdminController::class,"cancelorder"])->name("cancelorder");
 Route::get("/admin/record",[AdminController::class,"adminrecord"])->name("adminrecord");
 
+Route::get('/food', [FoodController::class, "food"])->name("food");
 
 Auth::routes();
 

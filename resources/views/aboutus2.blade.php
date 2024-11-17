@@ -1,21 +1,16 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Nosotros - Sabor Catracho</title>
-    
-    <style>
+@extends('layouts.main')
 
-        * {
+<title>@yield('title', 'Nosotros - Sabor Catracho')</title>
+
+<!--<style>
+     * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
         body {
-            /*font-family: 'Poppins', sans-serif;*/
+            font-family: 'Poppins', sans-serif;
             background-color: #f3f3f3;
             color: #333;
             line-height: 1.6;
@@ -187,50 +182,47 @@
                 margin-top: 20px;
             }
         }
-    </style>
-</head>
-<body>
+</style>-->
+<style>
+    header {
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+            padding: 60px 0;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: relative;
+            background-image: linear-gradient(to right, rgb(0 0 0 / .7), rgb(0 0 0 / .7)), url({{ Vite::asset('resources/images/fondo-nosotros.jpg')}});
 
-    <!-- Header -->
-    <header>
-        <div class="logo">
-            
-            <span class="fw-bold" style="color: white; font-size:65px;"> Sabor</span>
-            <span class="fw-bold" style="color: rgb(43, 43, 175); font-size:65px;">Catracho </span>
-         
-            <p>El Sabor de los Hondureños</p>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="#">Inicio</a></li>
-                <li><a href="#">Nosotros</a></li>
-                <li><a href="#">Blog</a></li>
-                <li><a href="#">Comidas</a></li>
-                <li><a href="#">Login</a></li>
-                <li><a href="#">Register</a></li>
-            </ul>
-        </nav>
-    </header>
+        }
+</style>
 
-    <!-- Sección Nosotros -->
-    <section class="about-us">
-        <div class="about-content">
+@section('content')
+<div class="modelo">
+
+</div>
+</div>
+</header>
+<!-- Sección Nosotros -->
+<section class="about-us container">
+    <div class="row">
+        <div class="about-content col-md-6">
             <h2>Sobre Sabor Catracho</h2>
             <p>En Sabor Catracho, nuestra misión es llevarte una auténtica experiencia hondureña, donde cada bocado te transporte a la calidez de nuestra tierra. Somos un restaurante comprometido con la tradición culinaria de Honduras, ofreciendo los sabores que han sido transmitidos de generación en generación.
             <p>Desde las inconfundibles baleadas hasta los deliciosos pollos chucos, en Sabor Catracho nos enorgullece preparar cada plato con ingredientes frescos, locales y llenos de historia. Nuestros chefs, originarios de diferentes regiones de Honduras, preparan con amor y dedicación recetas que han sido parte de la vida cotidiana en los hogares catrachos por siglos.</p>
             <p>Aquí, en Sabor Catracho, creemos que la comida es mucho más que solo nutrición; es una forma de compartir nuestra cultura, nuestras raíces y nuestra pasión por la gastronomía. Ven a disfrutar no solo de un almuerzo, sino de una experiencia llena de tradición, sabor y hospitalidad, porque en cada plato que servimos, hay un pedacito de Honduras esperando por ti.</p>
         </p>
         </div>
-        <div class="about-image">
-            <img src="{{ Vite::asset('resources/images/logo4.PNG') }}" alt="Logo Sabor Catracho">
-        </div>
-    </section>
+        <div class="about-image col-md-6">
+            <img src="{{ Vite::asset('resources/images/logo2.png') }}" alt="Comida típica de Honduras">
+            </div>
+    </div>
+</section>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2024 SaborCatracho | Todos los derechos reservados</p>
-        <p>Dirección: Avenida Circunvalación, San Pedro Sula, Honduras | Teléfono: +504 0000-0000</p>
-    </footer>
+<!-- Footer -->
+<footer>
+    <p>&copy; 2024 SaborCatracho | Todos los derechos reservados</p>
+    <p>Dirección: Avenida Circunvalación, San Pedro Sula, Honduras | Teléfono: +504 0000-0000</p>
+</footer>
 
-</body>
-</html>
+@endsection

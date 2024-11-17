@@ -78,16 +78,16 @@
                 <div class="header__contenedor">
                     <div class="header__barra">
                         <a>
-                            <!--<img class="header__logo" src="{{ Vite::asset('resources/images/logo.svg') }}" alt="imagen logo">-->
-                            <span class="fw-bold" style="color: white; font-size:65px;"> Sabor</span>
-                            <span class="fw-bold" style="color: rgb(43, 43, 175); font-size:65px;">Catracho </span>
+                            <img src="{{ Vite::asset('resources/images/logo5.PNG') }}" alt="Logo Sabor Catracho" width="250px">
+                            <!--<span class="fw-bold" style="color: white; font-size:65px;"> Sabor</span>
+                            <span class="fw-bold" style="color: rgb(43, 43, 175); font-size:65px;">Catracho </span>-->
                         </a>
             
                         <nav class="navegacion">
                             <a class="navegacion__enlace" href="/">Inicio</a>
                             <a class="navegacion__enlace" href="/aboutus">Nosotros</a>
                             <a class="navegacion__enlace" href="/#blog">Blog</a>
-                            <a class="navegacion__enlace" href="tienda.html">Comidas</a>
+                            <a class="navegacion__enlace" href="#">Comidas</a>
                             @guest
                             @if (Route::has('login'))
                                 <a class="nav-item">

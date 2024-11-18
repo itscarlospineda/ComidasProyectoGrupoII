@@ -10,7 +10,7 @@ use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AboutusController;
 use App\Http\Controllers\FoodController;
-
+use App\Http\Controllers\RewardController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -34,14 +34,16 @@ Route::post('/profile/{id}/upload', [ProfileController::class, 'uploadProfilePic
 Route::get('/profile/{UserId}/purchases',[ProfileController::class, 'purchases'])->name('purchases');
 Route::get('/posts/{id}', [PostsController::class, 'read'])->name('posts.read');
 
-Route::get("/rewards",[ProfileController::class, 'rewards'])->name('rewards');
-Route::get("/rewards/claim/{rewardId}",[ProfileController::class, 'claimreward'])->name('claimreward');
-Route::post("/rewards/claim/{rewardId}",[ProfileController::class, 'savereward'])->name('savereward');
+Route::get("/rewards",[RewardController::class, 'rewards'])->name('rewards');
+Route::get("/rewards/claim/{rewardId}",[RewardController::class, 'claimreward'])->name('claimreward');
+Route::post("/rewards/claim/{rewardId}",[RewardController::class, 'savereward'])->name('savereward');
 
 Route::get("/product/{dishId}",[ProductController::class, 'viewProduct'])->name("viewproduct");
 Route::post("/product/{dishId}",[OrderController::class, "newOrder"])->name("newOrder");
 
 Route::get("/thanks/{orderId}",[OrderController::class, "thanks"])->name("thanks");
+
+Route::get("/thanksRewards/{claimId}",[RewardController::class, "thanksReward"])->name("thanksReward");
 
 Route::get('/aboutus', [AboutusController::class, "aboutus"])->name("aboutus");
 Route::get("/admin/orders",[AdminController::class,"orders"])->name("adminOrders");

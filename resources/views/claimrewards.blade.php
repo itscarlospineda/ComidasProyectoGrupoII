@@ -87,7 +87,6 @@
             </div>
             
             <div class="col-md-8" style="padding: 20px;">
-
                 <form action="{{  route('savereward', 'rewardId => $rewards->id')   }}" method="post">
                     @csrf
                         <label class="form-content" for="name">Nombre del Plato:</label>

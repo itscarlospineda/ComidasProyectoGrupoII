@@ -66,7 +66,6 @@
             <h1>¡Gracias por tu pedido, <span id="username">{{ $order->username }}</span>!</h1>
             <p>Tu número de orden es: <span id="order-number">{{ $order->id }}</span></p>
             <p>Apreciamos tu confianza y esperamos que disfrutes tu compra.</p>
-            <a href="/orders" class="btn">Ver Mis Órdenes</a>
             <a href="/" class="btn">Ir a Inicio</a>
         </div>
     </center>

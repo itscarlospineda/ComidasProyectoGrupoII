@@ -112,7 +112,7 @@
                             <a class="navegacion__enlace" href="/">Inicio</a>
                             <a class="navegacion__enlace" href="/aboutus">Nosotros</a>
                             <a class="navegacion__enlace" href="/#blog">Blog</a>
-                            <a class="navegacion__enlace" href="/food">Comidas</a>
+                            <a class="navegacion__enlace" href="{{ route('foods')}}">Comidas</a>
                             @guest
                             @if (Route::has('login'))
                                 <a class="nav-item">

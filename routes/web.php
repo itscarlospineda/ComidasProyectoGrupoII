@@ -51,7 +51,7 @@ Route::post("/admin/orders/{orderId}/ok",[AdminController::class,"okorder"])->na
 Route::post("/admin/orders/{orderId}/cancel",[AdminController::class,"cancelorder"])->name("cancelorder");
 Route::get("/admin/record",[AdminController::class,"adminrecord"])->name("adminrecord");
 
-Route::get('/food', [FoodController::class, "food"])->name("food");
+Route::get('/foods', [FoodController::class, "foods"])->name("foods");
 
 Auth::routes();
 

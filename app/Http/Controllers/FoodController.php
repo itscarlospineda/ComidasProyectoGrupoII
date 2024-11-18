@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Dish;
 
 class FoodController extends Controller
 {
     
-    public function food()
+    public function foods()
     {
-        return view('food');
+        $dishes=Dish::all();
+        return view("food",compact("dishes"));
     }
 }

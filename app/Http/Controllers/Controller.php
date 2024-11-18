@@ -20,7 +20,7 @@ class Controller extends BaseController
         $morePosts = Post::orderBy('created_at', 'desc')->take(4)->get();
         /*$firstPostId = $morePosts->first()->id;*/
 
-        $dishes = Dish::orderBy('created_at', 'desc')->take(4)->get();
+        $dishes = Dish::orderBy('created_at', 'desc')->take(6)->get();
         
         $randomDish = Dish::inRandomOrder()->first();
 

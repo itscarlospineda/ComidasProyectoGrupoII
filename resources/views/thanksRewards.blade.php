@@ -66,7 +66,6 @@
             <h1>¡Gracias por tu pedido, <span id="username">{{ $claimreward->username }}</span>!</h1>
             <p>Tu número de Regalia es: (Especifica que es una regalia) <span id="order-number">{{ $claimreward->id }}</span></p>
             <p>Apreciamos tu fidelidad y esperamos que disfrutes tu compra.</p>
-            <a href="/orders" class="btn">Ver Mis Órdenes</a>
             <a href="/" class="btn">Ir a Inicio</a>
         </div>
     </center>

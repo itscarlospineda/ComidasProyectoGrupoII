@@ -119,8 +119,12 @@
                             UpdateTotalPrice();
                             
                         </script>
-                        <div class="button-container"> 
-                            <button type="submit">Ordena ya!!</button> 
+                        <div class="button-container">
+                            @if(Auth::User()) 
+                            <button type="submit">Ordena ya</button>
+                            @else
+                            <a href="{{ route('login') }}">Inicia Sesión para Realizar tu Pedido</a> 
+                            @endif
                         </div>
                     </form>
             </div>

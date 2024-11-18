@@ -65,7 +65,7 @@ class RewardController extends Controller
             User::where('username', $username)->update(['Points' => $points - $points_needed]);
             DB::commit();
             }
-        catch(Exception)
+        catch(\Exception)
         {
         DB::rollback();
 

@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
+        //EJEMPLO SEEDER DE USER
         /*User::create([
             'username' => 'capineda',
             'fname' => 'Carlos Andres',
@@ -36,6 +37,7 @@ class DatabaseSeeder extends Seeder
             'profile_picture' => 'profile_pictures/default-profile.png', // Default profile picture if any
         ]);*/
 
+        //EJEMPLO SEEDER DE POSTS
         /*Post::create([
             'title' => 'Sorteo de Guitarra por Compras',
             'content' => 'Por la compra de 500 lempiras en nuestras sucursales, participas en un sorteo de guitarra, cortesía de nuestros proveedores. Sorteo a realizarse el 28 de noviembre del presente año.',
@@ -43,7 +45,7 @@ class DatabaseSeeder extends Seeder
             'category' => 'Informativo',
         ]);*/
 
-        //MIGRACION DE PLATILLOS COMIENZA AQUI
+        //SEEDER DE PLATILLOS COMIENZA AQUI
         /*Dish::create([
             'name' => 'Baleada Sencilla',
             'desc' => 'Exquisita tortilla de harina con frijoles, queso y mantequilla. Vendida por unidad.',
@@ -148,8 +150,9 @@ class DatabaseSeeder extends Seeder
             'picture' => 'foods/tres-leches.jpg',
         ]);*/
         
-        /*
 
+        //SEEDER PARA RECOMPENSAS
+        /*
         Reward::create( [
         "Name"  => "Orden tajadas",
         "Description" => "Complementa tus platos con una porcion extra de tajadas. ",

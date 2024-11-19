@@ -4,7 +4,7 @@
 
 <style>
     .header {
-        background-image: linear-gradient(to right, rgb(0 0 0 / .7), rgb(0 0 0 / .7)), url({{ Vite::asset('resources/images/gringas.jpg')}});
+        background-image: linear-gradient(to right, rgb(0 0 0 / .7), rgb(0 0 0 / .7)), url({{ Vite::asset('resources/images/carne-fondo2.png')}});
     }
 
    /* .subcontainer {

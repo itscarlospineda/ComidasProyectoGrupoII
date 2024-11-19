@@ -16,13 +16,11 @@ return new class extends Migration
             $table->string('name');
             $table->string('desc');
             $table->decimal('price', 10, 2);
+            $table->string('category')->nullable();
+            $table->string('picture')->nullable();
             $table->timestamps();
         });
     }
-
-
-
-
 
 
     /**

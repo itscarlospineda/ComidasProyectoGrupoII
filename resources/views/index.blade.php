@@ -1,23 +1,30 @@
 @extends('layouts.main')
 
+@php
+    $backgroundImage = asset('storage/' . $randomDish->picture);
+@endphp
+
 <title>@yield('title', 'Inicio')</title>
 
 <style>
     .header {
-        background-image: linear-gradient(to right, rgb(0 0 0 / .7), rgb(0 0 0 / .7)), url({{ Vite::asset('resources/images/mexican-food-2462.jpg')}});
+        background-image: linear-gradient(to right, rgb(0 0 0 / .7), rgb(0 0 0 / .7)), url('{{ $backgroundImage }}');
     }
 </style>
-@section('content')
 
+@section('content')
+            @if($randomDish)
             <div class="modelo">
-                <h1 class="modelo__nombre">{{$randomDish->name}}</h1>
+                
+                <p class="modelo__nombre">{{$randomDish->name}}</p>
                 <p class="modelo__descripcion">{{$randomDish->desc}}</p>
-                <p class="modelo__precio">${{$randomDish->price}}</p>
+                <p class="modelo__precio">L{{$randomDish->price}}</p>
                 <a class="modelo__enlace" href="{{route('viewproduct', ['dishId' => $randomDish->id] ) }}">Ver Producto</a>
             </div>
+            @endif
         </div>
 
-    </header>
+    </header >
 
     <main class="productos productos__contenedor">
         <h2 class="productos__heading">Nuestras Comidas</h2>
@@ -27,7 +34,7 @@
             @foreach ($dishes as $dish)
            
             <div class="producto">
-                <img class="producto__imagen" src="{{ Vite::asset('resources/images/carne-fondo2.png') }}" alt="imagen guitarra">
+                <img class="producto__imagen" src="{{ asset('storage/' . $dish->picture) }}" alt="imagen comida">
 
                 <div class="producto__contenido">
                     <h3 class="producto__nombre">{{$dish->name}}</h3>
@@ -43,6 +50,7 @@
         </div><!--./productos__grid-->
     </main>
 
+    @if($posts)
     <section class="cursos" id="blog">
         <div class="cursos__contenedor cursos__grid">
             <div class="cursos__contenido">
@@ -52,7 +60,8 @@
             </div>
         </div>
     </section>
-
+    @endif
+    
     <section class="blog">
         <h2 class="blog__heading">Nuestro Blog</h2>
         <div class="blog__contenedor blog__grid">

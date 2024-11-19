@@ -38,8 +38,9 @@ img {
 .header {
     background-size: cover;
     background-position: 50%;
-    padding: 5rem 0;
+    padding: 2rem 0;
     position: relative;
+    /*max-height: 70vh;*/
 }
 
 .header__guitarra {
@@ -132,6 +133,11 @@ img {
  .modelo__nombre {
     font-size: 8rem;
 }
+@media (min-width: 768px) { 
+    .modelo__nomhre {
+        font-size: 1rem;
+    }
+}
  .modelo__precio {
     font-size: 6rem;
     color: var(--primary);
@@ -183,6 +189,7 @@ img {
     text-transform: uppercase;
     font-weight: bold;
 }
+
 .producto__descripcion {
     font-size: 1.6rem;
 }

@@ -135,7 +135,7 @@ img {
 }
 @media (min-width: 768px) { 
     .modelo__nomhre {
-        font-size: 1rem;
+        font-size: 6rem;
     }
 }
  .modelo__precio {

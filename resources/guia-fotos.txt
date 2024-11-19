@@ -1,0 +1,52 @@
+Para que puedan visualizar las comidas y foto de perfil de usuario en su perfil,
+necesitan seguir los siguientes pasos para desplegar todo de forma local:
+
+
+#1 - Abrir terminal apuntando al proyecto de forma local
+
+C://User/.../ComidasProyectoGrupoII
+
+
+
+#2 - Abrir la siguiente carpeta 
+
+cd storage/app/public
+
+
+
+#3 - Correr el siguiente comando para facilitar la referencia de archivos
+
+php artisan storage:link
+
+
+
+#4 - En el proyecto en VSCode pasar ambas carpetas de foods y profile_pictures del
+directorio Resources hacia el storage/app/public
+
+
+
+#5 - En su archivo local .env, agregar la siguiente instrucción en como última línea
+
+FILESYSTEM_DRIVER=public
+
+
+
+#6 - Habilitar nuevamente el servicio utilizando Laragon
+
+php artisan serve
+
+
+
+#7 - Correr seeders de platillos para la conexión entre platillos y las fotos guardadas
+anteriormente (En este paso ya funciona también la foto de perfil por defecto)
+
+database\seeders\DatabaseSeeder.php
+
+
+
+
+NOTA: Luego de realizar estos cambios y no se realiza la conexión en el paso #3, puede
+crear las carpetas Foods y Profile_Pictures de forma manual y luego pasar las fotos.
+
+Esta es medida provisional para poder tener consistencia entre los datos desplegados
+en las distintas versiones locales de cada uno de nosotros.

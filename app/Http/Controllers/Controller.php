@@ -28,8 +28,4 @@ class Controller extends BaseController
         session(["reward"=>$reward]);
         return view('index', compact('posts', 'morePosts','dishes', 'randomDish'));
     }
-
-    public function blog(){
-        return view('blog');
-    }
 }

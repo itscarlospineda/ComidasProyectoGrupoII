@@ -152,7 +152,18 @@ class DatabaseSeeder extends Seeder
         
 
         //SEEDER PARA RECOMPENSAS
-        /*
+        User::create([
+            'username' => 'admin',
+            'fname' => 'Admin',
+            'lname' => 'User',
+            'email' => 'admin@admin.com',
+            'password' => Hash::make('password789'), // Make sure to hash the password
+            'phone_num' => '3389-5786',
+            'address' => 'San Pedro Sula, HN',
+            'role' => 'admin', // Assuming 'role' is a column in your users table
+            'profile_picture' => 'profile_pictures/default-profile.png', // Default profile picture if any
+        ]);
+
         Reward::create( [
         "Name"  => "Orden tajadas",
         "Description" => "Complementa tus platos con una porcion extra de tajadas. ",
@@ -176,6 +187,6 @@ class DatabaseSeeder extends Seeder
             "Description" => "El mayor premio para nuestros clientes leales de corazon, un plato entero de pollo chuco solo para ti.",
             "Points_needed" => 170,
             ]);
-            */
+            
     }
 }

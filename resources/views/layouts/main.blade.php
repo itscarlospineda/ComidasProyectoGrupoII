@@ -168,6 +168,23 @@
                         @endguest
                         </nav>
                     </div>
+                    
+@auth
+    {{-- For logged-in users --}}
+    <p>Welcome back, {{ Auth::user()->username }}!</p>
+
+    @if(auth()->user()->role === 'admin')
+        <a href="/admin/dashboard">Admin Dashboard</a>
+    @endif
+@endauth
+
+@guest
+    {{-- For guests --}}
+    <p>Welcome, Guest!</p>
+    <a href="/login">Login</a>
+    <a href="/register">Register</a>
+@endguest
+
             @yield('content')
             <footer>
                 <p>&copy; 2024 SaborCatracho | Todos los derechos reservados</p>

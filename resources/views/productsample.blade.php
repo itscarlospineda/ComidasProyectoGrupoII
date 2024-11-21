@@ -81,7 +81,7 @@
                 </div>
             </div>-->
             <div class="d-flex justify-content-center align-items-center col-md-4 mx-auto" >
-                <img class="img-fluid" src="{{ Vite::asset('resources/images/gringas.jpg') }}" alt="comida">
+                <img class="img-fluid" src="{{ asset('storage/' . $dish->picture) }}" alt="comida">
             </div>
             
             <div class="col-md-8" style="padding: 20px;">

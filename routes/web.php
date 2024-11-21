@@ -32,6 +32,12 @@ Route::middleware(['role:guest'])->group(function () {
     Route::get("/product/{dishId}",[ProductController::class, 'viewProduct'])->name("viewproduct");
 
     Route::get('/foods', [FoodController::class, "foods"])->name("foods");
+
+    Route::get('/aboutus', [AboutusController::class, "aboutus"])->name("aboutus");
+
+    Route::get('/admin/landing', function () {
+        return view('landingadmin');
+    });
 });
 
 
@@ -65,6 +71,8 @@ Route::middleware(['auth', 'role:user'])->group(function () {
 // Rutas para Empleados o Administradores
 Route::middleware(['auth', 'role:admin'])->group(function () {
     //Route::get('/admin/dashboard', [AdminController::class, 'dashboard']);
+    /*Route::get('/settings', [SettingsController::class, 'index'])->name('settings');
+    Route::get('/userprofile/{id}', [ProfileController::class, 'edit'])->name('editusers.show');*/
 
     Route::get("/admin/orders",[AdminController::class,"orders"])->name("adminOrders");
     Route::post("/admin/orders/{orderId}/ok",[AdminController::class,"okorder"])->name("okorder");

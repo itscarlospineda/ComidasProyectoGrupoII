@@ -165,27 +165,27 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Reward::create( [
-        "Name"  => "Orden tajadas",
-        "Description" => "Complementa tus platos con una porcion extra de tajadas. ",
+        "Name"  => "Orden de Tajadas",
+        "Description" => "Complementa tus platos con una porción extra de tajadas. ",
         "Points_needed" => 50,
         ]);
         
         Reward::create( [
-        "Name"  => "Tres leches pequeño",
+        "Name"  => "Tres Leches Pequeño",
         "Description" => "Saborea el sabor de nuestros postres para nuestros clientes fieles. ",
         "Points_needed" => 80,
         ]);
 
         Reward::create( [
-        "Name"  => "Pierna/Cadera pollo frito",
-        "Description" => "Agrega mas carne y mas sabor a tu plato.",
+        "Name"  => "Pierna/Cadera Pollo Frito",
+        "Description" => "Agrega más carne y más sabor a tu plato.",
         "Points_needed" => 110,
         ]);
 
         Reward::create( [
-            "Name"  => "Pollo chuco",
+            "Name"  => "Pollo Chuco",
             "Description" => "El mayor premio para nuestros clientes leales de corazon, un plato entero de pollo chuco solo para ti.",
-            "Points_needed" => 170,
+            "Points_needed" => 250,
             ]);
             
     }

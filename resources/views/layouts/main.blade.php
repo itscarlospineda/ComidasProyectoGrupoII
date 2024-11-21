@@ -137,10 +137,10 @@
                                     <div class="dropdown-item minimenu">
                                         <div>
                                             @if (Auth::user()->profile_picture ==  'profile_pictures/default-profile.png')
-                                            <img src="{{ asset('storage/profile_pictures/default-profile.png') }}"  alt="Profile Picture" style="max-width: 150px; max-height: 150px;">
+                                            <img src="{{ asset('storage/profile_pictures/perrochill.png') }}"  alt="Profile Picture" style="max-width: 150px; max-height: 150px;">
                                             @else
                                             <img src="{{ asset('storage/profile_pictures/' . (Auth::user()->profile_picture)) }}"  alt="Profile Picture" style="max-width: 150px; max-height: 150px;">
-                                            @endif 
+                                            @endif
             
                                             <br>
                                             <span href="" style="color:black;">{{ Auth::user()->fname }} {{ Auth::user()->lname }}</span> <br>
@@ -169,22 +169,6 @@
                         </nav>
                     </div>
                     
-@auth
-    {{-- For logged-in users --}}
-    <p>Welcome back, {{ Auth::user()->username }}!</p>
-
-    @if(auth()->user()->role === 'admin')
-        <a href="/admin/dashboard">Admin Dashboard</a>
-    @endif
-@endauth
-
-@guest
-    {{-- For guests --}}
-    <p>Welcome, Guest!</p>
-    <a href="/login">Login</a>
-    <a href="/register">Register</a>
-@endguest
-
             @yield('content')
             <footer>
                 <p>&copy; 2024 SaborCatracho | Todos los derechos reservados</p>

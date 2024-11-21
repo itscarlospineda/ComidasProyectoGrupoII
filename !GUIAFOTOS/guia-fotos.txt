@@ -50,3 +50,22 @@ crear las carpetas Foods y Profile_Pictures de forma manual y luego pasar las fo
 
 Esta es medida provisional para poder tener consistencia entre los datos desplegados
 en las distintas versiones locales de cada uno de nosotros.
+
+
+
+
+
+
+@auth
+    {{-- For logged-in users --}}
+    <p>Welcome back, {{ Auth::user()->role }} {{ Auth::user()->username }}!</p>
+
+    @if(auth()->user()->role === 'admin')
+        <a href="/admin/dashboard">Admin Dashboard</a>
+    @endif
+@endauth
+
+@guest
+    {{-- For guests --}}
+    <p>Welcome, Guest!</p>
+@endguest

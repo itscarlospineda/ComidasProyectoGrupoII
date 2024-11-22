@@ -116,7 +116,7 @@
             <div class="col-md-4">
                 <div class="card mb-3">
                     <div class="card-body" style="background-color:rgb(106, 23, 184);">
-                        <a href="#" class="button no-deco">
+                        <a href="{{route('adminusers')}}" class="button no-deco">
                         <h5>Vista de Usuarios</h5> <br> 
                         <h2> 3<i class="bi bi-person-vcard-fill"></i> </h2>
                     </a>

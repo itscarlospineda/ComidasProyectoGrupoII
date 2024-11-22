@@ -73,11 +73,15 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     //Route::get('/admin/dashboard', [AdminController::class, 'dashboard']);
     /*Route::get('/settings', [SettingsController::class, 'index'])->name('settings');
     Route::get('/userprofile/{id}', [ProfileController::class, 'edit'])->name('editusers.show');*/
-
+    Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name("adminDashboard");
     Route::get("/admin/orders",[AdminController::class,"orders"])->name("adminOrders");
     Route::post("/admin/orders/{orderId}/ok",[AdminController::class,"okorder"])->name("okorder");
     Route::post("/admin/orders/{orderId}/cancel",[AdminController::class,"cancelorder"])->name("cancelorder");
     Route::get("/admin/record",[AdminController::class,"adminrecord"])->name("adminrecord");
+    
+    Route::get("/admin/users",[AdminController::class,"users"])->name("adminusers");
+
+
 });
 
 

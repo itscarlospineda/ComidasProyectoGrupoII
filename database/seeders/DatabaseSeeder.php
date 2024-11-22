@@ -43,10 +43,23 @@ class DatabaseSeeder extends Seeder
             'content' => 'Por la compra de 500 lempiras en nuestras sucursales, participas en un sorteo de guitarra, cortesía de nuestros proveedores. Sorteo a realizarse el 28 de noviembre del presente año.',
             'author' => 'Gerencia Sabor Catracho',
             'category' => 'Informativo',
+        ]);
+        Post::create([
+            'title' => 'Musica en vivo',
+            'content' => 'Disfruta de un ambiente acogerdor gracias a nuestros musicos que estaran interpretando un repertorio que te hara sentir en casa. Disfruta de esto este sabado 30',
+            'author' => 'Gerencia Sabor Catracho',
+            'category' => 'Informativo',
+        ]);
+
+        Post::create([
+            'title' => 'Producto gratis con tus compras',
+            'content' => 'Acumula puntos con cada compra que realices, visita el apartado recompensas de tu perfil y disfruta el fruto de tu fidelidad.',
+            'author' => 'Gerencia Sabor Catracho',
+            'category' => 'Informativo',
         ]);*/
 
         //SEEDER DE PLATILLOS COMIENZA AQUI
-        /*Dish::create([
+        Dish::create([
             'name' => 'Baleada Sencilla',
             'desc' => 'Exquisita tortilla de harina con frijoles, queso y mantequilla. Vendida por unidad.',
             'price' => 20,
@@ -148,7 +161,7 @@ class DatabaseSeeder extends Seeder
             'price' => 60.00,
             'category' => 'Postres',
             'picture' => 'foods/tres-leches.jpg',
-        ]);*/
+        ]);
         
 
         //SEEDER PARA RECOMPENSAS

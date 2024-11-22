@@ -39,5 +39,16 @@ public function adminrecord()
     return view("adminordersrecord",compact("orders"));
 }
 
+public function dashboard()
+{
+    return view("landingadmin");
+}
+
+public function users()
+{
+    $users= User::where("role","user")->get();
+    return view("adminuserlist",compact("users"));
+}
+
 }
 

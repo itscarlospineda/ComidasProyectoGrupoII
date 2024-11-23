@@ -80,7 +80,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get("/admin/record",[AdminController::class,"adminrecord"])->name("adminrecord");
     
     Route::get("/admin/users",[AdminController::class,"users"])->name("adminusers");
-
+    Route::get("admin/users/profile/{UserId}",[AdminController::class,"usersProfile"])->name("AdminUsersProfile");
 
 });
 

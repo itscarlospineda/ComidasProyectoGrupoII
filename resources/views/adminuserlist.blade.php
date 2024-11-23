@@ -122,10 +122,10 @@
                         <p class="usuario__username">Username: {{$user->username}}</p>
                         <p class="usuario__email">Email: {{$user->email}}</p>
                         <p class="usuario__points">Puntos: {{$user->points}}</p>
-                        <a class="producto__enlace" href="">Ver perfil</a>
+                        <a class="producto__enlace" href="{{route('AdminUsersProfile',['UserId'=>$user->id])}}">Ver perfil</a>
                     </div>
                 </div>
-            @endforeach
+                @endforeach
         </div>
     </div>
 </body>

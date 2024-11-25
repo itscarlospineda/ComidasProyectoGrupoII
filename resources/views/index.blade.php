@@ -44,10 +44,11 @@
                 </div>
             </div>
             @endforeach
-           
-
 
         </div><!--./productos__grid-->
+
+        <a class="producto__enlace" href="/foods" style="margin-top:60px; margin-bottom:-40px;">Ver Más Comidas</a>
+
     </main>
 
     @if($posts)
@@ -68,12 +69,17 @@
 
             @foreach ($morePosts as $morePosts)
             <article class="entrada">
-                <img class="entrada__imagen" src="{{ Vite::asset('resources/images/shop1.png') }}" alt="imagen blog">
+                
+                @if ($morePosts->picture1 && Storage::exists($morePosts->picture1))
+                    <img class="img-fluid" src="{{ asset('storage/' . $morePosts->picture1) }}" alt="Figura 1">
+                @else
+                    <img class="entrada__imagen" src="{{ Vite::asset('resources/images/shop1.png') }}" alt="imagen blog">   
+                @endif
 
                 <div class="entrada__contenido">
                     <h2 class="entrada__titulo">{{$morePosts->title}}</h2>
-                    <p class="entrada__fecha">{{$morePosts->upload_date}}</p>
-                    <p class="entrada__texto">{{ \Illuminate\Support\Str::limit($posts->content, 80, $end = '...') }}</p>
+                    <p class="entrada__fecha">  {{ date('d/m/Y h:i A', strtotime($morePosts->upload_date)) }}</p>
+                    <p class="entrada__texto">{{ \Illuminate\Support\Str::limit($morePosts->content, 80, $end = '...') }}</p>
 
                     <a class="entrada__enlace" href="{{ route('posts.read', ['id' => $morePosts]) }}">Leer Entrada</a>
                 </div>

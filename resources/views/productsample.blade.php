@@ -5,7 +5,7 @@
     <style>
 
         .header {
-        background-image: linear-gradient(to right, rgb(0 0 0 / .7), rgb(0 0 0 / .7)), url({{ Vite::asset('resources/images/carne-fondo2.png')}});
+        background-image: linear-gradient(to right, rgb(0 0 0 / .7), rgb(0 0 0 / .7)), url({{ Vite::asset('resources/images/tacos-bg.jpg')}});
         }
 
         h1 {
@@ -97,7 +97,7 @@
 
                         <label class="form-content" for="description">Descripción:</label>
                         <!--<p class="form-content"  id="description" name="description" readonly>{{ $dish->desc }}</p>-->
-                        <textarea id="description" name="description" readonly>{{ $dish->desc }}</textarea>
+                        <textarea id="description" name="description" style="resize: none;" readonly>{{ $dish->desc }}</textarea>
                         
                         <label class="form-content" for="price">Precio:</label>
                         <input class="form-content producto__precio" type="number" id="price" name="dish_price" value="{{ $dish->price }}" readonly>   
@@ -105,7 +105,7 @@
                         <input class="form-content" type="number" id="quantity" MIN=1  name="quantity" oninput="UpdateTotalPrice()">
                         <label class="form-content" for="comments">Comentarios opcionales:</label> 
                         <textarea  class="form-content" id="comments" name="comments" rows="4" placeholder="Ingrese sus comentarios aquí"></textarea>
-                        <label class="form-content">Pago Total: $
+                        <label class="form-content">Pago Total: L
                             <span class="form-content" id="totalprice_label"></span>
                         </label>
                         <input class="form-content" type="hidden" id="totalprice" name="dish_total">  </input>

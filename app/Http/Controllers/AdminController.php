@@ -42,7 +42,7 @@ public function adminrecord()
 
 public function dashboard()
 {
-    return view("landingadmin");
+    return view("adminlanding");
 }
 
 public function users()

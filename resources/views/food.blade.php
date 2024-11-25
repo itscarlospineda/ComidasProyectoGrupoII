@@ -1,14 +1,11 @@
 @extends('layouts.main')
 
-<title>@yield('title', 'Menú de Comidas - Sabor Catracho')</title>
+<title>@yield('title', 'Menú de Comidas')</title>
 
 <style>
     /* Estilo para el fondo del header */
     .header {
-        background-image: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url({{ Vite::asset('resources/images/fondo-comida-2.jpg') }});
-        background-size: cover;
-        background-position: center;
-        height: 400px;
+        background-image: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url({{ Vite::asset('resources/images/imagen-fondo-nosotros.jpg') }});
     }
 
     /* Estilos para la sección del menú */
@@ -135,20 +132,31 @@
 </style>
 
 @section('content')
-    <div class="menu-section">
-        <div class="menu-content">
-            @foreach ($dishes as $dish)
+
+            <div class="modelo">
+                <p class="modelo__nombre">Menú de Comidas</p>
+            </div>
+        </div>
+    </header>
+
+    @foreach ($dishes as $dish)
+    <div class="container">
+        <div class="">
+            <div class="col-md-6">
                 <div class="menu-item">
-                    <img class="producto__imagen" src="{{ Vite::asset('resources/images/carne-fondo2.png') }}" alt="Imagen del plato">
+                    <img class="producto__imagen" src="{{ asset('storage/' . $dish->picture) }}" alt="Imagen del plato">
 
                     <div class="producto__contenido">
                         <h3 class="producto__nombre">{{ $dish->name }}</h3>
-                        <p class="producto__descripcion">{{ $dish->desc }}</p>
+                        <p class="producto__descripcion text-black">{{ $dish->desc }}</p>
                         <p class="producto__precio">L{{ number_format($dish->price, 2) }}</p>
                         <a class="producto__enlace" href="{{ route('viewproduct', ['dishId' => $dish->id]) }}">Ver Producto</a>
                     </div>
                 </div>
-            @endforeach
+            </div>
         </div>
     </div>
+    @endforeach
+
+
 @endsection

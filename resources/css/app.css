@@ -121,7 +121,8 @@ img {
 
 .modelo {
     color: var(--blanco);
-    margin-top: 5rem;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
     text-align: center;
 }
 @media (min-width: 768px) { 
@@ -133,11 +134,7 @@ img {
  .modelo__nombre {
     font-size: 8rem;
 }
-@media (min-width: 768px) { 
-    .modelo__nomhre {
-        font-size: 6rem;
-    }
-}
+
  .modelo__precio {
     font-size: 6rem;
     color: var(--primary);

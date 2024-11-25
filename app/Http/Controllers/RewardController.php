@@ -83,6 +83,59 @@ class RewardController extends Controller
         return view("thanksRewards", compact("claimreward"));
 
     }
+
+    public function view()
+    {
+        $rewards = Reward::all();
+        return view('rewards.rewardView', compact('rewards'));
+    }
+
+    public function create()
+    {
+        return view('rewards.rewardCreate');
+    }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'Name' => 'required|string|max:255',
+            'Description' => 'required|string',
+            'Points_needed' => 'required|integer|min:0',
+        ]);
+
+        Reward::create($request->all());
+
+        return redirect()->route('rewards.view')->with('success', 'Recompensa creada exitosamente.');
+    }
+    
+    public function edit($id)
+    {
+        $reward = Reward::findOrFail($id);
+        return view('rewards.rewardEdit', compact('reward'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $reward = Reward::findOrFail($id);
+        
+        $request->validate([
+            'Name' => 'required|string|max:255',
+            'Description' => 'required|string',
+            'Points_needed' => 'required|integer|min:0',
+        ]);
+
+        $reward->update($request->all());
+
+        return redirect()->route('rewards.view')->with('success', 'Recompensa actualizada exitosamente.');
+    }
+
+    public function destroy($id)
+    {
+        $reward = Reward::findOrFail($id);
+        $reward->delete();
+
+        return redirect()->route('rewards.view')->with('success', 'Recompensa eliminada exitosamente.');
+    }
         
 
 }

@@ -168,6 +168,7 @@
                         @endguest
                         </nav>
                     </div>
+            </header>
                     
             @yield('content')
             <footer>

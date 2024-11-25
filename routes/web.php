@@ -23,21 +23,44 @@ use App\Http\Controllers\RewardController;
 |
 */
 
+
 // Rutas para Invitados o Usuarios sin Sesión Abierta
+Route::get('/foods', [FoodController::class, "foods"])->name("foods"); //Vista de las comidas
+Route::get('/foods/create', [FoodController::class, "create"])->name("foods.create"); //Vista creacion de comida
+Route::post('/foods/store', [FoodController::class, "store"])->name("foods.store"); //Guardar comida
+Route::get("/foods/view",[FoodController::class, 'view'])->name("foods.view"); //Vista (admin) de las comidas
+Route::get('/foods/{id}/edit', [FoodController::class, 'edit'])->name('foods.edit'); //Vista de edicion de las comidas
+Route::put('/foods/{id}', [FoodController::class, 'update'])->name('foods.update'); //Guardar cambios
+
+
+
+Route::get('/posts/create', [PostsController::class, 'create'])->name('posts.create');
+Route::post('/posts/store', [PostsController::class, 'store'])->name('posts.store');
+Route::get('/posts/view', [PostsController::class, 'view'])->name('posts.view');
+Route::get('/posts/{id}/edit', [PostsController::class, 'edit'])->name('posts.edit');
+Route::put('/posts/{id}', [PostsController::class, 'update'])->name('posts.update');
+Route::get('/posts/{id}', [PostsController::class, 'read'])->name('posts.read');
+
+
+Route::get('/rewards/create', [RewardController::class, 'create'])->name('rewards.create');
+Route::post('/rewards/store', [RewardController::class, 'store'])->name('rewards.store');
+Route::get('/rewards/view', [RewardController::class, 'view'])->name('rewards.view');
+Route::get('/rewards/{id}/edit', [RewardController::class, 'edit'])->name('rewards.edit');
+Route::put('/rewards/{id}', [RewardController::class, 'update'])->name('rewards.update');
+Route::get('/rewards/{id}', [RewardController::class, 'read'])->name('rewards.read');
+
+
+
 Route::middleware(['role:guest'])->group(function () {
-    Route::get('/', [Controller::class, 'index'])->name('index');
-
-    Route::get('/posts/{id}', [PostsController::class, 'read'])->name('posts.read');
-
-    Route::get("/product/{dishId}",[ProductController::class, 'viewProduct'])->name("viewproduct");
-
-    Route::get('/foods', [FoodController::class, "foods"])->name("foods");
-
     Route::get('/aboutus', [AboutusController::class, "aboutus"])->name("aboutus");
 
     Route::get('/admin/landing', function () {
         return view('landingadmin');
     });
+
+    Route::get('/', [Controller::class, 'index'])->name('index');
+
+    Route::get("/product/{dishId}",[ProductController::class, 'viewProduct'])->name("viewproduct"); 
 });
 
 
@@ -49,22 +72,22 @@ Auth::routes();
 Route::middleware(['auth', 'role:user'])->group(function () {
     Route::get('/settings', [SettingsController::class, 'index'])->name('settings');
     Route::get('/userprofile/{id}', [ProfileController::class, 'edit'])->name('editusers.show');
-
+    
     Route::get('/profile/upload', [ProfileController::class, 'showUploadForm'])->name('profile.upload.form');
     Route::post('/profile/{id}/upload', [ProfileController::class, 'uploadProfilePicture'])->name('profile.upload');
     Route::get('/profile/{UserId}/purchases',[ProfileController::class, 'purchases'])->name('purchases');
-
-
+    
+    
     Route::get("/rewards",[RewardController::class, 'rewards'])->name('rewards');
+    Route::get("/rewards/create",[RewardController::class, 'create'])->name('rewards.create');
     Route::get("/rewards/claim/{rewardId}",[RewardController::class, 'claimreward'])->name('claimreward');
     Route::post("/rewards/claim/{rewardId}",[RewardController::class, 'savereward'])->name('savereward');
-
+    
     Route::post("/product/{dishId}",[OrderController::class, "newOrder"])->name("newOrder");
-
+    
     Route::get("/thanks/{orderId}",[OrderController::class, "thanks"])->name("thanks");
-
+    
     Route::get("/thanksRewards/{claimId}",[RewardController::class, "thanksReward"])->name("thanksReward");
-
 });
 
 
@@ -78,6 +101,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::post("/admin/orders/{orderId}/ok",[AdminController::class,"okorder"])->name("okorder");
     Route::post("/admin/orders/{orderId}/cancel",[AdminController::class,"cancelorder"])->name("cancelorder");
     Route::get("/admin/record",[AdminController::class,"adminrecord"])->name("adminrecord");
+
     
     Route::get("/admin/users",[AdminController::class,"users"])->name("adminusers");
     Route::get("admin/users/profile/{UserId}",[AdminController::class,"usersProfile"])->name("AdminUsersProfile");

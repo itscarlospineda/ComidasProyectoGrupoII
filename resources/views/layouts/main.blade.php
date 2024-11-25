@@ -198,6 +198,7 @@
                             <img src="{{ Vite::asset('resources/images/logo5.PNG') }}" alt="Logo Sabor Catracho" width="230px">
                         </a>
                     </div>
+            </header>
                     
             @yield('content')
             <footer>

@@ -43,7 +43,7 @@
             <div class="col-md-4">
                 <div class="card bg-dark mb-3">
                     <div class="card-body">
-                        <a href="#" class="button no-deco">
+                        <a href="{{ route('foods.create') }}" class="button no-deco">
                             <h5>Creación de Comidas </h5> <br> 
                             <h2> 3<i class="bi bi-person-vcard-fill"></i> </h2>
                         </a>
@@ -54,7 +54,7 @@
             <div class="col-md-4">
                 <div class="card mb-3">
                     <div class="card-body" style="background-color:rgb(209, 144, 22);">
-                        <a href="#" class="button no-deco">
+                        <a href="{{ route('foods.view') }}" class="button no-deco">
                             <h5>Vista de Todas las Comidas </h5> <br> 
                             <h2> 3<i class="bi bi-person-vcard-fill"></i> </h2>
                         </a>
@@ -65,7 +65,7 @@
             <div class="col-md-4">
                 <div class="card mb-3 bg-secondary ">
                     <div class="card-body">
-                        <a href="#" class="button no-deco">
+                        <a href="{{ route('rewards.create') }}" class="button no-deco">
                             <h5>Creación de Rewards </h5> <br> 
                             <h2> 3<i class="bi bi-person-vcard-fill"></i> </h2>
                         </a>
@@ -76,7 +76,7 @@
             <div class="col-md-4">
                 <div class="card mb-3">
                     <div class="card-body" style="background-color:rgb(19, 161, 161);">
-                        <a href="#" class="button no-deco">
+                        <a href="{{ route('rewards.view') }}" class="button no-deco">
                             <h5>Vista de Todas las Rewards </h5> <br> 
                             <h2> 3<i class="bi bi-person-vcard-fill"></i> </h2>
                         </a>
@@ -93,7 +93,7 @@
             <div class="col-md-4">
                 <div class="card text-white bg-primary mb-3 options">
                     <div class="card-body">
-                        <a href="/admin/orders" class="button no-deco">
+                        <a href="{{ route('posts.create') }}" class="button no-deco">
                             <h5>Crear Post</h5> <br> 
                             <h2> 3<i class="bi bi-person-vcard-fill"></i> </h2>
                         </a>
@@ -104,7 +104,7 @@
             <div class="col-md-4">
                 <div class="card bg-danger mb-3">
                     <div class="card-body" style="background-color:rgb(218, 11, 125);">
-                        <a href="/admin/record" class="button no-deco">
+                        <a href="{{ route('posts.view') }}" class="button no-deco">
                             <h5>Ver Todos los Posts</h5> <br> 
                             <h2> 3<i class="bi bi-person-vcard-fill"></i> </h2>
                         </a>

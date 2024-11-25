@@ -53,7 +53,7 @@
             color: #fff;
             text-align: center;
             padding: 20px;
-            margin-top: 80px;
+            /*margin-top: 80px;*/
             /*box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);*/
         }
 
@@ -131,12 +131,16 @@
                     </button>
                   <div class="collapse navbar-collapse" id="navbarTogglerDemo02" style="background-color: black;">
                     <ul class="navbar-nav align-items-center ms-auto nav-links px-2" style="padding-left:30px;padding-right:30px;">
-                            
+                       
+                        @if(Auth::check() && Auth::user()->role == 'admin')
+                        <a class="navegacion__enlace mx-2" href="/admin/dashboard">Inicio</a>                        
+                        @else
                         <a class="navegacion__enlace mx-2" href="/">Inicio</a>
                         <a class="navegacion__enlace mx-2" href="/aboutus">Nosotros</a>
                         <a class="navegacion__enlace mx-2" href="/#blog">Blog</a>
                         <a class="navegacion__enlace mx-2" href="{{ route('foods')}}">Comidas</a>
-                        
+                        @endif
+
                         @guest
                         @if (Route::has('login'))
                                 <a class="navegacion__enlace mx-2" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -164,15 +168,19 @@
                                         <br>
                                         <span href="" style="color:black;">{{ Auth::user()->fname }} {{ Auth::user()->lname }}</span> <br>
                                         <span href="" style="color:#e99401;">{{ Auth::user()->username }}</span> <br>
+
+                                    @if(Auth::user()->role !== 'admin')
                                         <span href="" style="color: black;">
                                             <img src="{{ Vite::asset('resources/images/star2.png') }}" height="15%" alt="*">
                                             <span href="" class="fw-bold" style="color:#e99401;">{{ Auth::user()->points }}</span> Puntos
                                         </span> <br>
                                     </div>
-                                    <a href="/">Inicio</a> <br>
-                                    <a href="/settings">Opciones</a> <br>
-                                    <a href="{{ route ('rewards')}}">Recompensas</a> <br>
-                                    <a href="{{ route('logout') }}"
+                                    
+                                        <a href="/">Inicio</a> <br>
+                                        <a href="/settings">Opciones</a> <br>
+                                        <a href="{{ route ('rewards')}}">Recompensas</a> <br>
+                                    @endif
+                                        <a href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
                                                       document.getElementById('logout-form').submit();">
                                          {{ __('Cerrar Sesión') }}</a>
@@ -198,7 +206,6 @@
                             <img src="{{ Vite::asset('resources/images/logo5.PNG') }}" alt="Logo Sabor Catracho" width="230px">
                         </a>
                     </div>
-            </header>
                     
             @yield('content')
             <footer>

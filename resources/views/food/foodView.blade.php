@@ -120,6 +120,8 @@
 
 
 @section('content')
+</header>
+
     <div class="container">
         
         <header>

@@ -25,42 +25,17 @@ use App\Http\Controllers\RewardController;
 
 
 // Rutas para Invitados o Usuarios sin Sesión Abierta
-Route::get('/foods', [FoodController::class, "foods"])->name("foods"); //Vista de las comidas
-Route::get('/foods/create', [FoodController::class, "create"])->name("foods.create"); //Vista creacion de comida
-Route::post('/foods/store', [FoodController::class, "store"])->name("foods.store"); //Guardar comida
-Route::get("/foods/view",[FoodController::class, 'view'])->name("foods.view"); //Vista (admin) de las comidas
-Route::get('/foods/{id}/edit', [FoodController::class, 'edit'])->name('foods.edit'); //Vista de edicion de las comidas
-Route::put('/foods/{id}', [FoodController::class, 'update'])->name('foods.update'); //Guardar cambios
-
-
-
-Route::get('/posts/create', [PostsController::class, 'create'])->name('posts.create');
-Route::post('/posts/store', [PostsController::class, 'store'])->name('posts.store');
-Route::get('/posts/view', [PostsController::class, 'view'])->name('posts.view');
-Route::get('/posts/{id}/edit', [PostsController::class, 'edit'])->name('posts.edit');
-Route::put('/posts/{id}', [PostsController::class, 'update'])->name('posts.update');
-Route::get('/posts/{id}', [PostsController::class, 'read'])->name('posts.read');
-
-
-Route::get('/rewards/create', [RewardController::class, 'create'])->name('rewards.create');
-Route::post('/rewards/store', [RewardController::class, 'store'])->name('rewards.store');
-Route::get('/rewards/view', [RewardController::class, 'view'])->name('rewards.view');
-Route::get('/rewards/{id}/edit', [RewardController::class, 'edit'])->name('rewards.edit');
-Route::put('/rewards/{id}', [RewardController::class, 'update'])->name('rewards.update');
-Route::get('/rewards/{id}', [RewardController::class, 'read'])->name('rewards.read');
-
-
-
 Route::middleware(['role:guest'])->group(function () {
     Route::get('/aboutus', [AboutusController::class, "aboutus"])->name("aboutus");
-
-    Route::get('/admin/landing', function () {
-        return view('landingadmin');
-    });
 
     Route::get('/', [Controller::class, 'index'])->name('index');
 
     Route::get("/product/{dishId}",[ProductController::class, 'viewProduct'])->name("viewproduct"); 
+
+    Route::get('/posts/{id}', [PostsController::class, 'read'])->name('posts.read');
+
+    Route::get('/foods', [FoodController::class, "foods"])->name("foods"); //Vista de las comidas
+
 });
 
 
@@ -106,6 +81,29 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get("/admin/users",[AdminController::class,"users"])->name("adminusers");
     Route::get("admin/users/profile/{UserId}",[AdminController::class,"usersProfile"])->name("AdminUsersProfile");
 
+
+
+    Route::get('/foods/create', [FoodController::class, "create"])->name("foods.create"); //Vista creacion de comida
+    Route::post('/foods/store', [FoodController::class, "store"])->name("foods.store"); //Guardar comida
+    Route::get("/foods/view",[FoodController::class, 'view'])->name("foods.view"); //Vista (admin) de las comidas
+    Route::get('/foods/{id}/edit', [FoodController::class, 'edit'])->name('foods.edit'); //Vista de edicion de las comidas
+    Route::put('/foods/{id}', [FoodController::class, 'update'])->name('foods.update'); //Guardar cambios
+
+
+
+    Route::get('/posts/create', [PostsController::class, 'create'])->name('posts.create');
+    Route::post('/posts/store', [PostsController::class, 'store'])->name('posts.store');
+    Route::get('/posts/view', [PostsController::class, 'view'])->name('posts.view');
+    Route::get('/posts/{id}/edit', [PostsController::class, 'edit'])->name('posts.edit');
+    Route::put('/posts/{id}', [PostsController::class, 'update'])->name('posts.update');
+
+
+    Route::get('/rewards/create', [RewardController::class, 'create'])->name('rewards.create');
+    Route::post('/rewards/store', [RewardController::class, 'store'])->name('rewards.store');
+    Route::get('/rewards/view', [RewardController::class, 'view'])->name('rewards.view');
+    Route::get('/rewards/{id}/edit', [RewardController::class, 'edit'])->name('rewards.edit');
+    Route::put('/rewards/{id}', [RewardController::class, 'update'])->name('rewards.update');
+    Route::get('/rewards/{id}', [RewardController::class, 'read'])->name('rewards.read');
 });
 
 

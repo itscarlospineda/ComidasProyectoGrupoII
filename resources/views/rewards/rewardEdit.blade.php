@@ -107,6 +107,8 @@
 </style>
 
 @section('content')
+</header>
+
     <div class="form-section">
         <a href="javascript:history.back()" class="back-link">← Regresar</a>
         <h1>Editar Recompensa</h1>

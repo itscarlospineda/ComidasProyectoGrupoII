@@ -110,6 +110,7 @@
         }
     }
 </style>
+</header>
 
 @section('content')
     <div class="form-section">

@@ -121,6 +121,8 @@
 </style>
 
 @section('content')
+</header>
+
 <div class="container">
     <header>
         <h1>Recompensas Disponibles</h1>

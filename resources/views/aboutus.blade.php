@@ -34,7 +34,7 @@
 </header>
 
 <!-- Sección Nosotros -->
-<section class="about-us container">
+<section class="about-us container" style="margin-bottom: 80px;">
     <div class="row">
         <div class="col-md-7">
             <h2 class="producto__nombre">Sobre Sabor Catracho</h2>

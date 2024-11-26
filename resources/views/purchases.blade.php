@@ -71,6 +71,10 @@
 </header>
 
     <div class="container">
+    @if ($users->isEmpty())
+        <p><strong style="color: var(--primary)">SIN PAGOS REALIZADOS</strong></p>
+
+    @else    
     @foreach ($users as $user)
         <div class="article">
             <h2 class="text-black">Detalles del Pedido #{{ $user->order_id }}</h2>
@@ -84,6 +88,7 @@
             <p><strong style="color: var(--primary)">Estado del Pedido:</strong> {{ $user->status }}</p>
         </div>
     @endforeach
+    @endif
     </div>
 
 @endsection

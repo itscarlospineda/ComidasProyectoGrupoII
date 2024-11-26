@@ -6,6 +6,7 @@ use App\Models\Dish;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Support\Facades\DB;
 use App\Models\Post;
 use App\Models\Reward;
 
@@ -23,7 +24,10 @@ class Controller extends BaseController
         
         $randomDish = Dish::inRandomOrder()->first();
 
-        $reward=Reward::all();
+        $reward=DB::table("rewards")
+        ->orderBy("Points_needed","ASC")
+        ->get();
+
         session(["reward"=>$reward]);
         return view('index', compact('posts', 'morePosts','dishes', 'randomDish'));
     }

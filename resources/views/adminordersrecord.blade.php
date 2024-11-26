@@ -40,6 +40,22 @@
             color: #333;
         }
 
+        .btn-back {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 10px;
+            transition: background-color 0.3s;
+        }
+
+        .btn-back:hover {
+            background-color: #0056b3;
+        }
+
         .orders-table {
             width: 100%;
             border-collapse: collapse;
@@ -117,6 +133,7 @@
     <div class="container">
         <header>
             <h1>Historial de Compras</h1>
+            <a href="{{ route('adminDashboard') }}" class="btn-back">Volver al Dashboard</a>
         </header>
 
         <table class="orders-table">
@@ -143,8 +160,6 @@
                         <td>{{ $order->dish_total }}</td>
                         <td>{{ $order->comments ?? 'Sin nota' }}</td>
                         <td><span class="status {{ $order->status == 'Activo' ? 'active' : 'inactive' }}">{{ $order->status }}</span></td>
-                        <td>
-                        </td>
                     </tr>
                 @endforeach
             </tbody>

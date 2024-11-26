@@ -78,6 +78,11 @@
             color: white;
         }
 
+        .status.inactive {
+            background-color: #ffc107;
+            color: black;
+        }
+
         .btn-action {
             padding: 8px 15px;
             margin-right: 5px;
@@ -110,6 +115,24 @@
             display: flex;
             gap: 10px;
         }
+
+        .btn-dashboard {
+            padding: 10px 20px;
+            font-size: 1rem;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.3s;
+        }
+
+        .btn-dashboard:hover {
+            background-color: #0056b3;
+        }
+
     </style>
 </head>
 
@@ -117,6 +140,7 @@
     <div class="container">
         <header>
             <h1>Órdenes Activas</h1>
+            <a href="{{ route('adminDashboard') }}" class="btn-dashboard">Volver al Dashboard</a>
         </header>
 
         <table class="orders-table">
@@ -134,30 +158,38 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($orders as $order)
+                @if ($orders->isEmpty())
                     <tr>
-                        <td>{{ $order->id }}</td>
-                        <td>{{ $order->username }}</td>
-                        <td>{{ $order->dish_name }}</td>
-                        <td>{{ $order->quantity }}</td>
-                        <td>{{ $order->Fecha_pedido }}</td>
-                        <td>{{ $order->dish_total }}</td>
-                        <td>{{ $order->comments ?? 'Sin nota' }}</td>
-                        <td><span class="status {{ $order->status == 'Activo' ? 'active' : 'inactive' }}">{{ $order->status }}</span></td>
-                        <td>
-                        <form action="{{ route('okorder', ['orderId' => $order->id]) }}" method="POST" style="display: inline;">
-                        @csrf
-                        @method('POST') 
-                        <button type="submit" class="btn-action entregar">Entregar</button>
-                        </form>
-                        <form action="{{ route('cancelorder', ['orderId' => $order->id]) }}" method="POST" style="display: inline;">
-                        @csrf
-                        @method('POST') 
-                        <button type="submit" class="btn-action cancelar">Cancelar</button>
-                        </form>
+                        <td colspan="9" style="text-align: center; padding: 20px; color: #888;">
+                            <strong>SIN ÓRDENES ACTIVAS</strong>
                         </td>
                     </tr>
-                @endforeach
+                @else
+                    @foreach ($orders as $order)
+                        <tr>
+                            <td>{{ $order->id }}</td>
+                            <td>{{ $order->username }}</td>
+                            <td>{{ $order->dish_name }}</td>
+                            <td>{{ $order->quantity }}</td>
+                            <td>{{ $order->Fecha_pedido }}</td>
+                            <td>{{ $order->dish_total }}</td>
+                            <td>{{ $order->comments ?? 'Sin nota' }}</td>
+                            <td><span class="status {{ $order->status == 'Activo' ? 'active' : 'inactive' }}">{{ $order->status }}</span></td>
+                            <td>
+                                <form action="{{ route('okorder', ['orderId' => $order->id]) }}" method="POST" style="display: inline;">
+                                    @csrf
+                                    @method('POST') 
+                                    <button type="submit" class="btn-action entregar">Entregar</button>
+                                </form>
+                                <form action="{{ route('cancelorder', ['orderId' => $order->id]) }}" method="POST" style="display: inline;">
+                                    @csrf
+                                    @method('POST') 
+                                    <button type="submit" class="btn-action cancelar">Cancelar</button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
+                @endif
             </tbody>
         </table>
     </div>

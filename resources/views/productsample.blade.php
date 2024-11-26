@@ -86,7 +86,7 @@
             
             <div class="col-md-8" style="padding: 20px;">
 
-                <form action="{{  route('newOrder', 'dishId => $dish->id')   }}" method="post">
+                <form action="{{  route('payment', 'dishId => $dish->id')   }}" method="post">
                     @csrf
                         <label class="form-content" for="name">Nombre del Plato:</label>
                         <input class="form-content" type="hidden" id=dish_id name=dish_id value ="{{ $dish->id }}"> </input>

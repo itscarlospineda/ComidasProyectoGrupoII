@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use App\Models\Orders;
 use App\Models\User;
+use Srmklive\PayPal\Services\PayPal as PayPalClient;
 use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
@@ -59,5 +60,29 @@ public function thanks($orderId)
     return view("thanks",compact("order"));
     
 }
+
+public function payment(Request $request)
+{
+    $provider = new PayPalClient;
+    $provider->setApiCredentials(config("paypal"));
+    $paypal_token=$provider->getAccessToken();
+    $order = $provider->createOrder($data);
+    $provider->createOrder([
+        "intent" =>"CAPTURE",
+        "purchase_units"=> [
+          [
+            "amount"=> [
+              "currency_code"=>"USD",
+              "value"=> $request->quantity * $request->dish_price
+              ]
+          ]
+        ]
+        
+    ]);
+        
+
+}
+
+
 
 }

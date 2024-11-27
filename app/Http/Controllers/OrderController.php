@@ -26,6 +26,7 @@ public function payment(Request $request)
         'quantity' => 'numeric|min:1', 
         
     ]);
+    $value= round(($request->quantity * $request->dish_price)/25.35,2);
     $provider = new PayPalClient;
     $provider->setApiCredentials(config("paypal"));
     $paypal_token=$provider->getAccessToken();
@@ -39,7 +40,7 @@ public function payment(Request $request)
           [
             "amount"=> [
               "currency_code"=>"USD",
-              "value"=> $request->quantity * $request->dish_price
+              "value"=> $value
               ]
           ]
         ]

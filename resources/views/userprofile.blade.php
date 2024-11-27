@@ -71,8 +71,9 @@
     </p>
 </div>
 <div class="container p-4" style="border: 3px solid black; border-radius:20px; margin-top:5vh;">
-    <form action="{{ route('editusers.show',[$user->id])}}" method="post">
+    <form action="{{ route('editusers.edit',['id' => $user->id])}}" method="POST">      
         @csrf
+         @method('PUT')
         <div class="row p-4">
             <div class="col-md-6 p-2">
                 <div class="col-md-10 mb-3">
@@ -108,7 +109,7 @@
         <center>
             <div class="col-md-4">
                 <a class="producto__enlace">
-                    <span class="producto__descripcion">Modificar Datos</span>
+                <button type="submit">Modificar Datos</button>
                 </a>
             </div>
         </center>

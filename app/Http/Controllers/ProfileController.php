@@ -92,4 +92,28 @@ class ProfileController extends Controller
     ->get();
     return view('purchases', compact('users'));
     }
+
+    public function updateProfile($id , Request $request)
+    {
+        
+        #dd($id);
+        $request ->validate([
+            "fname" => "required|string|min:3",
+            "lname" => "required|string|min:3",
+            "phone_num" => "required|numeric|digits:8",
+            "address" => "required|string|min:5",
+        ]);
+        User::where("id",$id)
+        ->update([
+        "fname"=> $request->fname,
+        "lname"=>$request->lname,
+        "email"=>$request->email,
+        "phone_num"=>$request->phone_num,
+        "address"=>$request->address,
+        ]);
+        return redirect()->route('settings');
+    }
+    
+
+
 }

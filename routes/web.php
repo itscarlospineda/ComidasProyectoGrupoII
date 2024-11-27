@@ -58,7 +58,9 @@ Route::middleware(['auth', 'role:user'])->group(function () {
     Route::get("/rewards/claim/{rewardId}",[RewardController::class, 'claimreward'])->name('claimreward');
     Route::post("/rewards/claim/{rewardId}",[RewardController::class, 'savereward'])->name('savereward');
     
-    Route::post("/product/{dishId}",[OrderController::class, "newOrder"])->name("newOrder");
+    Route::post("/payment",[OrderController::class, "payment"])->name("payment");
+    Route::get("success",[OrderController::class, "success"])->name("success");
+    Route::get("cancel",[OrderController::class, "cancel"])->name("cancel");
     
     Route::get("/thanks/{orderId}",[OrderController::class, "thanks"])->name("thanks");
     

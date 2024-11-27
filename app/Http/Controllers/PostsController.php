@@ -13,12 +13,12 @@ class PostsController extends Controller
     public function view()
     {
         $posts = Post::all();
-        return view('posts.postView', compact('posts'));
+        return view('posts/postView', compact('posts'));
     }
     
     public function create()
     {
-        return view('posts.postCreate'); 
+        return view('posts/postCreate'); 
     }
 
     

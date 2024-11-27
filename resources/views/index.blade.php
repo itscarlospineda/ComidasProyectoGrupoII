@@ -2,6 +2,7 @@
 
 @php
     $backgroundImage = asset('storage/' . $randomDish->picture);
+    date_default_timezone_set('America/Mexico_City');
 @endphp
 
 <title>@yield('title', 'Inicio')</title>
@@ -63,22 +64,22 @@
     </section>
     @endif
     
-    <section class="blog">
+    <section class="blog" style="margin-bottom: 80px;">
         <h2 class="blog__heading">Nuestro Blog</h2>
         <div class="blog__contenedor blog__grid">
 
             @foreach ($morePosts as $morePosts)
             <article class="entrada">
                 
-                @if ($morePosts->picture1 && Storage::exists($morePosts->picture1))
-                    <img class="img-fluid" src="{{ asset('storage/' . $morePosts->picture1) }}" alt="Figura 1">
+                @if ($morePosts->picture1)
+                    <img class="img-fluid" src="{{ asset('storage/' . $morePosts->picture1) }}" alt="Figura 1" >
                 @else
                     <img class="entrada__imagen" src="{{ Vite::asset('resources/images/shop1.png') }}" alt="imagen blog">   
                 @endif
 
                 <div class="entrada__contenido">
                     <h2 class="entrada__titulo">{{$morePosts->title}}</h2>
-                    <p class="entrada__fecha">  {{ date('d/m/Y h:i A', strtotime($morePosts->upload_date)) }}</p>
+                    <p class="entrada__fecha">  {{ date('d/m/Y h:i A', strtotime($morePosts->upload_date . ' UTC')) }} </p>
                     <p class="entrada__texto">{{ \Illuminate\Support\Str::limit($morePosts->content, 80, $end = '...') }}</p>
 
                     <a class="entrada__enlace" href="{{ route('posts.read', ['id' => $morePosts]) }}">Leer Entrada</a>

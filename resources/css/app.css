@@ -249,7 +249,7 @@ img {
     transition-property: background-color;
     transition-duration: .3s;
 }
-.producto__enlace:hover, .producto__enlace2:hover {
+.producto__enlace:hover, .producto__enlace2:hover, .producto__cantidad2:hover{
     border: 2px solid var(--primary);
     background-color: var(--primary);
     color: var(--blanco);
@@ -267,7 +267,25 @@ img {
     border: 2px solid var(--primary);
     padding: 1rem;
     text-align: center;
+    
 }
+.producto__cantidad2 {
+    border: 2px solid var(--primary);
+    text-align: center;
+    text-decoration: none;
+    /*color: var(--negro);*/
+    background-color: white;
+    color: black;
+    padding: 1.4rem 5rem;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    transition-property: background-color;
+    transition-duration: .3s;
+    
+}
+
 .producto__cantidad:focus-visible {
     outline: 2px solid var(--primary);
     border: none;

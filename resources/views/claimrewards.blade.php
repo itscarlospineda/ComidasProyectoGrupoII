@@ -72,31 +72,33 @@
         </div>
     </header>
 
-    <h1>Detalles de Recompensa          Tus puntos: </h1>
+    <h1>Detalles de Recompensa    <br>      Tus puntos: {{$points}} </h1>
     
     <div class="container">
-    <span >Tus puntos: {{$points}}</span>
         <div class="row">
             <!--<div class="col-md-4">
                 <div class="d-flex justify-content-center align-items-center">
                     <img src="{{ Vite::asset('resources/images/gringas.jpg') }}" alt="comida">
                 </div>
-            </div>-->
+            </div>--
             <div class="d-flex justify-content-center align-items-center col-md-4 mx-auto" >
-                <img class="img-fluid" src="{{ Vite::asset('resources/images/gringas.jpg') }}" alt="comida">
-            </div>
+                
+            </div>-->
             
-            <div class="col-md-8" style="padding: 20px;">
+            <div class="col-md-12" style="padding: 20px;">
                 <form action="{{  route('savereward', 'rewardId => $rewards->id')   }}" method="post">
                     @csrf
                         <label class="form-content" for="name">Nombre del Plato:</label>
                         <input class="form-content" type="hidden" id=dish_id name=RewardId value ="{{ $rewards->id }}"> </input>
                         <input type="text" id="name" name="Name" value="{{ $rewards->Name }}" readonly>
                         <label class="form-content" for="description">Descripción:</label>
-                        <textarea id="description" name="description" readonly>{{ $rewards->Description }}</textarea>
+                        <textarea id="description" name="description" style="resize: none;"  readonly>{{ $rewards->Description }}</textarea>
                         <label class="form-content" for="numero">Puntos Necesarios:</label> 
                         <input class="form-content" type="number" id="quantity"  value="{{$rewards->Points_needed}}" name="Points_needed"> 
-                        <button type="submit">Ordena ya!!</button> 
+                        <center>
+                            <button type="submit">Ordena ya</button> 
+
+                        </center>
                         </div>
                     </form>
             </div>

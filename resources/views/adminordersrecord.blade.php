@@ -9,12 +9,6 @@
             box-sizing: border-box;
         }
 
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f4f4f4;
-            color: #333;
-            padding: 20px;
-        }
 
         .header {
             background-image: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url({{ Vite::asset('resources/images/fondo-comida-2.jpg') }});
@@ -100,6 +94,9 @@
     </style>
 
 @section('content')
+</header>
+
+
     <div class="container">
         <header>
             <h1>Historial de Compras</h1>

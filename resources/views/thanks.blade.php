@@ -3,7 +3,7 @@
 <title>@yield('title', 'Página de Confirmación')</title>
 
     <style>
-        body {
+        /*body {
             background-color: #f4f4f9;
             font-family: 'Arial', sans-serif;
             margin: 0;
@@ -11,7 +11,7 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-        }
+        }*/
 
         .thank-you-container {
             background-color: #ffffff;
@@ -54,19 +54,18 @@
     </style>
     
 @section('content')
-
-
-<div class="modelo">
-    <p class="modelo__nombre text-black">Página de Confirmación</p>
-</div>
-</div>
+        <div class="modelo">
+            <p class="modelo__nombre text-black">Página de Confirmación</p>
+        </div>
+    </div>
 </header>
+
     <center>
-        <div class="thank-you-container">
+        <div class="thank-you-container" style="margin-bottom: 80px;">
             <h1>¡Gracias por tu pedido, <span id="username">{{ $order->username }}</span>!</h1>
             <p>Tu número de orden es: <span id="order-number">{{ $order->id }}</span></p>
             <p>Apreciamos tu confianza y esperamos que disfrutes tu compra.</p>
-            <a href="/" class="btn">Ir a Inicio</a>
+            <a href="/" class="btn btn-danger" style="font-size: 20px;">Ir a Inicio</a>
         </div>
     </center>
 @endsection

@@ -113,6 +113,7 @@
 </header>
 
 @section('content')
+</header>
     <div class="form-section">
         <a href="javascript:history.back()" class="back-link">← Regresar</a>
         <h1>Editar Post</h1>
@@ -164,7 +165,7 @@
                 <label for="picture1">Actualizar Imagen Principal</label>
                 <input type="file" id="picture1" name="picture1" accept="image/*">
                 @if($post->picture1)
-                    <small>Imagen actual: {{ $post->picture1 }}</small>
+                <img class="img-fluid" src="{{ asset('storage/' . $post->picture1) }}" alt="Figura 1" width="300px;">
                 @endif
                 @error('picture1')
                     <small style="color: #e74c3c;">{{ $message }}</small>
@@ -175,7 +176,7 @@
                 <label for="picture2">Actualizar Imagen Secundaria</label>
                 <input type="file" id="picture2" name="picture2" accept="image/*">
                 @if($post->picture2)
-                    <small>Imagen actual: {{ $post->picture2 }}</small>
+                <img class="img-fluid" src="{{ asset('storage/' . $post->picture2) }}" alt="Figura 1" width="300px;">
                 @endif
                 @error('picture2')
                     <small style="color: #e74c3c;">{{ $message }}</small>

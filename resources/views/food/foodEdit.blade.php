@@ -158,7 +158,7 @@
                 <label for="picture">Actualizar Imagen del Plato</label>
                 <input type="file" id="picture" name="picture" accept="image/*">
                 @if($dish->picture)
-                    <small>Imagen actual: {{ $dish->picture }}</small>
+                    <img class="img-fluid" src="{{ asset('storage/' . $dish->picture) }}" alt="Figura 1" width="300px;">
                 @endif
                 @error('picture')
                     <small style="color: #e74c3c;">{{ $message }}</small>

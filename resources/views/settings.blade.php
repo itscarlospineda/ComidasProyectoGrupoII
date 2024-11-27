@@ -17,7 +17,7 @@
     </header>
 
 
-    <div class="pt-4">
+    <div class="pt-4" style="margin-bottom: 80px;">
         <section>
             <div class="container col-md-12" style="height: 5rem 0;">
                 <div class="row">
@@ -39,8 +39,8 @@
                     @endif
                     <!--<div class="col-md-3">
                         <a class="producto__enlace" href="#">
-                            <img src="{{ Vite::asset('resources/images/calendar.png') }}" alt="" width="200px;"> <br>
-                            <span class="producto__descripcion">Reservas</span>
+                            <img src="{{ Vite::asset('resources/images/star-medal.png') }}" alt="" width="200px;"> <br>
+                            <span class="producto__descripcion">Historial de Rewards</span>
                         </a> 
                     </div>-->
 

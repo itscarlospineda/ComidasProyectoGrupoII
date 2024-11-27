@@ -5,13 +5,14 @@
 @section('content')
 <div class="container-fluid full-height">
     <div class="col-12 col-md-8 col-lg-6 mx-auto overlay-container">
+        <a class="text-white" href="/" class="back-link">← Regresar a Inicio</a>
+
         <form method="POST" action="{{ route('login') }}">
             @csrf
             
             <div class="d-flex flex-column align-items-center">
-                <a class="mb-4 text-center" style="text-decoration: none">
-                    <span class="fw-bold" style="color: white; font-size:48px;"> Sabor</span>
-                    <span class="fw-bold" style="color: rgb(43, 43, 175); font-size:48px;">Catracho</span>
+                <a class="d-flex align-items-center">
+                    <img class="sm-logo" src="{{ Vite::asset('resources/images/logo5.PNG') }}" alt="Logo Sabor Catracho" width="300px">
                 </a>
 
                 <div class="row w-100 mb-4 px-3">
@@ -47,8 +48,12 @@
                 <div class="w-25 mb-3">
                     <button type="submit" class="producto__enlace3 w-100">
                         {{ __('Iniciar') }}
-                    </button>
+                    </button> <br>
+
                 </div>
+
+                <a class="text-white" href="{{ route('register') }}">No tienes cuenta? Registrate aquí.</a>
+
             </div>
 
         </form>

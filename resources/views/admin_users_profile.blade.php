@@ -1,147 +1,141 @@
 @extends('layouts.main')
-@section('content')
 
-<!DOCTYPE html>
-<html lang="es">
+<title>@yield('title', 'Información del Usuario - Admin')</title>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perfil de Usuario</title>
-    <style>
+
+<style>
         
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-        }
-
-        h1 {
-            text-align: center;
-            color: #333;
-            margin-top: 20px;
-        }
-
-        .container {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
         
-        .user-profile {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            margin-bottom: 30px;
-        }
 
-        .profile-item {
-            display: flex;
-            justify-content: space-between;
-            font-size: 16px;
-            color: #555;
-        }
+    h1 {
+        text-align: center;
+        color: #333;
+        margin-top: 20px;
+    }
 
-        .profile-item strong {
-            color: #333;
-        }
+    .container {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        max-width: 1200px;
+        margin: 0 auto;
+    }
 
-        .profile-item span {
-            font-weight: 600;
-            color: #2d87f0;
-        }
+    
+    .user-profile {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin-bottom: 30px;
+    }
 
-       
-        .section-title {
-            text-align: center;
-            color: #333;
-            margin-top: 40px;
-            font-size: 1.8em;
-        }
+    .profile-item {
+        display: flex;
+        justify-content: space-between;
+        font-size: 16px;
+        color: #555;
+    }
 
+    .profile-item strong {
+        color: #333;
+    }
+
+    .profile-item span {
+        font-weight: 600;
+        color: #2d87f0;
+    }
+
+   
+    .section-title {
+        text-align: center;
+        color: #333;
+        margin-top: 40px;
+        font-size: 1.8em;
+    }
+
+    .container-history,
+    .container-rewards {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 20px;
+        padding: 20px;
+        margin-top: 20px;
+    }
+
+    .history-item,
+    .reward-item {
+        background-color: #fff;
+        border: 1px solid #ddd;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .history-item:hover,
+    .reward-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .history-item h2,
+    .reward-item h2 {
+        font-size: 1.5em;
+        color: #333;
+        margin: 0 0 10px;
+    }
+
+    .history-item p,
+    .reward-item p {
+        color: #555;
+        line-height: 1.6;
+    }
+
+   
+    .btn-back {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: white;
+        text-decoration: none;
+        font-size: 1rem;
+        border-radius: 5px;
+        display: inline-block;
+        margin-top: 10px;
+        transition: background-color 0.3s;
+    }
+
+    .btn-back:hover {
+        background-color: #0056b3;
+    }
+
+  
+    @media (max-width: 768px) {
         .container-history,
         .container-rewards {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 20px;
-            padding: 20px;
-            margin-top: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
         }
+    }
 
-        .history-item,
-        .reward-item {
-            background-color: #fff;
-            border: 1px solid #ddd;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+    @media (max-width: 480px) {
+        .container-history,
+        .container-rewards {
+            grid-template-columns: 1fr;
         }
+    }
+</style>
 
-        .history-item:hover,
-        .reward-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-        }
+@section('content')
+</header>
 
-        .history-item h2,
-        .reward-item h2 {
-            font-size: 1.5em;
-            color: #333;
-            margin: 0 0 10px;
-        }
 
-        .history-item p,
-        .reward-item p {
-            color: #555;
-            line-height: 1.6;
-        }
+<div class="container" style="margin-bottom: 80px;">
+    <header>
+        <h1>Usuario Registrado</h1>
+        <a href="javascript:history.back()" class="back-link">← Regresar</a>
+    </header>
+    <div class="section-title">Información de {{$userdata->username}}</div>
 
-       
-        .btn-back {
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: white;
-            text-decoration: none;
-            font-size: 1rem;
-            border-radius: 5px;
-            display: inline-block;
-            margin-top: 10px;
-            transition: background-color 0.3s;
-        }
-
-        .btn-back:hover {
-            background-color: #0056b3;
-        }
-
-      
-        @media (max-width: 768px) {
-            .container-history,
-            .container-rewards {
-                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            }
-        }
-
-        @media (max-width: 480px) {
-            .container-history,
-            .container-rewards {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
-</head>
-
-<body>
-
-<div class="container">
-    <div class="section-title">Informacion de {{$userdata->username}}</div>
-
-    <a href="{{route('adminDashboard')}}" class="btn-back">Volver al Dashboard</a>
 
     <div class="container-rewards">
         <div class="reward-item">
@@ -153,6 +147,10 @@
             <p><strong>Direccion:</strong> {{ $userdata->address }}</p>
             <p><strong>Puntos Actuales:</strong> {{ $userdata->points}}</p>
             <p><strong>Fecha de registro:</strong> {{ $userdata->created_at}}</p>
+            <p><strong>Foto de perfil:</strong>
+                <img src="{{ asset('storage/profile_pictures/' . ($userdata->profile_picture)) }}"  alt="Profile Picture" style="max-width: 150px; max-height: 150px;">
+            </p>
+
         </div>
     </div>
 

@@ -122,7 +122,7 @@
 
 @section('content')
 </header>
-<div class="container">
+<div class="container" style="margin-bottom: 80px;">
     <header>
         <h1>Posts Disponibles</h1>
         <a href="javascript:history.back()" class="back-link">← Regresar</a>

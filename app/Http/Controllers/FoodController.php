@@ -6,14 +6,19 @@ use Illuminate\Http\Request;
 use App\Models\Dish;
 use Illuminate\Support\Facades\DB;
 
-
 class FoodController extends Controller
 {
     
-    public function foods()
+    public function foods(Request $request)
     {
-        $dishes=Dish::all();
-        return view("food/food",compact("dishes"));
+        //$dishes=Dish::all();
+        $selectedCategory = $request->get('category');
+    
+        $dishes = Dish::when($selectedCategory, function ($query) use ($selectedCategory) {
+            $query->where('category', $selectedCategory);
+        })->get();
+
+        return view("food/food",compact("dishes","selectedCategory"));
     }
 
     public function view()
@@ -48,12 +53,12 @@ class FoodController extends Controller
         $data = $request->all();
 
         if ($request->hasFile('picture')) {
-            $data['picture'] = $request->file('picture')->store('dishes', 'public');
+            $data['picture'] = $request->file('picture')->store('foods', 'public');
         }
 
         Dish::create($data);
 
-        return redirect()->route('foods')->with('success', 'Plato creado exitosamente.');
+        return redirect()->route('foods.view')->with('success', 'Plato creado exitosamente.');
     }
 
 

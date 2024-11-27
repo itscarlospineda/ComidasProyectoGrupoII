@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Dish;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Orders;
+use App\Models\Post;
+use App\Models\Reward;
 use App\Models\Rewards_claimed;
 
 class AdminController extends Controller
@@ -42,7 +45,18 @@ public function adminrecord()
 
 public function dashboard()
 {
-    return view("adminlanding");
+    $compOrders = Orders::whereIn('status', ['completado', 'cancelado'])->count();
+    $actOrders = Orders::where('status', 'pendiente')->count();
+
+    $numDishes = Dish::all()->count();
+
+    $numRewards = Reward::all()->count();
+
+    $numPosts = Post::all()->count();
+
+    $numUsers = User::where('role', 'user')->count();
+    
+    return view("adminlanding",compact("compOrders","actOrders","numDishes","numRewards","numPosts","numUsers"));
 }
 
 public function users()

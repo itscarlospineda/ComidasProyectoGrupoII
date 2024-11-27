@@ -9,6 +9,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;900&display=swap" rel="stylesheet">
 
+    <link rel="icon" type="image/x-icon" href="{{ Vite::asset('resources/images/logo5.PNG') }}">
+
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -35,6 +37,7 @@
             background-image: url({{ Vite::asset('resources/images/fondo-login.jpg')}});
         }
 
+        
         .overlay-container {
         background: rgba(255, 255, 255, 0.05); 
         padding: 20px;

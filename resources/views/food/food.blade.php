@@ -77,9 +77,31 @@
 
 <div class="container py-5">
     <div class="text-center mb-5">
-        <h2 class="text-warning">Nuestro Menú</h2>
-        <p class="text-muted">Descubre los mejores sabores tradicionales en SPS.</p>
+        <h2 class="modelo__nombre text-black">Nuestro Menú</h2>
+        <p class="text-muted">Descubre los mejores sabores tradicionales en SPS.</p> <br>
+       
+        <form class="container" action="{{ route('foods') }}" method="get">
+            <div class="d-flex align-items-center justify-content-center">
+
+                <label for="category" class="producto__label me-2">Filtra por Categoría:</label>
+                <select class=" producto__cantidad ms-3" id="category" name="category">
+                    <option value="" {{ $selectedCategory == '' ? 'selected' : '' }}>Todas las Categorías</option>
+                    <option value="Desayunos" {{ $selectedCategory == 'Desayunos' ? 'selected' : '' }}>Desayunos</option>
+                    <option value="Almuerzos" {{ $selectedCategory == 'Almuerzos' ? 'selected' : '' }}>Almuerzos</option>
+                    <option value="Postres" {{ $selectedCategory == 'Postres' ? 'selected' : '' }}>Postres</option>
+                    <option value="Entradas" {{ $selectedCategory == 'Entradas' ? 'selected' : '' }}>Entradas</option>
+                    <option value="Bebidas" {{ $selectedCategory == 'Bebidas' ? 'selected' : '' }}>Bebidas</option>
+                </select>
+        
+                <button class="producto__cantidad2 ms-4" type="submit">
+                    <span class="producto__descripcion">Filtrar</span>
+                </button>
+            </div>
+        </form>
+        
     </div>
+
+                      
 
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
         @foreach ($dishes as $dish)

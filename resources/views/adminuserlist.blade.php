@@ -91,7 +91,10 @@
 
 
 @section('content')
-    <div class="container">
+
+</header>
+
+    <div class="container" style="margin-bottom: 80px;">
         <header>
                 <h1>Usuarios Registrados</h1>
                 <a href="javascript:history.back()" class="back-link">← Regresar</a>

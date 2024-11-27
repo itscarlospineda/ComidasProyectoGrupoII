@@ -1,18 +1,8 @@
 @extends('layouts.main')
 
-<title>@yield('title', 'Página de Confirmación')</title>
+<title>@yield('title', 'Página de Confirmación de Recompensas')</title>
 
     <style>
-        body {
-            background-color: #f4f4f9;
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-
         .thank-you-container {
             background-color: #ffffff;
             padding: 40px;
@@ -53,20 +43,21 @@
         }
     </style>
     
+
+
 @section('content')
-
-
-<div class="modelo">
-    <p class="modelo__nombre text-black">Página de Confirmación</p>
-</div>
-</div>
+        <div class="modelo">
+            <p class="modelo__nombre text-black">Página de Confirmación de Recompensas</p>
+        </div>
+    </div>
 </header>
+
     <center>
-        <div class="thank-you-container">
+        <div class="thank-you-container" style="margin-bottom: 80px;">
             <h1>¡Gracias por tu pedido, <span id="username">{{ $claimreward->username }}</span>!</h1>
-            <p>Tu número de Regalia es: (Especifica que es una regalia) <span id="order-number">{{ $claimreward->id }}</span></p>
-            <p>Apreciamos tu fidelidad y esperamos que disfrutes tu compra.</p>
-            <a href="/" class="btn">Ir a Inicio</a>
+            <p>Tu número de regalía es: (Especifica que es una regalía) <span id="order-number">{{ $claimreward->id }}</span></p>
+            <p>Apreciamos tu confianza y esperamos que disfrutes tu compra.</p>
+            <a href="/" class="btn btn-danger" style="font-size: 20px;">Ir a Inicio</a>
         </div>
     </center>
 @endsection

@@ -145,10 +145,11 @@
                 <label for="category">Categoría</label>
                 <select id="category" name="category" required>
                     <option value="" disabled selected>Selecciona una categoría</option>
-                    <option value="Entrante">Entrante</option>
-                    <option value="Plato Fuerte">Plato Fuerte</option>
-                    <option value="Postre">Postre</option>
-                    <option value="Bebida">Bebida</option>
+                    <option value="Desayunos">Desayunos</option>
+                    <option value="Almuerzos">Almuerzos</option>
+                    <option value="Postres">Postres</option>
+                    <option value="Entradas">Entradas</option>
+                    <option value="Bebidas">Bebidas</option>
                 </select>
                 @error('category')
                     <small style="color: #e74c3c;">{{ $message }}</small>
@@ -166,4 +167,6 @@
             </div>
         </form>
     </div>
+
+   
 @endsection

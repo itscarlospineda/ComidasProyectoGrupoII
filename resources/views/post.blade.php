@@ -42,23 +42,31 @@
     <main class="row">
         <div class="col-md-7" style="border: 3px solid black; padding:40px; border-radius:10px; justify-items:center; text-align: justify;">
             
-            <p class="producto__precio">{{ $posts->title}}</p> <br>
-            <h1>{{ $posts->author}}</h1> <br>
-            <p class="producto_label"> {{ $posts->content}}</p>
-                    
+            <h1>{{ $posts->title}}</h1> 
+            <p class="producto__modelo">{{ $posts->author}}</p> <br>
+            <p class="entrada__fecha"> Fecha y Hora de Publicación:  {{ date('d/m/Y h:i A', strtotime($posts->upload_date . ' UTC')) }} </p> <br>
+            <p class="producto_label"> {{ $posts->content}}</p> <br>
+            <p class="producto_label"> {{ $posts->content2}}</p> <br>
+
         </div>
 
         <div class="d-flex justify-content-center align-items-center col-md-4 mx-auto" >
-            @if ($posts->picture1 && Storage::exists($posts->picture1))
+            <div class="row">
+                @if ($posts->picture1)
                 <img class="img-fluid" src="{{ asset('storage/' . $posts->picture1) }}" alt="Figura 1">
-            @endif
-            @if ($posts->picture2 && Storage::exists($posts->picture2))
+                @endif
+                <br>
+                @if ($posts->picture2)
                 <img class="img-fluid" src="{{ asset('storage/' . $posts->picture2) }}" alt="Figura 2">
-            @endif
+                @endif
+            </div>
+
             
-            <a href="/" class="producto__agregar-carrito">Ver Más Posts</a>
         </div>
     </main>
+
+    <a href="/#blog" class="producto__agregar-carrito" style="margin-bottom: 80px;">Ver Más Posts</a>
+
 
 </div>
 

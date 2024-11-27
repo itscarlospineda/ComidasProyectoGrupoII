@@ -1,105 +1,125 @@
 @extends('layouts.main')
-@section('content')
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recompensas</title>
+<title>@yield('title', 'Menú de Comidas - Sabor Catracho')</title>
+
+<style>
+
+    /* Estilo para el fondo del header */
+    .header {
+        background-image: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url({{ Vite::asset('resources/images/tacos-bg.jpg') }});
+        background-size: cover;
+        background-position: center;
+        height: 200px;
+    }
+
+    /* Estilo de las tarjetas */
+    .card {
+        overflow: hidden; 
+        border-radius: 15px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+    }
+
+    /* Imagenenes */
+    .card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 0; 
+        transition: transform 0.3s ease;
+    }
+
+    .card img:hover {
+        transform: scale(1.05); 
+    }
+
+    /* Contenido tarjeta */
+    .card-body {
+        background-color: #333; 
+        color: #fff;
+        text-align: center;
+        padding: 20px;
+    }
+
+    /* Tarjeta*/
+    .card-titlee {
+        font-size: 2rem;
+        font-weight: bold;
+        color: #EFF1F3;
+    }
+    .card-text {
+        font-size: 1.5rem;
+        color: #ccc; 
+    }
+
     
-    <style>
-        /* Estilos generales */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+    /* Precio */
+    .fw-bold.text-success {
+        font-size: 1.5rem;
+        margin-top: 10px;
+    }
 
-/* Encabezado */
-.productos__heading {
-    text-align: center;
-    margin: 20px 0;
-    font-size: 2em;
-}
 
-/* Contenedor de productos */
-.productos__contenedor {
-    padding: 20px;
-    background-color: #f9f9f9;
-}
+    /* Mejorar el diseno para paginas pequenas */
+    @media (max-width: 768px) {
+        .section {
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        }
+    }
+</style>
 
-/* Grid de productos */
-.productos__grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    gap: 20px;
-}
+   
 
-/* Estilos para cada producto */
-.producto {
-    background-color: #fff;
-    border: 1px solid #e0e0e0;
-    border-radius: 5px;
-    overflow: hidden;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    max-width: 300px;
-    text-align: center;
-}
+@section('content')
+        <div class="modelo">
+        </div>
+    </div>
+</header>
 
-.producto__imagen {
-    width: 100%;
-    height: auto;
-}
-
-.producto__contenido {
-    padding: 15px;
-}
-
-.producto__nombre {
-    font-size: 1.2em;
-    margin: 10px 0;
-}
-
-.producto__descripcion {
-    font-size: 0.9em;
-    color: #666;
-    margin: 10px 0;
-}
-
-.producto__precio {
-    font-size: 1.1em;
-    color: #b12704;
-    margin: 10px 0;
-}
-
-    </style>
-
-<main class="productos productos__contenedor">
-        <h2 class="productos__heading">Recompensas</h2>
-        
-        
-        <h2 class="productos__heading">Tus puntos: {{$points}}</h2>
-
-        <div class="productos__grid">
-            
-            
-             @foreach ($rewards as $reward)
-           
-            <div class="producto">
-                <img class="producto__imagen" src="{{ Vite::asset('resources/images/carne-fondo2.png') }}" alt="imagen guitarra">
-
-                <div class="producto__contenido">
-                    <h3 class="producto__nombre">{{$reward->Name}}</h3>
-                    <p class="producto__descripcion">{{$reward->Description}}</p>
-                    <p class="producto__precio">{{$reward->Points_needed}}</p>
-                    <a class="producto__enlace" href="{{route('claimreward', ['rewardId' => $reward->id] )}}">Reclamar Ahora</a>
-                </div>
+        <div class="container my-5" style="margin-bottom: 80px;">
+            <div class="text-center mb-5">
+                <h2 class="modelo__nombre text-black">Nuestras Recompensas</h2>
+                <p class="text-muted">Canjea tus puntos acumulados por complementos adicionales aquí.</p>
+                <h2 class="productos__heading">Tus puntos: {{$points}}</h2>
             </div>
-            @endforeach
-        </div><!--./productos__grid-->
-    </main>
-    </html>
+            <!--<h2 class="productos__heading">Recompensas</h2>
+        <h2 class="productos__heading">Tus puntos: {{$points}}</h2>
+        <div class="productos__grid">-->
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                @foreach ($rewards as $reward)
+                <div class="col">
+                    <div class="card h-100 shadow-sm border-0"> 
+                        @if($reward->id == 1)
+                            <img class="producto__imagen" src="{{ asset('storage/foods/tajadas.png') }}" alt="imagen comida">       
+                        @elseif($reward->id == 2)
+                            <img class="producto__imagen" src="{{ asset('storage/foods/tres-leches.jpg') }}" alt="imagen comida">       
+                        @elseif($reward->id == 3)
+                            <img class="producto__imagen" src="{{ asset('storage/foods/pollo-chuco.jpeg') }}" alt="imagen comida">       
+                        @elseif($reward->id == 4)
+                            <img class="producto__imagen" src="{{ asset('storage/foods/pollo-chuco.jpeg') }}" alt="imagen comida">       
+                        @elseif($reward->id > 4)
+                            <img class="producto__imagen" alt="imagen comida">       
+                        @endif
+
+                        <!-- Contenido de la tarjeta -->
+                        <div class="card-body">
+                                <h5 class="card-titlee">{{$reward->Name}}</h3>
+                                <p class="card-text">{{$reward->Description}}</p>
+                                <p class="producto__precio">{{$reward->Points_needed}}</p>
+                                @if($points >= $reward->Points_needed)
+                                    <a class="btn btn-warning text-white" href="{{route('claimreward', ['rewardId' => $reward->id] )}}">Reclamar Ahora</a>
+                                @else
+                                <p class="text-white">Puntos Insuficientes</p>
+                                @endif       
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+        </div>
+
+
 @endsection

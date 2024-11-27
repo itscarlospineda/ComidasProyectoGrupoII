@@ -1,146 +1,125 @@
-<!DOCTYPE html>
-<html lang="es">
+@extends('layouts.main')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Órdenes Activas - Admin</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<title>@yield('title', 'Ordenes Activas - Admin')</title>
 
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f4f4f4;
-            color: #333;
-            padding: 20px;
-        }
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f4f4f4;
+        color: #333;
+        padding: 20px;
+    }
 
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-        }
+    .header {
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url({{ Vite::asset('resources/images/fondo-comida-2.jpg') }});
+    background-size: cover;
+    background-position: center;
+    height: 200px;
+    }
 
-        header h1 {
-            font-size: 2rem;
-            color: #333;
-        }
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
 
-        .orders-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+    }
 
-        .orders-table th,
-        .orders-table td {
-            padding: 15px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
+    header h1 {
+        font-size: 2rem;
+        color: #333;
+    }
 
-        .orders-table th {
-            background-color: #f0f0f0;
-            color: #333;
-        }
+    .orders-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
 
-        .orders-table tr:hover {
-            background-color: #f9f9f9;
-        }
+    .orders-table th,
+    .orders-table td {
+        padding: 15px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
 
-        .status {
-            padding: 5px 10px;
-            border-radius: 5px;
-            font-weight: bold;
-        }
+    .orders-table th {
+        background-color: #f0f0f0;
+        color: #333;
+    }
 
-        .status.active {
-            background-color: #28a745;
-            color: white;
-        }
+    .orders-table tr:hover {
+        background-color: #f9f9f9;
+    }
 
-        .status.cancelled {
-            background-color: #dc3545;
-            color: white;
-        }
+    .btn-action {
+        padding: 8px 15px;
+        margin-right: 5px;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+        font-size: 1rem;
+        border: none;
+    }
 
-        .status.inactive {
-            background-color: #ffc107;
-            color: black;
-        }
+    .btn-action.entregar {
+        background-color: #007bff;
+        color: white;
+    }
 
-        .btn-action {
-            padding: 8px 15px;
-            margin-right: 5px;
-            cursor: pointer;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-            font-size: 1rem;
-            border: none;
-        }
+    .btn-action.entregar:hover {
+        background-color: #0056b3;
+    }
 
-        .btn-action.entregar {
-            background-color: #28a745;
-            color: white;
-        }
+    .btn-action.cancelar {
+        background-color: #dc3545;
+        color: white;
+    }
+    .btn-action.cancelar:hover {
+        background-color: #bd2130;
+    }
 
-        .btn-action.entregar:hover {
-            background-color: #218838;
-        }
+    .orders-table td:last-child {
+        display: flex;
+        gap: 10px;
+    }
 
-        .btn-action.cancelar {
-            background-color: #dc3545;
-            color: white;
-        }
+    .back-link {
+    display: inline-block;
+    margin-bottom: 20px;
+    color: #e67e22;
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: bold;
+    transition: color 0.3s;
+    }
 
-        .btn-action.cancelar:hover {
-            background-color: #c82333;
-        }
+    .back-link:hover {
+        color: #d35400;
+    }
+</style>
 
-        .orders-table td:last-child {
-            display: flex;
-            gap: 10px;
-        }
 
-        .btn-dashboard {
-            padding: 10px 20px;
-            font-size: 1rem;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-block;
-            transition: background-color 0.3s;
-        }
-
-        .btn-dashboard:hover {
-            background-color: #0056b3;
-        }
-
-    </style>
-</head>
-
-<body>
+@section('content')
     <div class="container">
+
         <header>
             <h1>Órdenes Activas</h1>
-            <a href="{{ route('adminDashboard') }}" class="btn-dashboard">Volver al Dashboard</a>
+            <a href="javascript:history.back()" class="back-link">← Regresar</a>
         </header>
 
         <table class="orders-table">
@@ -193,6 +172,4 @@
             </tbody>
         </table>
     </div>
-</body>
-
-</html>
+@endsection 

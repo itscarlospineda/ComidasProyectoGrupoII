@@ -1,11 +1,8 @@
-<!DOCTYPE html>
-<html lang="es">
+@extends('layouts.main')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Órdenes Activas - Admin</title>
-    <style>
+<title>@yield('title', 'Historial de Ordenes - Admin')</title>
+
+<style>
         * {
             margin: 0;
             padding: 0;
@@ -17,6 +14,13 @@
             background-color: #f4f4f4;
             color: #333;
             padding: 20px;
+        }
+
+        .header {
+            background-image: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url({{ Vite::asset('resources/images/fondo-comida-2.jpg') }});
+            background-size: cover;
+            background-position: center;
+            height: 200px;
         }
 
         .container {
@@ -61,62 +65,29 @@
         .orders-table tr:hover {
             background-color: #f9f9f9;
         }
-
-        .status {
-            padding: 5px 10px;
-            border-radius: 5px;
-            font-weight: bold;
-        }
-
-        .status.active {
-            background-color: #28a745;
-            color: white;
-        }
-
-        .status.cancelled {
-            background-color: #dc3545;
-            color: white;
-        }
-
-        .btn-action {
-            padding: 8px 15px;
-            margin-right: 5px;
-            cursor: pointer;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-            font-size: 1rem;
-            border: none;
-        }
-
-        .btn-action.entregar {
-            background-color: #28a745;
-            color: white;
-        }
-
-        .btn-action.entregar:hover {
-            background-color: #218838;
-        }
-
-        .btn-action.cancelar {
-            background-color: #dc3545;
-            color: white;
-        }
-
-        .btn-action.cancelar:hover {
-            background-color: #c82333;
-        }
-
         .orders-table td:last-child {
             display: flex;
             gap: 10px;
         }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #e67e22;
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        .back-link:hover {
+            color: #d35400;
+        }
     </style>
-</head>
 
-<body>
+@section('content')
     <div class="container">
         <header>
             <h1>Historial de Compras</h1>
+            <a href="javascript:history.back()" class="back-link">← Regresar</a>
         </header>
 
         <table class="orders-table">
@@ -143,13 +114,10 @@
                         <td>{{ $order->dish_total }}</td>
                         <td>{{ $order->comments ?? 'Sin nota' }}</td>
                         <td><span class="status {{ $order->status == 'Activo' ? 'active' : 'inactive' }}">{{ $order->status }}</span></td>
-                        <td>
-                        </td>
-                    </tr>
+                        </tr>
                 @endforeach
             </tbody>
         </table>
     </div>
-</body>
+    @endsection
 
-</html>

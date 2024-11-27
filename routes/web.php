@@ -47,6 +47,7 @@ Auth::routes();
 Route::middleware(['auth', 'role:user'])->group(function () {
     Route::get('/settings', [SettingsController::class, 'index'])->name('settings');
     Route::get('/userprofile/{id}', [ProfileController::class, 'edit'])->name('editusers.show');
+    Route::put('/userprofile/{id}', [ProfileController::class, 'updateProfile'])->name('editusers.edit');
     
     Route::get('/profile/upload', [ProfileController::class, 'showUploadForm'])->name('profile.upload.form');
     Route::post('/profile/{id}/upload', [ProfileController::class, 'uploadProfilePicture'])->name('profile.upload');

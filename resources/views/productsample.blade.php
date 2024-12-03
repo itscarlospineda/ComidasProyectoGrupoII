@@ -8,6 +8,15 @@
         background-image: linear-gradient(to right, rgb(0 0 0 / .7), rgb(0 0 0 / .7)), url({{ Vite::asset('resources/images/tacos-bg.jpg')}});
         }
 
+        .alert-danger {
+        color: red;
+        background-color: #f8d7da;
+        border-color: #f5c6cb;
+        padding: 10px;
+        border-radius: 5px;
+        }
+
+
         h1 {
             text-align: center;
         }
@@ -86,7 +95,7 @@
             
             <div class="col-md-8" style="padding: 20px;">
 
-                <form action="{{  route('payment', 'dishId => $dish->id')   }}" method="post">
+                <form action="{{  route('payment', ['dishId' => $dish->id])   }}" method="post">
                     @csrf
                         <label class="form-content" for="name">Nombre del Plato:</label>
                         <input class="form-content" type="hidden" id=dish_id name=dish_id value ="{{ $dish->id }}"> </input>
@@ -101,14 +110,26 @@
                         
                         <label class="form-content" for="price">Precio:</label>
                         <input class="form-content producto__precio" type="number" id="price" name="dish_price" value="{{ $dish->price }}" readonly>   
+                       
+                       
+                        @if ($dish->extras)
+                        <label class="form-content" for="price">Seleccione una opcion </label>
+                        @foreach($dish->extras as $extra)
+                        <label class="form-content" for="extra_{{ $loop->index }}">
+                        <input type="radio" id="extra_{{ $loop->index }}" name="extra" oninput="UpdatePrice()"value="{{ json_encode($extra) }}">
+                        {{ $extra['name'] }}  L.{{ $extra['price'] }}
+                        </label>
+                        @endforeach
+                        @endif
                         <label class="form-content" for="numero">Cantidad:</label> 
-                        <input class="form-content" type="number" id="quantity" MIN=1  name="quantity" oninput="UpdateTotalPrice()">
+                        <input class="form-content" type="number" id="quantity" MIN=1 value=1 name="quantity" oninput="UpdateTotalPrice()">
                         <label class="form-content" for="comments">Comentarios opcionales:</label> 
                         <textarea  class="form-content" id="comments" name="comments" rows="4" placeholder="Ingrese sus comentarios aquí"></textarea>
                         <label class="form-content">Pago Total: L
                             <span class="form-content" id="totalprice_label"></span>
                         </label>
                         <input class="form-content" type="hidden" id="totalprice" name="dish_total">  </input>
+                        
                         <script>
                             function UpdateTotalPrice() {
                                 const price = document.getElementById("price").value;
@@ -119,6 +140,32 @@
                             UpdateTotalPrice();
                             
                         </script>
+
+                <script>
+                    function UpdatePrice() {
+                    let newPrice = 0;
+                    const extras = document.getElementsByName("extra");
+                        for (let i = 0; i < extras.length; i++) {
+                            if (extras[i].checked) {
+                                const extra = JSON.parse(extras[i].value);  
+                                 newPrice = parseFloat(extra.price);     
+                                break;  
+                            }
+                        }
+                    let price = parseFloat(document.getElementById("price").value);
+                    document.getElementById("price").value = newPrice.toFixed(2);  // Show it with 2 decimals
+                    }
+                    UpdateTotal();
+                </script>
+                @if ($errors->any())
+                <div class="alert alert-danger">
+                <ul>
+                @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+                @endforeach
+                </ul>
+                </div>
+                @endif
                         <div class="button-container">
                             @if(Auth::User()) 
                             <button type="submit">Ordena ya</button>

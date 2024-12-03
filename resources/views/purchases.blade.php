@@ -80,6 +80,7 @@
             <h2 class="text-black">Detalles del Pedido #{{ $user->order_id }}</h2>
             <p><strong style="color: var(--primary)">Nombre de Usuario:</strong> {{ $user->username }}</p>
             <p><strong style="color: var(--primary)">Nombre del Plato:</strong> {{ $user->dish_name }}</p>
+            <p><strong style="color: var(--primary)">Detalles del plato:</strong> {{ $user->espef }}</p>
             <p><strong style="color: var(--primary)">Precio del Plato:</strong> L{{ $user->dish_price }}</p>
             <p><strong style="color: var(--primary)">Cantidad:</strong> {{ $user->quantity }}</p>
             <p><strong style="color: var(--primary)">Total del Plato:</strong> {{ $user->dish_total }}</p>

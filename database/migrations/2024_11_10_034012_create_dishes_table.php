@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('desc');
-            $table->decimal('price', 10, 2);
+            $table->json("price")->nullable();
             $table->string('category')->nullable();
             $table->json("extras")->nullable();
             $table->string('picture')->nullable();

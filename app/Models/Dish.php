@@ -10,7 +10,8 @@ class Dish extends Model
     use HasFactory;
 
     protected $casts=[  
-        "extras" =>"array"
+        "extras" =>"array",
+        "price" =>"array"
     ];
     
     protected $fillable = ['name','desc','price','category','picture'];

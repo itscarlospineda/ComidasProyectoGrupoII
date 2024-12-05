@@ -62,27 +62,49 @@ class DatabaseSeeder extends Seeder
         Dish::create([
             'name' => 'Baleada Sencilla',
             'desc' => 'Exquisita tortilla de harina con frijoles, queso y mantequilla. Vendida por unidad.',
-            'price' => 22,
-            'category' => 'Desayunos',
-          'extras' =>[ ['name'=>'Sencilla', 'price'=>22] , ['name'=>'Con huevo', 'price'=>26], ['name'=>'Con Todo', 'price'=>45], ],
+            'price' => json_encode(
+                    [
+                        [
+                            "name"=> "Sencilla", "price"=>22
+                        ],
+                        [
+                            "name"=> "Con huevo", "price"=>30
+                        ],
+                        [
+                            "name"=> "Con todo", "price"=>50
+                        ],
+                        ]),
+            'category' => 'Desayunos',         
+            #'extras' =>json_encode([ ['name'=>'Aguacate', 'price'=>15] , ]),
             'picture' => 'foods/Baleada-Sencilla.jpg',
         ]);
+        
 
         Dish::create([
             'name' => 'Pollo Chuco',
             'desc' => 'Bandeja con nuestro excelente pollo frito, acompañado con tajadas y salsa al gusto.',
-            'price' => 45,
+            'price' => json_encode(
+                    [
+                        [
+                            "name"=> "Pierna", "price"=>45
+                        ],
+                        [
+                            "name"=> "Pechuga", "price"=>80
+                        ],
+                        [
+                            "name"=> "Ala", "price"=>50
+                        ],
+                        ]),
             'category' => 'Almuerzos',
-            'extras' =>[ ['name'=>'Pierna Cadera', 'price'=>45] , ['name'=>'Ala', 'price'=>65], ['name'=>'Pechuga', 'price'=>80], ],
+            #'extras' =>json_encode([ ['name'=>'Tajadas', 'price'=>0] , ['name'=>'Papas', 'price'=>10], ]),
             'picture' => 'foods/pollo-chuco.jpeg',
         ]);
         
         Dish::create([
             'name' => 'Tacos Dorados',
             'desc' => 'Orden de tres tacos dorados acompañado con vegetales abundantes y salsa de mantequilla de la casa.',
-            'price' => 45,
+            'price' => 60,
             'category' => 'Almuerzos',
-            'extras' =>[ ['name'=>'Pollo', 'price'=>45] , ['name'=>'Res', 'price'=>60], ['name'=>'Cerdo', 'price'=>85], ],
             'picture' => 'foods/tacos-dorados.jpg',
         ]);
 

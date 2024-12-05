@@ -93,87 +93,89 @@
                 <img class="img-fluid" src="{{ asset('storage/' . $dish->picture) }}" alt="comida">
             </div>
             
+            
             <div class="col-md-8" style="padding: 20px;">
 
-                <form action="{{  route('payment', ['dishId' => $dish->id])   }}" method="post">
-                    @csrf
-                        <label class="form-content" for="name">Nombre del Plato:</label>
-                        <input class="form-content" type="hidden" id=dish_id name=dish_id value ="{{ $dish->id }}"> </input>
-                        <!--<span class="form-content producto__nombre" type="text" id="name" name="dish_name" value ="{{ $dish->name }}"> style="font-size:40px;">
-                            {{ $dish->name }}
-                        </span>-->
-                        <input type="text" id="name" name="dish_name" value="{{ $dish->name }}" readonly>
+            <form action="{{ route('payment', ['dishId' => $dish->id]) }}" method="post">
+    @csrf
+    <label class="form-content" for="name">Nombre del Plato:</label>
+    <input class="form-content" type="hidden" id="dish_id" name="dish_id" value="{{ $dish->id }}">
+    <input type="text" id="name" name="dish_name" value="{{ $dish->name }}" readonly>
 
-                        <label class="form-content" for="description">Descripción:</label>
-                        <!--<p class="form-content"  id="description" name="description" readonly>{{ $dish->desc }}</p>-->
-                        <textarea id="description" name="description" style="resize: none;" readonly>{{ $dish->desc }}</textarea>
-                        
-                        <label class="form-content" for="price">Precio:</label>
-                        <input class="form-content producto__precio" type="number" id="price" name="dish_price" value="{{ $dish->price }}" readonly>   
-                       
-                       
-                        @if ($dish->extras)
-                        <label class="form-content" for="price">Seleccione una opcion </label>
-                        @foreach($dish->extras as $extra)
-                        <label class="form-content" for="extra_{{ $loop->index }}">
-                        <input type="radio" id="extra_{{ $loop->index }}" name="extra" oninput="UpdatePrice()"value="{{ json_encode($extra) }}">
-                        {{ $extra['name'] }}  L.{{ $extra['price'] }}
-                        </label>
-                        @endforeach
-                        @endif
-                        <label class="form-content" for="numero">Cantidad:</label> 
-                        <input class="form-content" type="number" id="quantity" MIN=1 value=1 name="quantity" oninput="UpdateTotalPrice()">
-                        <label class="form-content" for="comments">Comentarios opcionales:</label> 
-                        <textarea  class="form-content" id="comments" name="comments" rows="4" placeholder="Ingrese sus comentarios aquí"></textarea>
-                        <label class="form-content">Pago Total: L
-                            <span class="form-content" id="totalprice_label"></span>
-                        </label>
-                        <input class="form-content" type="hidden" id="totalprice" name="dish_total">  </input>
-                        
-                        <script>
-                            function UpdateTotalPrice() {
-                                const price = document.getElementById("price").value;
-                                let quantity = document.getElementById("quantity").value;
-                                let dish_total = (price*quantity).toFixed(2);
-                                document.getElementById("totalprice_label").textContent = dish_total;
-                            }
-                            UpdateTotalPrice();
-                            
-                        </script>
+    <label class="form-content" for="description">Descripción:</label>
+    <textarea id="description" name="description" style="resize: none;" readonly>{{ $dish->desc }}</textarea>
 
-                <script>
-                    function UpdatePrice() {
-                    let newPrice = 0;
-                    const extras = document.getElementsByName("extra");
-                        for (let i = 0; i < extras.length; i++) {
-                            if (extras[i].checked) {
-                                const extra = JSON.parse(extras[i].value);  
-                                 newPrice = parseFloat(extra.price);     
-                                break;  
-                            }
-                        }
-                    let price = parseFloat(document.getElementById("price").value);
-                    document.getElementById("price").value = newPrice.toFixed(2);  // Show it with 2 decimals
-                    }
-                    UpdateTotal();
-                </script>
-                @if ($errors->any())
-                <div class="alert alert-danger">
-                <ul>
-                @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-                @endforeach
-                </ul>
-                </div>
-                @endif
-                        <div class="button-container">
-                            @if(Auth::User()) 
-                            <button type="submit">Ordena ya</button>
-                            @else
-                            <a href="{{ route('login') }}">Inicia Sesión para Realizar tu Pedido</a> 
-                            @endif
-                        </div>
-                    </form>
+    <label class="form-content" for="price">Precio:</label>
+    <input class="form-content producto__precio" type="number" id="price" name="dish_price" value="{{ $min }}" readonly>
+
+    <label class="form-content" for="price">Seleccione una opción</label>
+    @foreach ($json as $index => $item) 
+    <div>
+        <input type="radio" id="plato{{ $index }}" name="plato" value="{{ json_encode(['name' => $item['name'], 'price' => $item['price']]) }}" onchange="UpdatePrice()"> 
+        <label for="plato{{ $index }}">{{ $item['name'] }} - Precio: {{ $item['price'] }}</label> 
+    </div> 
+    @endforeach
+
+    <label class="form-content" for="numero">Cantidad:</label> 
+    <input class="form-content" type="number" id="quantity" min="1" value="1" name="quantity" oninput="UpdateTotalPrice()">
+
+    <label class="form-content" for="comments">Comentarios opcionales:</label> 
+    <textarea class="form-content" id="comments" name="comments" rows="4" placeholder="Ingrese sus comentarios aquí"></textarea>
+
+    <label class="form-content">Pago Total: L
+        <span class="form-content" id="totalprice_label"></span>
+    </label>
+    <input class="form-content" type="hidden" id="totalprice" name="dish_total">
+
+    <script>
+        function UpdateTotalPrice() {
+            const price = parseFloat(document.getElementById("price").value);
+            const quantity = parseInt(document.getElementById("quantity").value);
+            const dish_total = (price * quantity).toFixed(2);
+            document.getElementById("totalprice_label").textContent = dish_total;
+            document.getElementById("totalprice").value = dish_total;
+        }
+
+        function UpdatePrice() {
+            let newPrice = 0;
+            const extras = document.getElementsByName("plato");
+            for (let i = 0; i < extras.length; i++) {
+                if (extras[i].checked) {
+                    const extra = JSON.parse(extras[i].value);  
+                    newPrice = parseFloat(extra.price);     
+                    break;  
+                }
+            }
+            let price = parseFloat(document.getElementById("price").value);
+            const quantity = parseInt(document.getElementById("quantity").value);
+            const totalPrice = (newPrice * quantity).toFixed(2);
+            document.getElementById("price").value = newPrice.toFixed(2);  // Show it with 2 decimals
+            document.getElementById("totalprice_label").textContent = totalPrice;
+            document.getElementById("totalprice").value = totalPrice;
+        }
+
+        UpdateTotalPrice(); 
+    </script>
+
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
+
+    <div class="button-container">
+        @if(Auth::User()) 
+        <button type="submit">Ordena ya</button>
+        @else
+        <a href="{{ route('login') }}">Inicia Sesión para Realizar tu Pedido</a> 
+        @endif
+    </div>
+</form>
+
             </div>
         </div>
     </div>

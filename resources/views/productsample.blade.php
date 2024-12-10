@@ -106,16 +106,18 @@
     <textarea id="description" name="description" style="resize: none;" readonly>{{ $dish->desc }}</textarea>
 
     <label class="form-content" for="price">Precio:</label>
+    @if($min)
     <input class="form-content producto__precio" type="number" id="price" name="dish_price" value="{{ $min }}" readonly>
-
     <label class="form-content" for="price">Seleccione una opción</label>
-    @foreach ($json as $index => $item) 
+    @foreach ($price as $item) 
     <div>
-        <input type="radio" id="plato{{ $index }}" name="plato" value="{{ json_encode(['name' => $item['name'], 'price' => $item['price']]) }}" onchange="UpdatePrice()"> 
-        <label for="plato{{ $index }}">{{ $item['name'] }} - Precio: {{ $item['price'] }}</label> 
-    </div> 
-    @endforeach
-
+    <input type="radio" id="price_{{$loop->index}}" name="Radioprice" value="{{$item->price}}" oninput="UpdatePrice()">    
+    <label for="price_{{$loop->index}}"> {{$item->name}} - Lps. {{$item->price}} </label>
+        </div> 
+        @endforeach
+    @else
+    <input class="form-content producto__precio" type="number" id="price" name="dish_price" value="{{ $price }}" readonly>
+    @endif
     <label class="form-content" for="numero">Cantidad:</label> 
     <input class="form-content" type="number" id="quantity" min="1" value="1" name="quantity" oninput="UpdateTotalPrice()">
 
@@ -137,24 +139,25 @@
         }
 
         function UpdatePrice() {
-            let newPrice = 0;
-            const extras = document.getElementsByName("plato");
-            for (let i = 0; i < extras.length; i++) {
-                if (extras[i].checked) {
-                    const extra = JSON.parse(extras[i].value);  
-                    newPrice = parseFloat(extra.price);     
-                    break;  
-                }
-            }
-            let price = parseFloat(document.getElementById("price").value);
-            const quantity = parseInt(document.getElementById("quantity").value);
-            const totalPrice = (newPrice * quantity).toFixed(2);
-            document.getElementById("price").value = newPrice.toFixed(2);  // Show it with 2 decimals
-            document.getElementById("totalprice_label").textContent = totalPrice;
-            document.getElementById("totalprice").value = totalPrice;
+    let newPrice = 0;
+    const extras = document.getElementsByName("Radioprice");
+    for (let i = 0; i < extras.length; i++) {
+        if (extras[i].checked) {
+            newPrice = parseFloat(extras[i].value);     
+            break;  
         }
+    }
+    let price = parseFloat(document.getElementById("price").value);
+    const quantity = parseInt(document.getElementById("quantity").value);
+    const totalPrice = (newPrice * quantity).toFixed(2);
 
-        UpdateTotalPrice(); 
+    document.getElementById("price").value = newPrice.toFixed(2);  // Mostrar con 2 decimales
+    document.getElementById("totalprice_label").textContent = totalPrice;
+    document.getElementById("totalprice").value = totalPrice;
+}
+
+UpdateTotalPrice();
+
     </script>
 
     @if ($errors->any())

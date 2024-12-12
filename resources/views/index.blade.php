@@ -40,8 +40,16 @@
                 <div class="producto__contenido">
                     <h3 class="producto__nombre">{{$dish->name}}</h3>
                     <p class="producto__descripcion">{{$dish->desc}}</p>
+                    @php
+                    $price= json_decode($dish->price);
+                    @endphp   
+                    @if(json_last_error() === JSON_ERROR_NONE && is_array($price))
+                    <p class="producto__precio">Creatu plato ahora</p>
+                    @else
                     <p class="producto__precio">L{{$dish->price}}</p>
+                    @endif
                     <a class="producto__enlace" href="{{route('viewproduct', ['dishId' => $dish->id] ) }}">Ver Producto</a>
+
                 </div>
             </div>
             @endforeach

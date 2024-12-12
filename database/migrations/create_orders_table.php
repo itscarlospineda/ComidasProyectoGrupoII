@@ -16,7 +16,7 @@ return new class extends Migration
         $table->string('username'); 
         $table->unsignedBigInteger('dish_id'); 
         $table->string('dish_name');
-        $table->string("extras")->nullable();
+        $table->string("Details")->nullable();
         $table->decimal('dish_price', 8, 2);
         $table->integer('quantity');
         $table->decimal('dish_total', 8, 2);

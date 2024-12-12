@@ -59,6 +59,32 @@ class DatabaseSeeder extends Seeder
         ]);*/
 
         //SEEDER DE PLATILLOS COMIENZA AQUI
+
+        User::create([
+            'username' => 'capineda',
+            'fname' => 'Carlos Andres',
+            'lname' => 'Pineda',
+            'email' => 'carlos@gmail.com',
+            'password' => Hash::make('password123'), // Make sure to hash the password
+            'phone_num' => '9988-7766',
+            'address' => 'San Pedro Sula, HN',
+            'role' => 'user', // Assuming 'role' is a column in your users table
+             
+        ]);
+
+        User::create([
+            'username' => 'admin1',
+            'fname' => 'amin1',
+            'lname' => 'admin',
+            'email' => 'admin@admin.com',
+            'password' => Hash::make('admin123'), // Make sure to hash the password
+            'phone_num' => '9988-7766',
+            'address' => 'San Pedro Sula, HN',
+            'role' => 'admin', // Assuming 'role' is a column in your users table
+           
+        ]);
+
+
         Dish::create([
             'name' => 'Baleada Sencilla',
             'desc' => 'Exquisita tortilla de harina con frijoles, queso y mantequilla. Vendida por unidad.',

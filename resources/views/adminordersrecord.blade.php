@@ -110,6 +110,7 @@
                     <th>ID Orden</th>
                     <th>Cliente</th>
                     <th>Plato</th>
+                    <th>Detalles</th>
                     <th>Cantidad</th>
                     <th>Fecha</th>
                     <th>Total</th>
@@ -120,9 +121,10 @@
             <tbody>
                 @foreach ($orders as $order)
                     <tr>
-                        <td>{{ $order->id }}</td>
+                    <td>W- {{ $order->id }}</td>
                         <td>{{ $order->username }}</td>
                         <td>{{ $order->dish_name }}</td>
+                        <td>{{ $order->Details}}</td>
                         <td>{{ $order->quantity }}</td>
                         <td>{{ $order->Fecha_pedido }}</td>
                         <td>{{ $order->dish_total }}</td>

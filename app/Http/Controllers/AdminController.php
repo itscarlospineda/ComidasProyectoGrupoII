@@ -17,7 +17,7 @@ class AdminController extends Controller
     public function orders()
     {
         $orders = Orders::join('users', 'orders.username', '=', 'users.username')
-        ->select('orders.id', 'users.username', 'orders.dish_name', 'orders.quantity', 'orders.dish_total', 'orders.comments', 'orders.Fecha_pedido', 'orders.status')
+        ->select('orders.id', 'users.username', 'orders.dish_name','orders.Details as espef','orders.quantity', 'orders.dish_total', 'orders.comments', 'orders.Fecha_pedido', 'orders.status')
         ->where('orders.status','pendiente')
         ->get();
         return view('adminorders', compact('orders'));

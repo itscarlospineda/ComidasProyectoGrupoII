@@ -23,30 +23,47 @@ public function thanks($orderId)
 
 public function payment(Request $request, $dishId)
 {
-    #dd($dishId);
-    $dish = Dish::find($dishId);
-    if ($dish->extras  && count($dish->extras)>0)   
-        {   
+    
+    try{
+        $dish = Dish::findOrFail($dishId);
+        $json = json_decode($dish->price);
+        
+        if (json_last_error() === JSON_ERROR_NONE && is_array($json))   
+        {
             $validated = $request->validate([
-                'extra' => 'required',   
+                'Radioprice' => 'required', 
+                 'quantity' => 'numeric|min:1', 
             ]);
-            $json=$request->input("extra");
-            $decode_json = json_decode($json, true);
-            #dd($decode_json); 
-            $extra=$decode_json["name"];
-            $price=$decode_json["price"];
-        }
-    else{   
-            $price = $request->dish_price;
-            $extra = null;
-        }
+            $i=0;
+            foreach($json as $array)
+            {
+                if($array->price == $request->input("Radioprice"))
+                {
+                    $details=$array->name;
+                    break;
+                }
+                $i++;
+            }
+            
+            //dd($price);
+            //FALTA ASEGURAR EL DATO DE Radioprice
+            $price= $request->input("Radioprice");  
+            $value= ($price*$request->quantity);
+            
+        }else
+        {
+            $details="N/A";
+            $price=$dish->price;
+            $value = ($price*$request->quantity);}
+        //dd($price,$value);
 
+    } catch( ModelNotFoundException $e)
+    {
+        
+        return response()->json(["ID NO VALIDO"]);
 
-    $request->validate([
-        'quantity' => 'numeric|min:1',
-    ]);
-    #dd($price,$extra);
-    $value= round(($request->quantity * $price),2);
+    }   
+
     $provider = new PayPalClient;
     $provider->setApiCredentials(config("paypal"));
     $paypal_token=$provider->getAccessToken();
@@ -74,10 +91,10 @@ public function payment(Request $request, $dishId)
         {
             if ($link["rel"]==="approve")
             {
-                session()->put("dish_id", $request->dish_id);
-                session()->put("dish_name", $request->dish_name);
+                session()->put("dish_id", $dish->id);
+                session()->put("dish_name", $dish->name);
                 session()->put("dish_price", $price);
-                session()->put("extras", $extra);
+                session()->put("details", $details);
                 session()->put("quantity", $request->quantity);
                 session()->put("comments", $request->comments);
                 return redirect()->away($link["href"]);
@@ -99,6 +116,7 @@ public function payment(Request $request, $dishId)
 
 public function success(Request $request)
 {
+    
     $provider = new PayPalClient;
     $provider->setApiCredentials(config("paypal"));
     $paypal_token=$provider->getAccessToken();
@@ -110,9 +128,9 @@ public function success(Request $request)
         $order->username = $username;
         $order->dish_id =session()->get("dish_id");
         $order->dish_name =session()->get("dish_name");
-        $order->extras = session()->get("extras");
         $order->dish_price =session()->get("dish_price");
         $order->quantity =session()->get("quantity");
+        $order->Details = session()->get("details");
         $order->dish_total=$response["purchase_units"][0]["payments"]["captures"][0]["amount"]["value"];
         $order->status = 'pendiente';
         $order->comments =session()->get("comments");

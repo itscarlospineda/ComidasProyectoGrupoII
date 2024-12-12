@@ -125,8 +125,10 @@
                     <th>ID Orden</th>
                     <th>Cliente</th>
                     <th>Plato</th>
+                    <th>Detalles</th>
                     <th>Cantidad</th>
-                    <th>Fecha</th>
+
+                    <!--<th>Fecha</th>-->
                     <th>Total</th>
                     <th>Nota</th>
                     <th>Estado</th>
@@ -146,8 +148,9 @@
                             <td>{{ $order->id }}</td>
                             <td>{{ $order->username }}</td>
                             <td>{{ $order->dish_name }}</td>
+                            <td>{{ $order->espef}}</td>
                             <td>{{ $order->quantity }}</td>
-                            <td>{{ $order->Fecha_pedido }}</td>
+                            <!--<td>{{ $order->Fecha_pedido }}</td>-->
                             <td>{{ $order->dish_total }}</td>
                             <td>{{ $order->comments ?? 'Sin nota' }}</td>
                             <td><span class="status {{ $order->status == 'Activo' ? 'active' : 'inactive' }}">{{ $order->status }}</span></td>
@@ -156,11 +159,6 @@
                                     @csrf
                                     @method('POST') 
                                     <button type="submit" class="btn-action entregar">Entregar</button>
-                                </form>
-                                <form action="{{ route('cancelorder', ['orderId' => $order->id]) }}" method="POST" style="display: inline;">
-                                    @csrf
-                                    @method('POST') 
-                                    <button type="submit" class="btn-action cancelar">Cancelar</button>
                                 </form>
                             </td>
                         </tr>

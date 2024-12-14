@@ -24,11 +24,7 @@ class Controller extends BaseController
         
         $randomDish = Dish::inRandomOrder()->first();
 
-        $reward=DB::table("rewards")
-        ->orderBy("Points_needed","ASC")
-        ->get();
 
-        session(["reward"=>$reward]);
         return view('index', compact('posts', 'morePosts','dishes', 'randomDish'));
     }
 }

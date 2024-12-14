@@ -46,7 +46,7 @@
         } 
         button[type="submit"] 
         { 
-        background-color: #4CAF50; 
+        background-color: #0070ba; 
         color: white; 
         border: none; 
         padding: 12px 20px; 
@@ -57,7 +57,7 @@
 
         button[type="submit"]:hover 
         { 
-        background-color: #45a049;
+        background-color:#005ea6;
         }
         input[type="number"] { 
             width: 100%; 
@@ -96,7 +96,7 @@
             
             <div class="col-md-8" style="padding: 20px;">
 
-            <form action="{{ route('payment', ['dishId' => $dish->id]) }}" method="post">
+            <form action="{{ route('paymentPayPal', ['dishId' => $dish->id]) }}" method="post">
     @csrf
     <label class="form-content" for="name">Nombre del Plato:</label>
     <input class="form-content" type="hidden" id="dish_id" name="dish_id" value="{{ $dish->id }}">
@@ -104,7 +104,7 @@
 
     <label class="form-content" for="description">Descripción:</label>
     <textarea id="description" name="description" style="resize: none;" readonly>{{ $dish->desc }}</textarea>
-
+    
     <label class="form-content" for="price">Precio:</label>
     @if($min)
     <input class="form-content producto__precio" type="number" id="price" name="dish_price" value="{{ $min }}" readonly>
@@ -172,7 +172,8 @@ UpdateTotalPrice();
 
     <div class="button-container">
         @if(Auth::User()) 
-        <button type="submit">Ordena ya</button>
+        <button type="submit">Pago con PayPal</button>
+        
         @else
         <a href="{{ route('login') }}">Inicia Sesión para Realizar tu Pedido</a> 
         @endif

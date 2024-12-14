@@ -21,7 +21,7 @@ public function thanks($orderId)
     
 }
 
-public function payment(Request $request, $dishId)
+public function paymentPayPal(Request $request, $dishId)
 {
     
     try{
@@ -34,15 +34,13 @@ public function payment(Request $request, $dishId)
                 'Radioprice' => 'required', 
                  'quantity' => 'numeric|min:1', 
             ]);
-            $i=0;
             foreach($json as $array)
             {
                 if($array->price == $request->input("Radioprice"))
                 {
                     $details=$array->name;
                     break;
-                }
-                $i++;
+                } 
             }
             
             //dd($price);
@@ -70,8 +68,8 @@ public function payment(Request $request, $dishId)
     $response =$provider->createOrder([
         "intent" =>"CAPTURE",
         "application_context"=>[
-        "return_url"=>route("success"),
-        "cancel_url"=>route("cancel"),
+        "return_url"=>route("successPayPal"),
+        "cancel_url"=>route("cancelPayPal"),
         ],
         "purchase_units"=> [
           [
@@ -107,14 +105,14 @@ public function payment(Request $request, $dishId)
        
     }else  {
         
-        return redirect()->route("cancel");
+        return redirect()->route("cancelPayPal");
 
     }
     
 
 }
 
-public function success(Request $request)
+public function successPayPal(Request $request)
 {
     
     $provider = new PayPalClient;
@@ -139,28 +137,10 @@ public function success(Request $request)
         $order->save();
         $orderId = $order->id;
 
-        if ($order->dish_total >= 300 &&  $order->dish_total<500)
-            {
-                 $points = 5;
-             }else 
-            {
-                 $points=0;
-            }
-    
-        if ($order->dish_total >= 500 &&  $order->dish_total<800)
-            {
-                 $points = 10;
-             }  
-
-        if ($order->dish_total >= 800 )
-            {
-                  $points = 20;
-             }
-     User::where("username", $username)->increment("points",$points);
-
     return redirect()->route('thanks',['orderId'=>$orderId]);
 
     }
     
 }
+
 }

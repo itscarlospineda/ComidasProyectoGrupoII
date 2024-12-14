@@ -8,8 +8,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Orders;
 use App\Models\Post;
-use App\Models\Reward;
-use App\Models\Rewards_claimed;
+
 
 class AdminController extends Controller
 {
@@ -50,13 +49,11 @@ public function dashboard()
 
     $numDishes = Dish::all()->count();
 
-    $numRewards = Reward::all()->count();
-
     $numPosts = Post::all()->count();
 
     $numUsers = User::where('role', 'user')->count();
     
-    return view("adminlanding",compact("compOrders","actOrders","numDishes","numRewards","numPosts","numUsers"));
+    return view("adminlanding",compact("compOrders","actOrders","numDishes","numPosts","numUsers"));
 }
 
 public function users()
@@ -75,10 +72,6 @@ public function usersProfile($UserId)
     ->where('users.id',$UserId)
     ->get();
 
-    $rewards = Rewards_claimed::join("users","rewards_claimeds.username", "=", "users.username")
-    ->select("rewards_claimeds.id as RewardClaimed_id","rewards_claimeds.RewardId as RewardId" ,"rewards_claimeds.Name","rewards_claimeds.Points_needed","rewards_claimeds.created_at as DATE")
-    ->where("users.id",$UserId)
-    ->get();
     return view("admin_users_profile",compact("purchases","rewards","userdata"));
 }
 

@@ -12,6 +12,7 @@ use App\Http\Controllers\AboutusController;
 use App\Http\Controllers\FoodController;
 use App\Http\Controllers\RewardController;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -53,19 +54,13 @@ Route::middleware(['auth', 'role:user'])->group(function () {
     Route::post('/profile/{id}/upload', [ProfileController::class, 'uploadProfilePicture'])->name('profile.upload');
     Route::get('/profile/{UserId}/purchases',[ProfileController::class, 'purchases'])->name('purchases');
     
+
+    Route::post("/payment/{dishId}",[OrderController::class, "paymentPayPal"])->name("paymentPayPal");
+    Route::get("success",[OrderController::class, "successPayPal"])->name("successPayPal");
+    Route::get("cancel",[OrderController::class, "cancel"])->name("cancelPayPal");
     
-    Route::get("/rewards",[RewardController::class, 'rewards'])->name('rewards');
-    /*Route::get("/rewards/create",[RewardController::class, 'create'])->name('rewards.create');*/
-    Route::get("/rewards/claim/{rewardId}",[RewardController::class, 'claimreward'])->name('claimreward');
-    Route::post("/rewards/claim/{rewardId}",[RewardController::class, 'savereward'])->name('savereward');
-    
-    Route::post("/payment/{dishId}",[OrderController::class, "payment"])->name("payment");
-    Route::get("success",[OrderController::class, "success"])->name("success");
-    Route::get("cancel",[OrderController::class, "cancel"])->name("cancel");
     
     Route::get("/thanks/{orderId}",[OrderController::class, "thanks"])->name("thanks");
-    
-    Route::get("/thanksRewards/{claimId}",[RewardController::class, "thanksReward"])->name("thanksReward");
 });
 
 
@@ -99,14 +94,6 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin/posts/view', [PostsController::class, 'view'])->name('posts.view');
     Route::get('/admin/posts/{id}/edit', [PostsController::class, 'edit'])->name('posts.edit');
     Route::put('/admin/posts/{id}', [PostsController::class, 'update'])->name('posts.update');
-
-
-    Route::get('/admin/rewards/create', [RewardController::class, 'create'])->name('rewards.create');
-    Route::post('/admin/rewards/store', [RewardController::class, 'store'])->name('rewards.store');
-    Route::get('/admin/rewards/view', [RewardController::class, 'view'])->name('rewards.view');
-    Route::get('/admin/rewards/{id}/edit', [RewardController::class, 'edit'])->name('rewards.edit');
-    Route::put('/admin/rewards/{id}', [RewardController::class, 'update'])->name('rewards.update');
-    Route::get('/admin/rewards/{id}', [RewardController::class, 'read'])->name('rewards.read');
 });
 
 

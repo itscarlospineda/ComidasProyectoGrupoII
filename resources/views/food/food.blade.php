@@ -113,7 +113,14 @@
                 <div class="card-body">
                     <h5 class="card-titlee">{{ $dish->name }}</h5>
                     <p class="card-text">{{ $dish->desc }}</p>
+                    @php
+                    $price= json_decode($dish->price);
+                    @endphp   
+                    @if(json_last_error() === JSON_ERROR_NONE && is_array($price))
+                    <p class="producto__precio">Creatu plato ahora</p>
+                    @else
                     <p class="fw-bold text-success">L{{ number_format($dish->price, 2) }}</p>
+                    @endif
                     <a href="{{ route('viewproduct', ['dishId' => $dish->id]) }}" class="btn btn-warning text-white" style="font-size: 16px;">Ver Producto</a>
                 </div>
             </div>

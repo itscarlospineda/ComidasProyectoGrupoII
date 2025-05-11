@@ -11,7 +11,25 @@ class FoodController extends Controller
     
     public function foods(Request $request)
     {
-        //$dishes=Dish::all();
+        
+    $dishes=Dish::all();
+    /*
+    $prices = collect();
+   foreach ($dishes as $dish) {
+    $decodedPrices = json_decode($dish->price, true);
+
+    if (is_array($decodedPrices)) {
+        foreach ($decodedPrices as $item) {
+            $prices->push([
+                'id' => $dish->id,
+                "name"=>$dish->name,
+                'price' => $item['price']
+            ]);
+        }
+    }
+}
+      */    
+       
         $selectedCategory = $request->get('category');
     
         $dishes = Dish::when($selectedCategory, function ($query) use ($selectedCategory) {

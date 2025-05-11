@@ -113,7 +113,6 @@
                 <div class="card-body">
                     <h5 class="card-titlee">{{ $dish->name }}</h5>
                     <p class="card-text">{{ $dish->desc }}</p>
-                    <p class="fw-bold text-success">L{{ number_format($dish->price, 2) }}</p>
                     <a href="{{ route('viewproduct', ['dishId' => $dish->id]) }}" class="btn btn-warning text-white" style="font-size: 16px;">Ver Producto</a>
                 </div>
             </div>

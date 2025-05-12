@@ -32,6 +32,6 @@ class RoleMiddleware
 
 
         // Accesos no autorizados
-        return redirect('/not-found'); 
+        return abort(404); 
     }
 }

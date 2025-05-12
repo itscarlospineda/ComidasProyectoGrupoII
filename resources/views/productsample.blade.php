@@ -75,6 +75,7 @@
     </style>
 
 @section('content')
+
             <div class="modelo">
                 <p class="modelo__nombre">Pedido de {{ $dish->name }}</p>
             </div>
@@ -97,7 +98,19 @@
             <div class="col-md-8" style="padding: 20px;">
 
             <form action="{{ route('payment', ['dishId' => $dish->id]) }}" method="post">
-    @csrf
+
+@if(session('Error'))
+    <script>
+        Swal.fire({
+            title: "Formato no soportado.",
+            text: "{{ session('Error') }}",
+            icon: "error"
+        });
+    </script>
+@endif
+
+
+            @csrf
     <label class="form-content" for="name">Nombre del Plato:</label>
     <input class="form-content" type="hidden" id="dish_id" name="dish_id" value="{{ $dish->id }}">
     <input type="text" id="name" name="dish_name" value="{{ $dish->name }}" readonly>
@@ -128,7 +141,6 @@
         <span class="form-content" id="totalprice_label"></span>
     </label>
     <input class="form-content" type="hidden" id="totalprice" name="dish_total">
-
     <script>
         function UpdateTotalPrice() {
             const price = parseFloat(document.getElementById("price").value);
@@ -169,7 +181,6 @@ UpdateTotalPrice();
         </ul>
     </div>
     @endif
-
     <div class="button-container">
         @if(Auth::User()) 
         <button type="submit">Ordena ya</button>

@@ -19,7 +19,7 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <h1 class="text-white">Control de Pedidos y Recompensas</h1> <br>
+            <h1 class="text-white">Control de Pedidos</h1> <br>
             
             <div class="col-md-4">
                 <div class="card bg-success mb-3">
@@ -63,30 +63,6 @@
                     </div>
                 </div>
             </div>
-
-            <div class="col-md-4">
-                <div class="card mb-3 bg-secondary ">
-                    <div class="card-body">
-                        <a href="{{ route('rewards.create') }}" class="button no-deco">
-                            <h5>Creación de Rewards </h5> <br> <br>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="col-md-4">
-                <div class="card mb-3">
-                    <div class="card-body" style="background-color:rgb(19, 161, 161);">
-                        <a href="{{ route('rewards.view') }}" class="button no-deco">
-                            <h5>Vista de Todas las Rewards </h5> <br>
-                            <h2>{{$numRewards}} &nbsp;<i class="bi bi-person-vcard-fill"></i> </h2>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
 
         <div class="row mt-4">
             <h1 class="text-white">Control de Posts</h1> <br>

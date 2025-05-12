@@ -2,7 +2,7 @@
 namespace App\Http\Controllers;
 Use Illuminate\Http\Request;
 Use App\Models\Dish;
-
+use App\Models\Settings;
 class ProductController extends Controller
 {
     public function viewProduct($dishId)
@@ -22,6 +22,7 @@ class ProductController extends Controller
                      $min=null;                  
                 }
             }   
+            
             return view("productsample", compact("dish","price","min"));
         }
         

@@ -7,9 +7,10 @@ use Illuminate\Support\Facades\Session;
 use App\Models\Orders;
 use App\Models\Dish;
 use App\Models\User;
+use App\Models\Settings;
+use Carbon\Carbon;
 use Srmklive\PayPal\Services\PayPal as PayPalClient;
 use Illuminate\Support\Facades\Auth;
-
 class OrderController extends Controller
 
 {
@@ -22,7 +23,18 @@ public function thanks($orderId)
 }
 
 public function payment(Request $request, $dishId)
-{
+{ 
+    $timeNow = Carbon::now('Etc/GMT+6');
+            $hourStart = Carbon::createFromTime(9,0,0,"UTC");
+            $hourEnd = Carbon::createFromTime(22,0,0,"UTC");
+            $allowPayemnts=Settings::find(1);
+            $purchases= $allowPayemnts->allowPayments && $timeNow->between($hourStart,$hourEnd);
+    if (!$purchases)
+    {
+        return redirect()->back()->with("Error","Lo sentimos, en este momento no estamos aceptando pedidos. Intente nuevamente mas tarde.");
+    }
+    
+
     
     try{
         $dish = Dish::findOrFail($dishId);

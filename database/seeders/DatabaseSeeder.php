@@ -7,7 +7,7 @@ use Illuminate\Database\Seeder;
 use App\Models\User;
 use App\Models\Post;
 use App\Models\Dish;
-use App\Models\Reward;
+use App\Models\Settings;
 use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
@@ -220,37 +220,16 @@ class DatabaseSeeder extends Seeder
             'username' => 'admin',
             'fname' => 'Admin',
             'lname' => 'User',
-            'email' => 'admin@admin.com',
+            'email' => 'admin2@admin.com',
             'password' => Hash::make('password789'), // Make sure to hash the password
             'phone_num' => '3389-5786',
             'address' => 'San Pedro Sula, HN',
             'role' => 'admin', // Assuming 'role' is a column in your users table
             'profile_picture' => 'profile_pictures/default-profile.png', // Default profile picture if any
         ]);
-
-        Reward::create( [
-        "Name"  => "Orden de Tajadas",
-        "Description" => "Complementa tus platos con una porción extra de tajadas. ",
-        "Points_needed" => 50,
+           
+        Settings::create([
+            "allowPayments"=>False,
         ]);
-        
-        Reward::create( [
-        "Name"  => "Tres Leches Pequeño",
-        "Description" => "Saborea el sabor de nuestros postres para nuestros clientes fieles. ",
-        "Points_needed" => 80,
-        ]);
-
-        Reward::create( [
-        "Name"  => "Pierna/Cadera Pollo Frito",
-        "Description" => "Agrega más carne y más sabor a tu plato.",
-        "Points_needed" => 110,
-        ]);
-
-        Reward::create( [
-            "Name"  => "Pollo Chuco",
-            "Description" => "El mayor premio para nuestros clientes leales de corazon, un plato entero de pollo chuco solo para ti.",
-            "Points_needed" => 250,
-            ]);
-            
     }
 }

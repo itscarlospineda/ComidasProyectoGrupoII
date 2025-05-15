@@ -180,7 +180,7 @@
                                     
                                         <a href="/">Inicio</a> <br>
                                         <a href="/settings">Opciones</a> <br>
-                                        <a href="{{ route ('rewards')}}">Recompensas</a> <br>
+                                        <a href="#">Recompensas</a> <br>
                                     @endif
                                         <a href="{{ route('logout') }}"
                                         onclick="event.preventDefault();

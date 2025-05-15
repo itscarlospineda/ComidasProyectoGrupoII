@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Dish;
+use App\Models\Category;
 use Illuminate\Support\Facades\DB;
 
 class FoodController extends Controller
@@ -13,38 +14,30 @@ class FoodController extends Controller
     {
         
     $dishes=Dish::all();
-    /*
-    $prices = collect();
-   foreach ($dishes as $dish) {
-    $decodedPrices = json_decode($dish->price, true);
-
-    if (is_array($decodedPrices)) {
-        foreach ($decodedPrices as $item) {
-            $prices->push([
-                'id' => $dish->id,
-                "name"=>$dish->name,
-                'price' => $item['price']
-            ]);
-        }
+    $categories=Category::all();
+    return view("food/food",compact("dishes","categories"));
     }
+
+    public function filter(Request $request)
+    {
+        $categories=Category::all();   
+        $categoryId = $request->query('category');
+
+    $dishes = Dish::when($categoryId, function ($query, $categoryId) {
+        return $query->where('category_id', $categoryId);
+    })->get();
+    return view("food/food",compact("dishes","categories"));
 }
-      */    
-       
-        $selectedCategory = $request->get('category');
     
-        $dishes = Dish::when($selectedCategory, function ($query) use ($selectedCategory) {
-            $query->where('category', $selectedCategory);
-        })->get();
 
-        return view("food/food",compact("dishes","selectedCategory"));
-    }
 
     public function view()
-    {
+    {   
+     $prices = collect();
         $dishes = DB::table('dishes')
         ->select('id', 'name', 'desc', 'price', 'category', 'picture')
         ->get();
-
+          
         return view('food/foodView', compact('dishes'));
         
     }

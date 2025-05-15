@@ -40,15 +40,19 @@
                 <div class="producto__contenido">
                     <h3 class="producto__nombre">{{$dish->name}}</h3>
                     <p class="producto__descripcion">{{$dish->desc}}</p>
+                @php
+                    $price = json_decode($dish->price, true); 
+                @endphp
+
+                @if(json_last_error() === JSON_ERROR_NONE && is_array($price))
                     @php
-                    $price= json_decode($dish->price);
-                    @endphp   
-                    @if(json_last_error() === JSON_ERROR_NONE && is_array($price))
-                    <p class="producto__precio">Creatu plato ahora</p>
+                        $min = min(array_column($price, 'price')); // corregido: $price y no $dPrice
+                    @endphp
+                        <p class="producto__precio">L{{ $min }}</p>
                     @else
-                    <p class="producto__precio">L{{$dish->price}}</p>
-                    @endif
-                    <a class="producto__enlace" href="{{route('viewproduct', ['dishId' => $dish->id] ) }}">Ver Producto</a>
+                        <p class="producto__precio">L{{ $dish->price }}</p>
+                @endif
+<a class="producto__enlace" href="{{route('viewproduct', ['dishId' => $dish->id] ) }}">Ver Producto</a>
 
                 </div>
             </div>

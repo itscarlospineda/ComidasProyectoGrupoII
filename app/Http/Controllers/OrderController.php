@@ -24,16 +24,16 @@ public function thanks($orderId)
 
 public function payment(Request $request, $dishId)
 { 
-    $timeNow = Carbon::now('Etc/GMT+6');
-            $hourStart = Carbon::createFromTime(9,0,0,"UTC");
-            $hourEnd = Carbon::createFromTime(22,0,0,"UTC");
+            $timeNow = Carbon::now('etc/GMT+6');
+            $hourStart = Carbon::createFromTime(9,0,0,"etc/GMT+6");
+            $hourEnd = Carbon::createFromTime(22,0,0,"etc/GMT+6");
             $allowPayemnts=Settings::find(1);
-            $purchases= $allowPayemnts->allowPayments && $timeNow->between($hourStart,$hourEnd);
-    if (!$purchases)
+            $allowPurchases= $allowPayemnts->allowPayments && $timeNow->between($hourStart,$hourEnd);
+           
+     if (!$allowPurchases)
     {
         return redirect()->back()->with("Error","Lo sentimos, en este momento no estamos aceptando pedidos. Intente nuevamente mas tarde.");
     }
-    
 
     
     try{
@@ -151,25 +151,7 @@ public function success(Request $request)
         $order->save();
         $orderId = $order->id;
 
-        if ($order->dish_total >= 300 &&  $order->dish_total<500)
-            {
-                 $points = 5;
-             }else 
-            {
-                 $points=0;
-            }
     
-        if ($order->dish_total >= 500 &&  $order->dish_total<800)
-            {
-                 $points = 10;
-             }  
-
-        if ($order->dish_total >= 800 )
-            {
-                  $points = 20;
-             }
-     User::where("username", $username)->increment("points",$points);
-
     return redirect()->route('thanks',['orderId'=>$orderId]);
 
     }

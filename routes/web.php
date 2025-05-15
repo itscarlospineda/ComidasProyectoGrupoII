@@ -35,6 +35,7 @@ Route::middleware(['role:guest'])->group(function () {
     Route::get('/posts/{id}', [PostsController::class, 'read'])->name('posts.read');
 
     Route::get('/foods', [FoodController::class, "foods"])->name("foods"); //Vista de las comidas
+    Route::get('foods-Filter', [FoodController::class, 'filter'])->name('foodsFilter');
 
 });
 

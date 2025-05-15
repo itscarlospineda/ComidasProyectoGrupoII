@@ -13,13 +13,14 @@ return new class extends Migration
     {
         Schema::create('dishes', function (Blueprint $table) {
             $table->id();
+             $table->unsignedBigInteger('category_id'); 
             $table->string('name');
             $table->string('desc');
             $table->json("price")->nullable();
-            $table->string('category')->nullable();
-            $table->json("extras")->nullable();
             $table->string('picture')->nullable();
             $table->timestamps();
+           
+        $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
         });
     }
 

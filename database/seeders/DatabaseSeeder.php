@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Post;
 use App\Models\Dish;
 use App\Models\Settings;
+use App\Models\Category;
 use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
@@ -17,26 +18,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
-
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
-
-        //EJEMPLO SEEDER DE USER
-        /*User::create([
-            'username' => 'capineda',
-            'fname' => 'Carlos Andres',
-            'lname' => 'Pineda',
-            'email' => 'carlos@gmail.com',
-            'password' => Hash::make('password123'), // Make sure to hash the password
-            'phone_num' => '9988-7766',
-            'address' => 'San Pedro Sula, HN',
-            'role' => 'user', // Assuming 'role' is a column in your users table
-            'profile_picture' => 'profile_pictures/default-profile.png', // Default profile picture if any
-        ]);*/
-
         //EJEMPLO SEEDER DE POSTS
         /*Post::create([
             'title' => 'Sorteo de Guitarra por Compras',
@@ -57,8 +38,251 @@ class DatabaseSeeder extends Seeder
             'author' => 'Gerencia Sabor Catracho',
             'category' => 'Informativo',
         ]);*/
+         //SEEDER DE PLATILLOS COMIENZA AQUI
 
-        //SEEDER DE PLATILLOS COMIENZA AQUI
+         Category::create([
+            'name' => 'Baleadas',
+         ]);
+         Category::create([
+            'name' => 'Golosinas',
+         ]);
+         Category::create([
+            'name' => 'Combos Familiares',
+         ]);
+         Category::create([
+            'name' => 'Combos para Dos',
+         ]);
+         Category::create([
+            'name' => 'Pollo con tajadas',
+         ]);
+         Category::create([
+            'name' => 'Pollo con papas',
+         ]);
+
+
+        Dish::create([
+            'name' => 'Baleadas',
+            'desc' => 'Exquisita tortilla de harina con frijoles, queso y mantequilla. Vendida por unidad.',
+            'price' => json_encode(
+                    [
+                        [
+                            "name"=> "Sencilla", "price"=>10
+                        ],
+                        [
+                            "name"=> "Con huevo", "price"=>16
+                        ],
+                        [
+                            "name"=> "Con Embutido", "price"=>15
+                        ],
+                        [
+                            "name"=> "Con Chorizo", "price"=>15
+                        ],
+                        [
+                            "name"=> "Huevo y Chorizo", "price"=>25
+                        ],
+                        [
+                            "name"=> "Con pollo", "price"=>25
+                        ],
+                        ]),
+            'category_id' => 1,    
+            'picture' => 'foods/Baleada-Sencilla.jpg',
+        ]);
+        
+
+        Dish::create([
+            'name' => 'Pollo Chuco con tajadas',
+            'desc' => 'Bandeja con nuestro excelente pollo frito, acompañado con tajadas y salsa al gusto.',
+            'price' => json_encode(
+                    [
+                        [
+                            "name"=> "Media Porcion Pierna", "price"=>55
+                        ],
+                        [
+                            "name"=> "Media Porcion cadera", "price"=>60
+                        ],
+                        [
+                            "name"=> "Media Porcion Ala", "price"=>65
+                        ],
+                          [
+                            "name"=> "Media porcion Pechuga", "price"=>75
+                        ],
+                          [
+                            "name"=> "Porcion Pierna-Cadera", "price"=>90
+                        ],
+                          [
+                            "name"=> "Porcion Ala-Pechuga", "price"=>98
+                        ],
+                        ]),
+            'category_id' => 5,
+            'picture' => 'foods/pollo-chuco.jpeg',
+        ]);
+
+
+Dish::create([
+            'name' => 'Pollo Chuco con papas',
+            'desc' => 'Bandeja con nuestro excelente pollo frito, acompañado con papas y salsa al gusto.',
+            'price' => json_encode(
+                    [
+                        [
+                            "name"=> "Media Porcion Pierna", "price"=>70
+                        ],
+                        [
+                            "name"=> "Media Porcion cadera", "price"=>80
+                        ],
+                        [
+                            "name"=> "Media Porcion Ala", "price"=>85
+                        ],
+                          [
+                            "name"=> "Media porcion Pechuga", "price"=>90
+                        ],
+                          [
+                            "name"=> "Porcion Pierna-Cadera", "price"=>100
+                        ],
+                          [
+                            "name"=> "Porcion Ala-Pechuga", "price"=>110
+                        ],
+                        ]),
+            'category_id' => 6,
+            'picture' => 'foods/pollo-chuco.jpeg',
+        ]);
+
+        
+        Dish::create([
+            'name' => 'Chuleta con tajadas',
+            'desc' => 'Descripcion.',
+            'price' => 85,
+            'category_id' => 2,
+            'picture' => 'foods/tacos-dorados.jpg',
+        ]);
+
+         Dish::create([
+            'name' => 'Tajadas con carne molida',
+            'desc' => 'Descripcion.',
+            'price' => 55,
+            'category_id' => 2,
+            'picture' => 'foods/tacos-dorados.jpg',
+        ]);
+         Dish::create([
+            'name' => 'Costillas de cerdo en Salsa BBQ',
+            'desc' => 'Descripcion.',
+            'price' => 95,
+            'category_id' => 2,
+            'picture' => 'foods/tacos-dorados.jpg',
+        ]);
+        
+        Dish::create([
+            'name' => 'Patas de pollo con tajadas',
+            'desc' => 'Descripcion.',
+            'price' => 50,
+            'category_id' => 2,
+            'picture' => 'foods/tacos-dorados.jpg',
+        ]);
+        Dish::create([
+            'name' => 'Tacos flauta',
+            'desc' => 'Orden de 2.',
+            'price' => 80,
+            'category_id' => 2,
+            'picture' => 'foods/tacos-dorados.jpg',
+        ]);
+
+        Dish::create([
+            'name' => 'Enchiladas',
+            'desc' => 'Orden de 2.',
+            'price' => 45,
+            'category_id' => 2,
+            'picture' => 'foods/tacos-dorados.jpg',
+        ]);
+
+        Dish::create([
+            'name' => 'Nachos con pollo',
+            'desc' => 'Descripcion.',
+            'price' => 95,
+            'category_id' => 2,
+            'picture' => 'foods/tacos-dorados.jpg',
+        ]);
+
+        Dish::create([
+            'name' => 'Alitas en salsa BBQ o Bufalo',
+            'desc' => 'Descripcion.',
+            'price' => json_encode(
+                    [
+                        [
+                            "name"=> "Salsa BBQ", "price"=>110
+                        ],
+                        [
+                            "name"=> "Salsa Bufalo", "price"=>110
+                        ],
+                        ]),
+            'category_id' => 2,
+            'picture' => 'foods/tacos-dorados.jpg',
+        ]);
+
+
+        Dish::create([
+            'name' => 'Familiar 1',
+            'desc' => '8 piezas de pollo, 4 ordenes de tajadas y 1 pepsi 2L',
+            'price' => 350,
+            'category_id' => 3,
+            'picture' => 'foods/tacos-dorados.jpg',
+        ]);
+
+
+        Dish::create([
+            'name' => 'Familiar 2',
+            'desc' => '8 piezas de pollo, 4 ordenes de papas y 1 pepsi 2L',
+            'price' => 370,
+            'category_id' => 3,
+            'picture' => 'foods/tacos-dorados.jpg',
+        ]);
+
+        Dish::create([
+            'name' => 'Super Familiar 3',
+            'desc' => '10 piezas de pollo, 4 ordenes de tajadas y 1 pepsi 2L',
+            'price' => 445,
+            'category_id' => 3,
+            'picture' => 'foods/tacos-dorados.jpg',
+        ]);
+
+ Dish::create([
+            'name' => 'Super Familiar 4',
+            'desc' => '10 piezas de pollo, 4 ordenes de papas y 1 pepsi 2L',
+            'price' => 485,
+            'category_id' => 3,
+            'picture' => 'foods/tacos-dorados.jpg',
+        ]);
+
+         Dish::create([
+            'name' => 'Mega Familiar 5',
+            'desc' => '14 piezas de pollo, 4 ordenes de tajadas y 1 pepsi 3L',
+            'price' => 485,
+            'category_id' => 3,
+            'picture' => 'foods/tacos-dorados.jpg',
+        ]);
+
+ Dish::create([
+            'name' => 'Mega Familiar 6',
+            'desc' => '14 piezas de pollo, 4 ordenes de papas y 1 pepsi 3L',
+            'price' => 620,
+            'category_id' => 3,
+            'picture' => 'foods/tacos-dorados.jpg',
+        ]);
+
+         Dish::create([
+            'name' => 'Combo para 2 #1 ',
+            'desc' => '1 porcion de Pierna-Cadera, 1 porcion pechuga-ala, 1 orden de tajadas y 1 pepsi 1.25L',
+            'price' => 197,
+            'category_id' => 4,
+            'picture' => 'foods/tacos-dorados.jpg',
+        ]);
+
+
+         Dish::create([
+            'name' => 'Combo para 2 #2 ',
+            'desc' => '1 porcion de Pierna-Cadera, 1 porcion pechuga-ala, 1 orden de tajadas y 1 pepsi 1.25L',
+            'price' => 197,
+            'category_id' => 4,
+            'picture' => 'foods/tacos-dorados.jpg',
+        ]);
 
         User::create([
             'username' => 'capineda',
@@ -84,150 +308,7 @@ class DatabaseSeeder extends Seeder
            
         ]);
 
-
-        Dish::create([
-            'name' => 'Baleada Sencilla',
-            'desc' => 'Exquisita tortilla de harina con frijoles, queso y mantequilla. Vendida por unidad.',
-            'price' => json_encode(
-                    [
-                        [
-                            "name"=> "Sencilla", "price"=>22
-                        ],
-                        [
-                            "name"=> "Con huevo", "price"=>30
-                        ],
-                        [
-                            "name"=> "Con todo", "price"=>50
-                        ],
-                        ]),
-            'category' => 'Desayunos',         
-            #'extras' =>json_encode([ ['name'=>'Aguacate', 'price'=>15] , ]),
-            'picture' => 'foods/Baleada-Sencilla.jpg',
-        ]);
         
-
-        Dish::create([
-            'name' => 'Pollo Chuco',
-            'desc' => 'Bandeja con nuestro excelente pollo frito, acompañado con tajadas y salsa al gusto.',
-            'price' => json_encode(
-                    [
-                        [
-                            "name"=> "Pierna", "price"=>45
-                        ],
-                        [
-                            "name"=> "Pechuga", "price"=>80
-                        ],
-                        [
-                            "name"=> "Ala", "price"=>50
-                        ],
-                        ]),
-            'category' => 'Almuerzos',
-            #'extras' =>json_encode([ ['name'=>'Tajadas', 'price'=>0] , ['name'=>'Papas', 'price'=>10], ]),
-            'picture' => 'foods/pollo-chuco.jpeg',
-        ]);
-        
-        Dish::create([
-            'name' => 'Tacos Dorados',
-            'desc' => 'Orden de tres tacos dorados acompañado con vegetales abundantes y salsa de mantequilla de la casa.',
-            'price' => 60,
-            'category' => 'Almuerzos',
-            'picture' => 'foods/tacos-dorados.jpg',
-        ]);
-
-        Dish::create([
-            'name' => 'Catrachitas',
-            'desc' => 'Tradicional entrada que lleva con orgullo el pseudónimo de nuestro país. Incluye como ingrediente principal los frijoles con queso.',
-            'price' => 15.50,
-            'category' => 'Entradas',
-            'picture' => 'foods/catrachitas.jpeg',
-        ]);
-
-         Dish::create([
-            'name' => 'Sopa de Caracol',
-            'desc' => 'Una sopa hondureña que tiene como ingrediente la leche de coco y el caracol, que te transportará a una explosión de sabores a tu paladar.',
-            'price' => 240.00,
-            'category' => 'Almuerzos',
-            'picture' => 'foods/sopa-caracol.jpg',
-        ]);
-
-        Dish::create([
-            'name' => 'Nacatamales',
-            'desc' => 'Son un plato tipico que se prepara para grandes celebraciones como la navidad y año nuevo.',
-            'price' => 25.00,
-            'category' => 'Entradas',
-            'picture' => 'foods/nacatamal.jpg',
-        ]);
-        
-        Dish::create([
-            'name' => 'Pescado Frito',
-            'desc' => 'Un plato tradicional de las costumbres culinarias de centroamerica. Un plato de pescado frito con tajadas de platano y acompañantes deliciosos.',
-            'price' => 95.00,
-            'category' => 'Almuerzos',
-            'picture' => 'foods/pescado-frito.jpg',
-        ]);
-
-        Dish::create([
-            'name' => 'Plato Tipico',
-            'desc' => 'Un manjar con variedad de ingredientes que componen, un plato lleno de color, sabor y cultura.',
-            'price' => 85.00,
-            'category' => 'Desayunos',
-            'picture' => 'foods/plato-tipico.png',
-        ]);
-
-        Dish::create([
-            'name' => 'Yuca con chicharron',
-            'desc' => 'Comida de la región que despliega una diversidad de texturas y sabores que lo convierte en una delicia culinaria.',
-            'price' => 70.00,
-            'category' => 'Almuerzos',
-            'picture' => 'foods/Yuca-chicharron.jpg',
-        ]);
-
-        Dish::create([
-            'name' => 'Arroz con leche',
-            'desc' => 'Delicioso arroz cocido en diferente tipos de leche, ideal para servir como postre.',
-            'price' => 50.00,
-            'category' => 'Postres',
-            'picture' => 'foods/arroz-con-leche.png',
-        ]);
-
-        Dish::create([
-            'name' => 'Hojuelas',
-            'desc' => 'Deliciosas hojuelas de maíz, se suelen servir en fiestas y reuniones.',
-            'price' => 30.00,
-            'category' => 'Postres',
-            'picture' => 'foods/hojuelas.jpg',
-        ]);
-
-        Dish::create([
-            'name' => 'Platano maduro en miel',
-            'desc' => 'Plátano maduro combinado con miel que lo convierte en un manjar.',
-            'price' => 30.00,
-            'category' => 'Entradas',
-            'picture' => 'foods/platano-miel.jpg',
-        ]);
-        
-        Dish::create([
-            'name' => 'Tres leches',
-            'desc' => 'El único e inigualable postre, sello de la casa y de nuestra cultura para sellar un buen tiempo de comida.',
-            'price' => 60.00,
-            'category' => 'Postres',
-            'picture' => 'foods/tres-leches.jpg',
-        ]);
-        
-
-        //SEEDER PARA RECOMPENSAS
-        User::create([
-            'username' => 'admin',
-            'fname' => 'Admin',
-            'lname' => 'User',
-            'email' => 'admin2@admin.com',
-            'password' => Hash::make('password789'), // Make sure to hash the password
-            'phone_num' => '3389-5786',
-            'address' => 'San Pedro Sula, HN',
-            'role' => 'admin', // Assuming 'role' is a column in your users table
-            'profile_picture' => 'profile_pictures/default-profile.png', // Default profile picture if any
-        ]);
-           
         Settings::create([
             "allowPayments"=>False,
         ]);
